@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000021",
+  "event_name": "Multichain Router 借 permit 路径转走用户授权资产",
+  "summary": "用户过去授予 Router 的代币额度仍然有效，攻击者通过可操控的参数和 permit 相关路径触发转账，把这些授权变成从用户钱包取款的能力。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约143万—300万美元历史报告值；时点与覆盖范围不同，追回及最终净损待对账。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主要事故材料",
+      "url": "https://medium.com/multichainorg/multichain-contract-vulnerability-post-mortem-d37bfab237c8"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "SlowMist 事件目录",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=4"
+    }
+  ],
+  "uncertainties": [
+    "待确认：待固定受影响六种代币、合约版本、撤销覆盖及完整追回清单；143万与300万美元不能合并计数。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-01-18；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Multichain |\n| 跨链桥或产品 | Router 的 permit／代币授权路径（原记录：Multichain Router permit/allowance incident） |\n| 底层协议 | Multichain 上层 Router；本次为本地授权失效 |\n| 涉及链／范围 | Ethereum → 无已确认目的链，作用于本地资产 |\n| 事件性质 | 跨链相邻或上层事件，保留边界分类 |\n| 损失与口径 | 约143万—300万美元历史报告值；时点与覆盖范围不同，追回及最终净损待对账。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "用户过去授予 Router 的代币额度仍然有效，攻击者通过可操控的参数和 permit 相关路径触发转账，把这些授权变成从用户钱包取款的能力。受害者不一定在攻击当时主动跨链。\n\n失效点在入口合约如何约束调用者、参数和代币授权，而非远端桥接受了伪造存款。本卡保留 boundary，不能由 Multichain 名称直接推成 MPC 验证网络被攻破。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：官方报告合约修补并要求撤销授权，剩余风险待对账。**\n\n账本所引官方复盘记载修补相关合约，并要求用户撤销六种代币的旧授权。新入口上线与旧授权失效是两个条件；提示用户撤销不等于所有用户已撤销。\n\n需要分别核验修复部署、仍存活的旧入口和受害人补偿，当前没有足以统一关闭最终净损的材料。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡沿用冻结于2026-09-10的事件全集及截至2026-09-11的既有证据；本轮只做中文整理，没有重新核实项目截至2026-09-12的运行状态。\n\n- [账本主要事故材料](https://medium.com/multichainorg/multichain-contract-vulnerability-post-mortem-d37bfab237c8)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本，非本轮网页核读；事件和历史估值线索；目录不是修复证明。\n\n待确认：待固定受影响六种代币、合约版本、撤销覆盖及完整追回清单；143万与300万美元不能合并计数。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-001",
+  "source_card_markdown": "# Multichain Router 借 permit 路径转走用户授权资产\n\n> 事件编号：EV2022-001｜账本类别：boundary（边界事件，不等同于直接跨链验证失效）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-01-18；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Multichain |\n| 跨链桥或产品 | Router 的 permit／代币授权路径（原记录：Multichain Router permit/allowance incident） |\n| 底层协议 | Multichain 上层 Router；本次为本地授权失效 |\n| 涉及链／范围 | Ethereum → 无已确认目的链，作用于本地资产 |\n| 事件性质 | 跨链相邻或上层事件，保留边界分类 |\n| 损失与口径 | 约143万—300万美元历史报告值；时点与覆盖范围不同，追回及最终净损待对账。 |\n\n## 2. 原因与经过\n\n用户过去授予 Router 的代币额度仍然有效，攻击者通过可操控的参数和 permit 相关路径触发转账，把这些授权变成从用户钱包取款的能力。受害者不一定在攻击当时主动跨链。\n\n失效点在入口合约如何约束调用者、参数和代币授权，而非远端桥接受了伪造存款。本卡保留 boundary，不能由 Multichain 名称直接推成 MPC 验证网络被攻破。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：官方报告合约修补并要求撤销授权，剩余风险待对账。**\n\n账本所引官方复盘记载修补相关合约，并要求用户撤销六种代币的旧授权。新入口上线与旧授权失效是两个条件；提示用户撤销不等于所有用户已撤销。\n\n需要分别核验修复部署、仍存活的旧入口和受害人补偿，当前没有足以统一关闭最终净损的材料。\n\n## 4. 依据与待确认\n\n本卡沿用冻结于2026-09-10的事件全集及截至2026-09-11的既有证据；本轮只做中文整理，没有重新核实项目截至2026-09-12的运行状态。\n\n- [账本主要事故材料](https://medium.com/multichainorg/multichain-contract-vulnerability-post-mortem-d37bfab237c8)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本，非本轮网页核读；事件和历史估值线索；目录不是修复证明。\n\n待确认：待固定受影响六种代币、合约版本、撤销覆盖及完整追回清单；143万与300万美元不能合并计数。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

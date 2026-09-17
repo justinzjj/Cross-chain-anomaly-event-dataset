@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000051",
+  "event_name": "Cosmos IBC Dragonberry 伪造超时证明漏洞",
+  "summary": "ICS-23对IAVL证明结构校验不足，可使伪造的“不存在证明”被接受。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "官方明确无资金损失；ICS-20托管账户是潜在敞口，不能填为实际盗款或理论已增发。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Cosmos官方Dragonberry／Elderflower回顾",
+      "url": "https://forum.cosmos.network/t/cosmos-sdk-ibc-vulnerability-retrospective-security-advisories-dragonberry-and-elderflower-october-2022/8735"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Cosmos SDK v0.45.9发布页",
+      "url": "https://github.com/cosmos/cosmos-sdk/releases/tag/v0.45.9"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "Dragonberry安全公告",
+      "url": "https://forum.cosmos.network/t/ibc-security-advisory-dragonberry/7702"
+    }
+  ],
+  "uncertainties": [
+    "待确认：官方首次报告时间写Oct 9约4pm CST，时区缩写有歧义，本卡不伪造UTC小时；账本日保留10-09。修复commit、受影响版本与逐链升级证明仍待固定。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 发现/私下报告按官方记2022-10-09（CST原文，精确UTC待核）；10-10起分发补丁，10-14公开发布；回顾发表于12-16。 |\n| 团队／项目 | Cosmos／IBC维护团队；Osmosis研究者Dev Ojha |\n| 跨链桥或产品 | ICS-23／IAVL不存在证明与ICS-20转账（原记录：Cosmos IBC Dragonberry absence-proof vulnerability） |\n| 底层协议 | IBC／Cosmos SDK |\n| 涉及链／范围 | IBC source chains → IBC destination chains |\n| 事件性质 | 漏洞披露；未发生已知黑帽利用 |\n| 损失与口径 | 官方明确无资金损失；ICS-20托管账户是潜在敞口，不能填为实际盗款或理论已增发。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "ICS-23对IAVL证明结构校验不足，可使伪造的“不存在证明”被接受。攻击者理论上能让已经在目的链成功接收的转账，在源链又被判作超时失败并退款，破坏成功与退款互斥。\n\n同一资产若不断重复这一过程，ICS-20托管资金会暴露。它与BSC Token Hub实际盗款事件相关但不是同一事故，也不应与独立的Authz Elderflower漏洞合并统计。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已协调分发并发布补丁，无实际盗款；逐链部署待核。**\n\n官方记载10月10日开始分发结构校验补丁，10月14日公开发布。超过三分之一投票权升级可使攻击造成停链，属于遏制；达到全网更新才完全消除该漏洞执行路径。\n\n回顾说明升级后问题解决，本轮未逐链清点所有验证者。原表笼统“full validator thresholds”应解释为不同补丁覆盖阈值的安全效果，不能把初期三分之一已升级当作全网修复。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Cosmos官方Dragonberry／Elderflower回顾](https://forum.cosmos.network/t/cosmos-sdk-ibc-vulnerability-retrospective-security-advisories-dragonberry-and-elderflower-october-2022/8735)：本轮网页核读；支持根因、未利用、补丁分发与三分之一／全网阈值区别。\n- [Cosmos SDK v0.45.9发布页](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.45.9)：本轮打开发布页；保留版本锚点，未核到精确修复commit及每链部署。\n- [Dragonberry安全公告](https://forum.cosmos.network/t/ibc-security-advisory-dragonberry/7702)：沿用账本；供公开披露时间与受影响范围追溯。\n\n待确认：官方首次报告时间写Oct 9约4pm CST，时区缩写有歧义，本卡不伪造UTC小时；账本日保留10-09。修复commit、受影响版本与逐链升级证明仍待固定。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-027",
+  "source_card_markdown": "# Cosmos IBC Dragonberry 伪造超时证明漏洞\n\n> 事件编号：EV2022-027｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 发现/私下报告按官方记2022-10-09（CST原文，精确UTC待核）；10-10起分发补丁，10-14公开发布；回顾发表于12-16。 |\n| 团队／项目 | Cosmos／IBC维护团队；Osmosis研究者Dev Ojha |\n| 跨链桥或产品 | ICS-23／IAVL不存在证明与ICS-20转账（原记录：Cosmos IBC Dragonberry absence-proof vulnerability） |\n| 底层协议 | IBC／Cosmos SDK |\n| 涉及链／范围 | IBC source chains → IBC destination chains |\n| 事件性质 | 漏洞披露；未发生已知黑帽利用 |\n| 损失与口径 | 官方明确无资金损失；ICS-20托管账户是潜在敞口，不能填为实际盗款或理论已增发。 |\n\n## 2. 原因与经过\n\nICS-23对IAVL证明结构校验不足，可使伪造的“不存在证明”被接受。攻击者理论上能让已经在目的链成功接收的转账，在源链又被判作超时失败并退款，破坏成功与退款互斥。\n\n同一资产若不断重复这一过程，ICS-20托管资金会暴露。它与BSC Token Hub实际盗款事件相关但不是同一事故，也不应与独立的Authz Elderflower漏洞合并统计。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已协调分发并发布补丁，无实际盗款；逐链部署待核。**\n\n官方记载10月10日开始分发结构校验补丁，10月14日公开发布。超过三分之一投票权升级可使攻击造成停链，属于遏制；达到全网更新才完全消除该漏洞执行路径。\n\n回顾说明升级后问题解决，本轮未逐链清点所有验证者。原表笼统“full validator thresholds”应解释为不同补丁覆盖阈值的安全效果，不能把初期三分之一已升级当作全网修复。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Cosmos官方Dragonberry／Elderflower回顾](https://forum.cosmos.network/t/cosmos-sdk-ibc-vulnerability-retrospective-security-advisories-dragonberry-and-elderflower-october-2022/8735)：本轮网页核读；支持根因、未利用、补丁分发与三分之一／全网阈值区别。\n- [Cosmos SDK v0.45.9发布页](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.45.9)：本轮打开发布页；保留版本锚点，未核到精确修复commit及每链部署。\n- [Dragonberry安全公告](https://forum.cosmos.network/t/ibc-security-advisory-dragonberry/7702)：沿用账本；供公开披露时间与受影响范围追溯。\n\n待确认：官方首次报告时间写Oct 9约4pm CST，时区缩写有歧义，本卡不伪造UTC小时；账本日保留10-09。修复commit、受影响版本与逐链升级证明仍待固定。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

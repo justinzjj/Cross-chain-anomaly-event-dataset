@@ -1,0 +1,56 @@
+{
+  "event_id": "EVT-000038",
+  "event_name": "Aurora EthCustodian 将普通执行输出误作销毁证明",
+  "summary": "普通 EVM 调用返回可解析为提款事件的数据，真实执行证明被升级为不存在的销毁事实。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "真实 Aurora 执行输出可被解释成桥提款结果，但输出来源未绑定到实际销毁路径。",
+  "impact": "无已知利用损失；报告中的 50,550.9 ETH 是特定区块风险余额，100 万美元是奖励。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://immunefi.com/blog/bug-fix-reviews/aurora-withdrawal-logic-error-bugfix-review/"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "来源 4",
+      "url": "https://etherscan.io/address/0x6BFaD42cFC4EfC96f529D786D643Ff4A8B89FA52#code"
+    }
+  ],
+  "uncertainties": [
+    "待补：长期状态证明迁移的部署完成证据未核；修复交易未独立重验。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2022-06-16。2022-06-16 为原始报告日；2022-08-29 为官方公开披露日。\n- 对象：Rainbow Bridge EthCustodian / Aurora Engine withdrawal；底层协议：Aurora / Rainbow Bridge。\n- 路线：NEAR;Aurora → Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：Ethereum 托管释放应验证受认可的退出操作以及对应资产已经销毁。\n\n异常流程：普通 EVM 调用返回可解析为提款事件的数据，真实执行证明被升级为不存在的销毁事实。\n\n直接原因：真实 Aurora 执行输出可被解释成桥提款结果，但输出来源未绑定到实际销毁路径。\n\n资金影响：无已知利用损失；报告中的 50,550.9 ETH 是特定区块风险余额，100 万美元是奖励。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方已加入短期输出限制；迁移到 NEAR 状态证明是当时计划，不能据此认定已部署。\n\n除真实提款路径外，禁止返回能够解析为提款事件的输出（ERR_ILLEGAL_RETURN）。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "nnez 的 get_code 伪造回执报告是此问题的重复报告；与 6 月 10 日费用授权漏洞分别计数。 日期口径：2022-06-16 为原始报告日；2022-08-29 为官方公开披露日。\n\n待补：长期状态证明迁移的部署完成证据未核；修复交易未独立重验。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities)\n- [来源 2](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 3](https://immunefi.com/blog/bug-fix-reviews/aurora-withdrawal-logic-error-bugfix-review/)\n- [来源 4](https://etherscan.io/address/0x6BFaD42cFC4EfC96f529D786D643Ff4A8B89FA52#code)"
+    }
+  ],
+  "source_event_id": "EV2022-032",
+  "source_card_markdown": "# EV2022-032 · Aurora EthCustodian 将普通执行输出误作销毁证明\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2022-06-16。2022-06-16 为原始报告日；2022-08-29 为官方公开披露日。\n- 对象：Rainbow Bridge EthCustodian / Aurora Engine withdrawal；底层协议：Aurora / Rainbow Bridge。\n- 路线：NEAR;Aurora → Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：Ethereum 托管释放应验证受认可的退出操作以及对应资产已经销毁。\n\n异常流程：普通 EVM 调用返回可解析为提款事件的数据，真实执行证明被升级为不存在的销毁事实。\n\n直接原因：真实 Aurora 执行输出可被解释成桥提款结果，但输出来源未绑定到实际销毁路径。\n\n资金影响：无已知利用损失；报告中的 50,550.9 ETH 是特定区块风险余额，100 万美元是奖励。\n\n## 3. 是否解决、如何解决\n\n官方已加入短期输出限制；迁移到 NEAR 状态证明是当时计划，不能据此认定已部署。\n\n除真实提款路径外，禁止返回能够解析为提款事件的输出（ERR_ILLEGAL_RETURN）。\n\n## 4. 证据与边界\n\nnnez 的 get_code 伪造回执报告是此问题的重复报告；与 6 月 10 日费用授权漏洞分别计数。 日期口径：2022-06-16 为原始报告日；2022-08-29 为官方公开披露日。\n\n待补：长期状态证明迁移的部署完成证据未核；修复交易未独立重验。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities)\n- [来源 2](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 3](https://immunefi.com/blog/bug-fix-reviews/aurora-withdrawal-logic-error-bugfix-review/)\n- [来源 4](https://etherscan.io/address/0x6BFaD42cFC4EfC96f529D786D643Ff4A8B89FA52#code)\n",
+  "review_status": "pending"
+}

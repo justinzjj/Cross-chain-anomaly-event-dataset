@@ -1,0 +1,56 @@
+{
+  "event_id": "EVT-000174",
+  "event_name": "Liquid 范围证明缓存键碰撞及BTC兑出（Liquid Network peg-out）",
+  "summary": "Elements把范围证明、承诺、资产承诺与scriptPubKey直接拼接生成成功验证缓存键，字段边界可变却无唯一编码。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约4,000 L-BTC无背书产生；SideSwap主订单约3,996 BTC，另有小额试单。账本截至9月10日记3,400 BTC返还、约598.5 BTC仍由行为者持有；美元约3.2亿是峰值流出估值，非净损。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Elements 缓存键补丁 94000967",
+      "url": "https://github.com/ElementsProject/elements/commit/94000967f6dc05b1afd435e79b1bbc597e29f816"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "SideSwap 事故声明",
+      "url": "https://testnet.sideswap.io/news/statement-on-the-liquid-network-incident-of-6-september-2026/"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "SideSwap 9月10日复市说明",
+      "url": "https://testnet.sideswap.io/news/sideswap-markets-reopen-with-the-liquid-network/"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "SideSwap 9月11日peg-in恢复说明",
+      "url": "https://testnet.sideswap.io/news/liquid-peg-ins-are-open-again-on-sideswap/"
+    }
+  ],
+  "uncertainties": [
+    "待确认：官方声明新增主增发交易f24a4b…a183f、主储备付款8db751…7b140，可在原文追溯。完整节点版本、约598.5BTC处分、背书补齐及最终peg-out重开仍未闭环。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-09-06（UTC账本事件日） |\n| 披露/报告时间 | 2026-09-09（本轮核读SideSwap事故声明）；不作为首次告警日期 |\n| 团队/项目 | Liquid Federation / Blockstream；SideSwap运营peg服务 |\n| 跨链桥或产品 | Liquid Network peg-out |\n| 底层协议 | Elements范围证明缓存；Liquid Federation；SideSwap PAK peg-out |\n| 涉及链 | Liquid → Bitcoin |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 约4,000 L-BTC无背书产生；SideSwap主订单约3,996 BTC，另有小额试单。账本截至9月10日记3,400 BTC返还、约598.5 BTC仍由行为者持有；美元约3.2亿是峰值流出估值，非净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Elements把范围证明、承诺、资产承诺与scriptPubKey直接拼接生成成功验证缓存键，字段边界可变却无唯一编码。攻击者调整边界，复用已缓存的成功结果，使本应拒绝的交易产生无背书L-BTC。\n\n这些L-BTC随后经SideSwap的有效PAK授权兑出。PAK是提款授权边界，未证明代币最初有背书；在线自动放款及缺少规模限制放大后果，没有证据显示SideSwap密钥被盗。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：补丁公开且已复网，peg-out仍关闭。**\n\n本轮核读Elements提交94000967：以长度前缀序列化加固范围/资产证明缓存。SideSwap后续公告证实9月10日复块复市、9月11日peg-in恢复，但peg-out仍关闭，联邦安全审查及1:1背书补齐尚待完成。3,400 BTC返还与其余约598.5 BTC的最终处分应分开，不能将复网写成损失全补。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [Elements 缓存键补丁 94000967](https://github.com/ElementsProject/elements/commit/94000967f6dc05b1afd435e79b1bbc597e29f816)：本轮网页核读；支持长度前缀序列化及证明缓存加固。\n- [SideSwap 事故声明](https://testnet.sideswap.io/news/statement-on-the-liquid-network-incident-of-6-september-2026/)：本轮网页核读；支持有效PAK路径、自动放款边界、关键交易及分阶段恢复要求。\n- [SideSwap 9月10日复市说明](https://testnet.sideswap.io/news/sideswap-markets-reopen-with-the-liquid-network/)：本轮网页核读；支持复块复市、3,400 BTC返还及背书仍有缺口。\n- [SideSwap 9月11日peg-in恢复说明](https://testnet.sideswap.io/news/liquid-peg-ins-are-open-again-on-sideswap/)：本轮网页核读；支持peg-in恢复而peg-out仍关闭，未见1:1背书已补齐。\n\n待确认：官方声明新增主增发交易f24a4b…a183f、主储备付款8db751…7b140，可在原文追溯。完整节点版本、约598.5BTC处分、背书补齐及最终peg-out重开仍未闭环。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-047",
+  "source_card_markdown": "# Liquid 范围证明缓存键碰撞及BTC兑出（Liquid Network peg-out）\n\n> 事件编号：EV2026-047｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-09-06（UTC账本事件日） |\n| 披露/报告时间 | 2026-09-09（本轮核读SideSwap事故声明）；不作为首次告警日期 |\n| 团队/项目 | Liquid Federation / Blockstream；SideSwap运营peg服务 |\n| 跨链桥或产品 | Liquid Network peg-out |\n| 底层协议 | Elements范围证明缓存；Liquid Federation；SideSwap PAK peg-out |\n| 涉及链 | Liquid → Bitcoin |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 约4,000 L-BTC无背书产生；SideSwap主订单约3,996 BTC，另有小额试单。账本截至9月10日记3,400 BTC返还、约598.5 BTC仍由行为者持有；美元约3.2亿是峰值流出估值，非净损。 |\n\n## 2. 原因与经过\n\nElements把范围证明、承诺、资产承诺与scriptPubKey直接拼接生成成功验证缓存键，字段边界可变却无唯一编码。攻击者调整边界，复用已缓存的成功结果，使本应拒绝的交易产生无背书L-BTC。\n\n这些L-BTC随后经SideSwap的有效PAK授权兑出。PAK是提款授权边界，未证明代币最初有背书；在线自动放款及缺少规模限制放大后果，没有证据显示SideSwap密钥被盗。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：补丁公开且已复网，peg-out仍关闭。**\n\n本轮核读Elements提交94000967：以长度前缀序列化加固范围/资产证明缓存。SideSwap后续公告证实9月10日复块复市、9月11日peg-in恢复，但peg-out仍关闭，联邦安全审查及1:1背书补齐尚待完成。3,400 BTC返还与其余约598.5 BTC的最终处分应分开，不能将复网写成损失全补。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [Elements 缓存键补丁 94000967](https://github.com/ElementsProject/elements/commit/94000967f6dc05b1afd435e79b1bbc597e29f816)：本轮网页核读；支持长度前缀序列化及证明缓存加固。\n- [SideSwap 事故声明](https://testnet.sideswap.io/news/statement-on-the-liquid-network-incident-of-6-september-2026/)：本轮网页核读；支持有效PAK路径、自动放款边界、关键交易及分阶段恢复要求。\n- [SideSwap 9月10日复市说明](https://testnet.sideswap.io/news/sideswap-markets-reopen-with-the-liquid-network/)：本轮网页核读；支持复块复市、3,400 BTC返还及背书仍有缺口。\n- [SideSwap 9月11日peg-in恢复说明](https://testnet.sideswap.io/news/liquid-peg-ins-are-open-again-on-sideswap/)：本轮网页核读；支持peg-in恢复而peg-out仍关闭，未见1:1背书已补齐。\n\n待确认：官方声明新增主增发交易f24a4b…a183f、主储备付款8db751…7b140，可在原文追溯。完整节点版本、约598.5BTC处分、背书补齐及最终peg-out重开仍未闭环。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

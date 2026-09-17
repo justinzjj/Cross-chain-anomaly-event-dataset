@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000148",
+  "event_name": "已停用 Aztec Connect 结算约束漏洞（Aztec Connect deprecated rollup）",
+  "summary": "旧 Aztec Connect 的证明未充分约束其副作用与结算系统实际处理的存入、提出效果一致。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "首次约219万美元，另一次相关攻击约8.8万美元；是否合并和最终净损需逐笔核对。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://aztec-labs.com/blog/aztec-connect-incident.html"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需精确证明/结算交易、第二次攻击的归并口径和最终资金结果。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-14（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Aztec Labs（旧Aztec Connect） |\n| 跨链桥或产品 | Aztec Connect deprecated rollup |\n| 底层协议 | 已停用 Aztec Connect ZK rollup 及 Ethereum 结算合约 |\n| 涉及链 | 旧Aztec Connect → Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 首次约219万美元，另一次相关攻击约8.8万美元；是否合并和最终净损需逐笔核对。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "旧 Aztec Connect 的证明未充分约束其副作用与结算系统实际处理的存入、提出效果一致。被验证的证明因此可产生超出应有结算语义的资金结果。\n\n事件发生在已停用的旧 rollup 合约。不能把该事故直接转成现行 Aztec 网络受影响的证据，也不能与6月17日旧 Private Rollup 事件合并。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：旧合约已放弃管理权，无法原位升级。**\n\n既有官方说明称该合约管理权已经放弃，不能通过管理员补丁升级，措施主要是风险告知与监控。本卡不把“不可升级”填写为修复；资产追回或赔偿的完结证据未见。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://aztec-labs.com/blog/aztec-connect-incident.html)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需精确证明/结算交易、第二次攻击的归并口径和最终资金结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-024",
+  "source_card_markdown": "# 已停用 Aztec Connect 结算约束漏洞（Aztec Connect deprecated rollup）\n\n> 事件编号：EV2026-024｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-14（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Aztec Labs（旧Aztec Connect） |\n| 跨链桥或产品 | Aztec Connect deprecated rollup |\n| 底层协议 | 已停用 Aztec Connect ZK rollup 及 Ethereum 结算合约 |\n| 涉及链 | 旧Aztec Connect → Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 首次约219万美元，另一次相关攻击约8.8万美元；是否合并和最终净损需逐笔核对。 |\n\n## 2. 原因与经过\n\n旧 Aztec Connect 的证明未充分约束其副作用与结算系统实际处理的存入、提出效果一致。被验证的证明因此可产生超出应有结算语义的资金结果。\n\n事件发生在已停用的旧 rollup 合约。不能把该事故直接转成现行 Aztec 网络受影响的证据，也不能与6月17日旧 Private Rollup 事件合并。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：旧合约已放弃管理权，无法原位升级。**\n\n既有官方说明称该合约管理权已经放弃，不能通过管理员补丁升级，措施主要是风险告知与监控。本卡不把“不可升级”填写为修复；资产追回或赔偿的完结证据未见。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://aztec-labs.com/blog/aztec-connect-incident.html)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需精确证明/结算交易、第二次攻击的归并口径和最终资金结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,54 @@
+{
+  "event_id": "EVT-000082",
+  "event_name": "Socket Gateway 新路由任意调用盗取授权资产",
+  "summary": "新加入的路由未充分校验用户传入的调用数据，使攻击者能把本应执行兑换的调用改为代币 transferFrom。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约330万美元毛流出；账本记载赔付，最终协议净成本未知",
+  "transaction_ids": [
+    "TXN-000156",
+    "TXN-000287",
+    "TXN-000480",
+    "TXN-000541"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "CertiK 技术分析",
+      "url": "https://www.certik.com/blog/3QR5sltpG4lmpau6S6mWcm-socket-tech-incident-analysis"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "SlowMist 事件索引",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=2"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "DefiLlama 事件数据入口",
+      "url": "https://api.llama.fi/hacks"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2024-01-16（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Socket／Bungee |\n| 跨链桥或产品 | Socket Gateway 聚合路由 |\n| 底层协议／依赖 | 本地兑换／路由与 ERC20 授权；底层桥未证实失效 |\n| 涉及链／路线 | Ethereum 用户钱包；无目的链证明失效 |\n| 事件性质 | 项目相关边界事件 |\n| 损失与口径 | 约330万美元毛流出；账本记载赔付，最终协议净成本未知 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "新加入的路由未充分校验用户传入的调用数据，使攻击者能把本应执行兑换的调用改为代币 transferFrom。对 Socket 授予无限额度的钱包因此可被路由代为转走资产。\n\n攻击消费的是用户在 Ethereum 留下的授权。Socket、Bungee 与 Socket Gateway 是该事件的产品名称或入口差异，不能重复计数，也不能把所聚合的底层跨链桥全部列为被攻破。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：漏洞路由已禁用，赔付与净成本须分开。**\n\n账本记录禁用受影响路由、复核合约，并向用户赔付。禁用具体路径是已知止损措施；补丁是否在所有路由部署，以及追回资金、用户赔款和协议最终承担额之间的关系，本轮未独立复算。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [CertiK 技术分析](https://www.certik.com/blog/3QR5sltpG4lmpau6S6mWcm-socket-tech-incident-analysis)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [SlowMist 事件索引](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本及此前核验；仅支持既有发现、日期与报道量级，不独立证明根因或修复。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：约330万美元与赔付状态沿用此前核验，最终协议净成本没有完整结算。需要防止把名称别称或用户赔付金额重复计入毛流出。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2024-002",
+  "source_card_markdown": "# Socket Gateway 新路由任意调用盗取授权资产\n\n> 事件编号：EV2024-002｜账本类别：boundary（边界事件，不作为直接桥协议攻破）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2024-01-16（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Socket／Bungee |\n| 跨链桥或产品 | Socket Gateway 聚合路由 |\n| 底层协议／依赖 | 本地兑换／路由与 ERC20 授权；底层桥未证实失效 |\n| 涉及链／路线 | Ethereum 用户钱包；无目的链证明失效 |\n| 事件性质 | 项目相关边界事件 |\n| 损失与口径 | 约330万美元毛流出；账本记载赔付，最终协议净成本未知 |\n\n## 2. 原因与经过\n\n新加入的路由未充分校验用户传入的调用数据，使攻击者能把本应执行兑换的调用改为代币 transferFrom。对 Socket 授予无限额度的钱包因此可被路由代为转走资产。\n\n攻击消费的是用户在 Ethereum 留下的授权。Socket、Bungee 与 Socket Gateway 是该事件的产品名称或入口差异，不能重复计数，也不能把所聚合的底层跨链桥全部列为被攻破。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：漏洞路由已禁用，赔付与净成本须分开。**\n\n账本记录禁用受影响路由、复核合约，并向用户赔付。禁用具体路径是已知止损措施；补丁是否在所有路由部署，以及追回资金、用户赔款和协议最终承担额之间的关系，本轮未独立复算。\n\n## 4. 依据与待确认\n\n本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [CertiK 技术分析](https://www.certik.com/blog/3QR5sltpG4lmpau6S6mWcm-socket-tech-incident-analysis)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [SlowMist 事件索引](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本及此前核验；仅支持既有发现、日期与报道量级，不独立证明根因或修复。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：约330万美元与赔付状态沿用此前核验，最终协议净成本没有完整结算。需要防止把名称别称或用户赔付金额重复计入毛流出。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

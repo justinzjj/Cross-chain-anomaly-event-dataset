@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000086",
+  "event_name": "IBC timeout 回调重入导致退款重复执行漏洞",
+  "summary": "回调进入时原包仍未标记已消费，应用层能重复获得同一包退款。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "删除 packet commitment 前先调用应用超时回调，特定 CosmWasm/ibc-hooks 组合可重入同一退款流程。",
+  "impact": "研究团队称未发生恶意利用损失；可影响资产规模不等于盗损。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://github.com/cosmos/ibc-go/security/advisories/GHSA-j496-crgh-34mx"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://blog.asymmetric.re/cosmos-ibc-reentrancy-infinite-mint/"
+    }
+  ],
+  "uncertainties": [
+    "待补：各下游链的完整配置/升级部署矩阵未逐链核验。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2024-03-26。2024-03-26 私下报告；2024-04-05 GHSA 公开；2024-04-16 研究复盘。\n- 对象：ibc-go ICS-20 timeout and ibc-hooks；底层协议：IBC。\n- 路线：IBC-enabled Cosmos chains → IBC-enabled Cosmos chains。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：timeout 退款只能消费一次提交状态，应用回调不得重新退款同一包。\n\n异常流程：回调进入时原包仍未标记已消费，应用层能重复获得同一包退款。\n\n直接原因：删除 packet commitment 前先调用应用超时回调，特定 CosmWasm/ibc-hooks 组合可重入同一退款流程。\n\n适用条件：脆弱 ibc-go 与允许相关 CosmWasm/ibc-hooks 执行路径的特定链配置；不代表所有 IBC 链均可利用。\n\n资金影响：研究团队称未发生恶意利用损失；可影响资产规模不等于盗损。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方发布受影响版本和补丁版本，并协调链升级；已核读 GHSA 原文。\n\n补丁版本 v4.6.0、v5.4.0、v6.3.0、v7.4.0、v8.2.0。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "不要与 2025 年非确定性 ack 的链停摆漏洞合并。 日期口径：2024-03-26 私下报告；2024-04-05 GHSA 公开；2024-04-16 研究复盘。\n\n待补：各下游链的完整配置/升级部署矩阵未逐链核验。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://github.com/cosmos/ibc-go/security/advisories/GHSA-j496-crgh-34mx)\n- [来源 2](https://blog.asymmetric.re/cosmos-ibc-reentrancy-infinite-mint/)"
+    }
+  ],
+  "source_event_id": "EV2024-018",
+  "source_card_markdown": "# EV2024-018 · IBC timeout 回调重入导致退款重复执行漏洞\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2024-03-26。2024-03-26 私下报告；2024-04-05 GHSA 公开；2024-04-16 研究复盘。\n- 对象：ibc-go ICS-20 timeout and ibc-hooks；底层协议：IBC。\n- 路线：IBC-enabled Cosmos chains → IBC-enabled Cosmos chains。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：timeout 退款只能消费一次提交状态，应用回调不得重新退款同一包。\n\n异常流程：回调进入时原包仍未标记已消费，应用层能重复获得同一包退款。\n\n直接原因：删除 packet commitment 前先调用应用超时回调，特定 CosmWasm/ibc-hooks 组合可重入同一退款流程。\n\n适用条件：脆弱 ibc-go 与允许相关 CosmWasm/ibc-hooks 执行路径的特定链配置；不代表所有 IBC 链均可利用。\n\n资金影响：研究团队称未发生恶意利用损失；可影响资产规模不等于盗损。\n\n## 3. 是否解决、如何解决\n\n官方发布受影响版本和补丁版本，并协调链升级；已核读 GHSA 原文。\n\n补丁版本 v4.6.0、v5.4.0、v6.3.0、v7.4.0、v8.2.0。\n\n## 4. 证据与边界\n\n不要与 2025 年非确定性 ack 的链停摆漏洞合并。 日期口径：2024-03-26 私下报告；2024-04-05 GHSA 公开；2024-04-16 研究复盘。\n\n待补：各下游链的完整配置/升级部署矩阵未逐链核验。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://github.com/cosmos/ibc-go/security/advisories/GHSA-j496-crgh-34mx)\n- [来源 2](https://blog.asymmetric.re/cosmos-ibc-reentrancy-infinite-mint/)\n",
+  "review_status": "pending"
+}

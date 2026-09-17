@@ -1,0 +1,96 @@
+{
+  "event_id": "EVT-000007",
+  "event_name": "THORChain ETH Router 第一次虚假存款攻击",
+  "summary": "攻击合约包在 Router 外层，将收到的 ETH 退给攻击者，再以零 value 调用存款入口。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "官方复盘约4,200 ETH、约800万美元；原账本保留490万—760万美元区间，估价与事件范围不同。追回、补足及最终净损未完成独立对账。",
+  "transaction_ids": [
+    "TXN-000108",
+    "TXN-000135",
+    "TXN-000154",
+    "TXN-000210",
+    "TXN-000213",
+    "TXN-000218",
+    "TXN-000224",
+    "TXN-000226",
+    "TXN-000229",
+    "TXN-000253",
+    "TXN-000268",
+    "TXN-000295",
+    "TXN-000296",
+    "TXN-000302",
+    "TXN-000312",
+    "TXN-000362",
+    "TXN-000377",
+    "TXN-000381",
+    "TXN-000387",
+    "TXN-000392",
+    "TXN-000415",
+    "TXN-000421",
+    "TXN-000445",
+    "TXN-000448",
+    "TXN-000463",
+    "TXN-000465",
+    "TXN-000478",
+    "TXN-000497",
+    "TXN-000519",
+    "TXN-000527",
+    "TXN-000538",
+    "TXN-000542",
+    "TXN-000565",
+    "TXN-000572",
+    "TXN-000576",
+    "TXN-000591",
+    "TXN-000612",
+    "TXN-000617",
+    "TXN-000618",
+    "TXN-000619",
+    "TXN-000621",
+    "TXN-000659",
+    "TXN-000660",
+    "TXN-000661"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "THORChain 两次 Router 事故复盘",
+      "url": "https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "官方复盘引用的 Bifrost 代码",
+      "url": "https://gitlab.com/thorchain/thornode/-/blob/develop/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "SlowMist 目录",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=5"
+    }
+  ],
+  "uncertainties": [
+    "待确认：原表金额与官方约800万美元存在口径差；后续赔偿、ETH路线实际重开日和全部防护部署版本仍需逐项追踪。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件 2021-07-15；合并复盘发表于 2021-07-30。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | ETH Router／Bifrost（原记录：THORChain ETH Router exploit 1） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 官方复盘约4,200 ETH、约800万美元；原账本保留490万—760万美元区间，估价与事件范围不同。追回、补足及最终净损未完成独立对账。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击合约包在 Router 外层，将收到的 ETH 退给攻击者，再以零 value 调用存款入口。Bifrost 却读取外层金额，记入并不存在的存款；攻击者借兑换和错误 memo 触发真实退款。\n\n这次是外层转账金额与 Router 实收不一致，不能与后续假 Router 事件合并。恢复阶段旧余额尚未迁移就重新开放交易，也扩大了资金缺口。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：存款读取逻辑已修正，恢复和补偿仍须分阶段核对。**\n\n官方说明修复为存款操作只读取可信存款事件，并发布链级暂停及提款控制。停网后仓促恢复产生新损害，说明补丁分发、状态迁移和开交易必须协调。\n\n复盘中的审计、限流、监控、分链恢复及财政补足是不同完成状态的措施；本文不把7月30日计划统称已经落地。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 两次 Router 事故复盘](https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/)：本轮网页核读；支持本次根因、约4200 ETH及处置阶段。\n- [官方复盘引用的 Bifrost 代码](https://gitlab.com/thorchain/thornode/-/blob/develop/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go)：沿用官方链接；分支可变，本轮未固定事故补丁。\n- [SlowMist 目录](https://hacked.slowmist.io/?c=Bridge&page=5)：沿用账本；用于历史金额和事件发现线索。\n\n待确认：原表金额与官方约800万美元存在口径差；后续赔偿、ETH路线实际重开日和全部防护部署版本仍需逐项追踪。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2021-005",
+  "source_card_markdown": "# THORChain ETH Router 第一次虚假存款攻击\n\n> 事件编号：EV2021-005｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件 2021-07-15；合并复盘发表于 2021-07-30。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | ETH Router／Bifrost（原记录：THORChain ETH Router exploit 1） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 官方复盘约4,200 ETH、约800万美元；原账本保留490万—760万美元区间，估价与事件范围不同。追回、补足及最终净损未完成独立对账。 |\n\n## 2. 原因与经过\n\n攻击合约包在 Router 外层，将收到的 ETH 退给攻击者，再以零 value 调用存款入口。Bifrost 却读取外层金额，记入并不存在的存款；攻击者借兑换和错误 memo 触发真实退款。\n\n这次是外层转账金额与 Router 实收不一致，不能与后续假 Router 事件合并。恢复阶段旧余额尚未迁移就重新开放交易，也扩大了资金缺口。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：存款读取逻辑已修正，恢复和补偿仍须分阶段核对。**\n\n官方说明修复为存款操作只读取可信存款事件，并发布链级暂停及提款控制。停网后仓促恢复产生新损害，说明补丁分发、状态迁移和开交易必须协调。\n\n复盘中的审计、限流、监控、分链恢复及财政补足是不同完成状态的措施；本文不把7月30日计划统称已经落地。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 两次 Router 事故复盘](https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/)：本轮网页核读；支持本次根因、约4200 ETH及处置阶段。\n- [官方复盘引用的 Bifrost 代码](https://gitlab.com/thorchain/thornode/-/blob/develop/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go)：沿用官方链接；分支可变，本轮未固定事故补丁。\n- [SlowMist 目录](https://hacked.slowmist.io/?c=Bridge&page=5)：沿用账本；用于历史金额和事件发现线索。\n\n待确认：原表金额与官方约800万美元存在口径差；后续赔偿、ETH路线实际重开日和全部防护部署版本仍需逐项追踪。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

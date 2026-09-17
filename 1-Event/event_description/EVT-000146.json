@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000146",
+  "event_name": "Humanity 跨链路线多签凭证集中失陷（Humanity Protocol Hyperlane route）",
+  "summary": "攻击者通过恶意软件和远程桌面控制一台同时持有三个 Safe 签名者凭证的工作站，因而突破表面的多签分散性。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "理论增发约2.41亿 H；超过2,100万美元兑换为 ETH/BNB；最终追回和净损仍在对账。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://www.humanity.org/hincidentupdate"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需恶意升级交易、重构后的签名管理证据、代币换发完成率及净损对账。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-08（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Humanity Protocol |\n| 跨链桥或产品 | Humanity Protocol Hyperlane route |\n| 底层协议 | Hyperlane Warp Route；Safe 多签升级权限 |\n| 涉及链 | Humanity的Hyperlane多链路线；EVM链 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论增发约2.41亿 H；超过2,100万美元兑换为 ETH/BNB；最终追回和净损仍在对账。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者通过恶意软件和远程桌面控制一台同时持有三个 Safe 签名者凭证的工作站，因而突破表面的多签分散性。\n\n取得升级权限后，攻击者改写 Hyperlane Warp 路线并增发 H，再转出变现。证据指向应用管理钥匙及升级路径，不应推广为 Hyperlane 所有消息认证失效。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已停用路线并重设签名隔离，部署待核。**\n\n账本所引项目说明包括暂停路线、做快照、恢复代币安排及重设签名者隔离。未见本轮可核实的全部修复部署、恢复运营和回收结算，不能把恢复计划写成全部完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.humanity.org/hincidentupdate)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需恶意升级交易、重构后的签名管理证据、代币换发完成率及净损对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-022",
+  "source_card_markdown": "# Humanity 跨链路线多签凭证集中失陷（Humanity Protocol Hyperlane route）\n\n> 事件编号：EV2026-022｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-08（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Humanity Protocol |\n| 跨链桥或产品 | Humanity Protocol Hyperlane route |\n| 底层协议 | Hyperlane Warp Route；Safe 多签升级权限 |\n| 涉及链 | Humanity的Hyperlane多链路线；EVM链 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论增发约2.41亿 H；超过2,100万美元兑换为 ETH/BNB；最终追回和净损仍在对账。 |\n\n## 2. 原因与经过\n\n攻击者通过恶意软件和远程桌面控制一台同时持有三个 Safe 签名者凭证的工作站，因而突破表面的多签分散性。\n\n取得升级权限后，攻击者改写 Hyperlane Warp 路线并增发 H，再转出变现。证据指向应用管理钥匙及升级路径，不应推广为 Hyperlane 所有消息认证失效。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已停用路线并重设签名隔离，部署待核。**\n\n账本所引项目说明包括暂停路线、做快照、恢复代币安排及重设签名者隔离。未见本轮可核实的全部修复部署、恢复运营和回收结算，不能把恢复计划写成全部完成。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.humanity.org/hincidentupdate)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需恶意升级交易、重构后的签名管理证据、代币换发完成率及净损对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

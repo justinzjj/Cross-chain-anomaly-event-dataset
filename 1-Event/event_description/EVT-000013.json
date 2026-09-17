@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000013",
+  "event_name": "Poly Network 跨链管理权限被改写",
+  "summary": "攻击者利用跨链管理合约可被消息触达的敏感调用路径，改写 keeper／公钥，再让伪造授权指令释放 Ethereum、BSC 和 Polygon 上的资产。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约6.10亿—6.13亿美元毛流出。官方称截至2021-08-26受影响资产恢复，滑点和费用由团队承担；不能把毛流出直接当最终净损。",
+  "transaction_ids": [
+    "TXN-000368",
+    "TXN-000486",
+    "TXN-000495",
+    "TXN-000596"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Poly Network 官方复盘",
+      "url": "https://medium.com/poly-network/honour-exploit-and-code-how-we-lost-610m-dollar-and-got-it-back-c4a7d0606267"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "修复 PR #12",
+      "url": "https://github.com/polynetwork/eth-contracts/pull/12/files"
+    }
+  ],
+  "uncertainties": [
+    "待确认：原表“几乎全部返还”可补充为官方8月26日宣布资产恢复；仍需按代币、滑点、费用及部署地址独立对账，不外推至后来的 Poly Network 事件。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2021-08-10；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Poly Network |\n| 跨链桥或产品 | EthCrossChainManager 与跨链资产合约（原记录：Poly Network 2021） |\n| 底层协议 | Poly Network |\n| 涉及链／范围 | Poly relay chain → Ethereum/BSC/Polygon |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约6.10亿—6.13亿美元毛流出。官方称截至2021-08-26受影响资产恢复，滑点和费用由团队承担；不能把毛流出直接当最终净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者利用跨链管理合约可被消息触达的敏感调用路径，改写 keeper／公钥，再让伪造授权指令释放 Ethereum、BSC 和 Polygon 上的资产。消息进入系统并不代表它有权修改验证授权本身。\n\n核心问题是跨链执行能力与管理权限隔离不足；它既不是简单市场操纵，也不能用“密钥天然不安全”替代具体的权限改写链。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：官方确认补丁与恢复，资产返还已报告完成。**\n\n项目联系发行方冻结资产、追踪和协商返还；修复 PR #12 于8月16日合并，对跨链调用加入许可约束，并经外部团队复核。官方9月复盘确认漏洞修正、功能逐步恢复。\n\n资产回收与技术修补分别有记录：8月26日官方称受影响资产已恢复，不能将归还资金当成补丁有效的唯一证据。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Poly Network 官方复盘](https://medium.com/poly-network/honour-exploit-and-code-how-we-lost-610m-dollar-and-got-it-back-c4a7d0606267)：本轮网页核读；支持历史恢复、补丁复核和资产返还。\n- [修复 PR #12](https://github.com/polynetwork/eth-contracts/pull/12/files)：本轮网页核读；支持跨链调用许可约束与8月16日合并。\n- [原账本技术及事件归类](../../08-跨链异常事件深审总表.csv)：沿用根因基线；本轮未重放原始攻击。\n\n待确认：原表“几乎全部返还”可补充为官方8月26日宣布资产恢复；仍需按代币、滑点、费用及部署地址独立对账，不外推至后来的 Poly Network 事件。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2021-009",
+  "source_card_markdown": "# Poly Network 跨链管理权限被改写\n\n> 事件编号：EV2021-009｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2021-08-10；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Poly Network |\n| 跨链桥或产品 | EthCrossChainManager 与跨链资产合约（原记录：Poly Network 2021） |\n| 底层协议 | Poly Network |\n| 涉及链／范围 | Poly relay chain → Ethereum/BSC/Polygon |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约6.10亿—6.13亿美元毛流出。官方称截至2021-08-26受影响资产恢复，滑点和费用由团队承担；不能把毛流出直接当最终净损。 |\n\n## 2. 原因与经过\n\n攻击者利用跨链管理合约可被消息触达的敏感调用路径，改写 keeper／公钥，再让伪造授权指令释放 Ethereum、BSC 和 Polygon 上的资产。消息进入系统并不代表它有权修改验证授权本身。\n\n核心问题是跨链执行能力与管理权限隔离不足；它既不是简单市场操纵，也不能用“密钥天然不安全”替代具体的权限改写链。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：官方确认补丁与恢复，资产返还已报告完成。**\n\n项目联系发行方冻结资产、追踪和协商返还；修复 PR #12 于8月16日合并，对跨链调用加入许可约束，并经外部团队复核。官方9月复盘确认漏洞修正、功能逐步恢复。\n\n资产回收与技术修补分别有记录：8月26日官方称受影响资产已恢复，不能将归还资金当成补丁有效的唯一证据。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Poly Network 官方复盘](https://medium.com/poly-network/honour-exploit-and-code-how-we-lost-610m-dollar-and-got-it-back-c4a7d0606267)：本轮网页核读；支持历史恢复、补丁复核和资产返还。\n- [修复 PR #12](https://github.com/polynetwork/eth-contracts/pull/12/files)：本轮网页核读；支持跨链调用许可约束与8月16日合并。\n- [原账本技术及事件归类](../../08-跨链异常事件深审总表.csv)：沿用根因基线；本轮未重放原始攻击。\n\n待确认：原表“几乎全部返还”可补充为官方8月26日宣布资产恢复；仍需按代币、滑点、费用及部署地址独立对账，不外推至后来的 Poly Network 事件。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

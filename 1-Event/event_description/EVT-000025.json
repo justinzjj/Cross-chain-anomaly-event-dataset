@@ -1,0 +1,53 @@
+{
+  "event_id": "EVT-000025",
+  "event_name": "Wormhole 未初始化 implementation 代理停摆漏洞",
+  "summary": "实现层自身保留可初始化入口，授权与生命周期约束未覆盖该地址；历史 EVM selfdestruct 语义放大影响。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "实现合约未初始化，攻击者可取得该实现的治理执行上下文并破坏实现合约，使依赖它的代理停摆。",
+  "impact": "披露称未发生资金损失；1,000 万美元是漏洞奖励，不能计为损失。",
+  "transaction_ids": [
+    "TXN-000442"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://immunefi.com/blog/bug-fix-reviews/wormhole-uninitialized-proxy-bugfix-review/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://etherscan.io/tx/0x9acb2b580aba4f5be75366255800df5f62ede576619cb5ce638cedc61273a50f"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://github.com/immunefi-team/wormhole-uninitialized"
+    }
+  ],
+  "uncertainties": [
+    "待补：未独立重验修复交易 receipt、全部代理依赖及部署状态。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2022-02-24。事件日取私下报告日 2022-02-24；文章公开于 2022-05-20。\n- 对象：Wormhole Core Ethereum proxy；底层协议：Wormhole Core。\n- 路线：Wormhole connected chains → Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E1-reference+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：代理通过已初始化、受 Guardian 授权的实现执行跨链消息。\n\n异常流程：实现层自身保留可初始化入口，授权与生命周期约束未覆盖该地址；历史 EVM selfdestruct 语义放大影响。\n\n直接原因：实现合约未初始化，攻击者可取得该实现的治理执行上下文并破坏实现合约，使依赖它的代理停摆。\n\n适用条件：历史部署的实现地址尚未初始化；按当时 EVM 语义分析。\n\n资金影响：披露称未发生资金损失；1,000 万美元是漏洞奖励，不能计为损失。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "Immunefi 复盘记载 2 月 24 日报告并于同日修复；修复交易有公开引用，未在本轮重验 receipt。\n\n初始化/封闭实现层接管路径；来源提供同日修复交易。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "独立于 EV2022-003 的 2 月 2 日 Solana 验证伪造盗损，不按同品牌合并。 日期口径：事件日取私下报告日 2022-02-24；文章公开于 2022-05-20。\n\n待补：未独立重验修复交易 receipt、全部代理依赖及部署状态。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://immunefi.com/blog/bug-fix-reviews/wormhole-uninitialized-proxy-bugfix-review/)\n- [来源 2](https://etherscan.io/tx/0x9acb2b580aba4f5be75366255800df5f62ede576619cb5ce638cedc61273a50f)\n- [来源 3](https://github.com/immunefi-team/wormhole-uninitialized)"
+    }
+  ],
+  "source_event_id": "EV2022-029",
+  "source_card_markdown": "# EV2022-029 · Wormhole 未初始化 implementation 代理停摆漏洞\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2022-02-24。事件日取私下报告日 2022-02-24；文章公开于 2022-05-20。\n- 对象：Wormhole Core Ethereum proxy；底层协议：Wormhole Core。\n- 路线：Wormhole connected chains → Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E1-reference+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：代理通过已初始化、受 Guardian 授权的实现执行跨链消息。\n\n异常流程：实现层自身保留可初始化入口，授权与生命周期约束未覆盖该地址；历史 EVM selfdestruct 语义放大影响。\n\n直接原因：实现合约未初始化，攻击者可取得该实现的治理执行上下文并破坏实现合约，使依赖它的代理停摆。\n\n适用条件：历史部署的实现地址尚未初始化；按当时 EVM 语义分析。\n\n资金影响：披露称未发生资金损失；1,000 万美元是漏洞奖励，不能计为损失。\n\n## 3. 是否解决、如何解决\n\nImmunefi 复盘记载 2 月 24 日报告并于同日修复；修复交易有公开引用，未在本轮重验 receipt。\n\n初始化/封闭实现层接管路径；来源提供同日修复交易。\n\n## 4. 证据与边界\n\n独立于 EV2022-003 的 2 月 2 日 Solana 验证伪造盗损，不按同品牌合并。 日期口径：事件日取私下报告日 2022-02-24；文章公开于 2022-05-20。\n\n待补：未独立重验修复交易 receipt、全部代理依赖及部署状态。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://immunefi.com/blog/bug-fix-reviews/wormhole-uninitialized-proxy-bugfix-review/)\n- [来源 2](https://etherscan.io/tx/0x9acb2b580aba4f5be75366255800df5f62ede576619cb5ce638cedc61273a50f)\n- [来源 3](https://github.com/immunefi-team/wormhole-uninitialized)\n",
+  "review_status": "pending"
+}

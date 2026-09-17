@@ -1,0 +1,60 @@
+{
+  "event_id": "EVT-000023",
+  "event_name": "Wormhole 伪造签名验证状态导致无抵押增发",
+  "summary": "Solana 端验证签名时没有确认传入的 sysvar 账户身份，攻击者可提供伪造的指令上下文，使桥把未得到真实 Guardian 签名的消息当成已验证消息。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "无抵押铸造120,000 wETH，账本估值约3.20亿—3.26亿美元；这是增发规模，不能自动视作同额ETH全从Ethereum流出。后续补足不等于攻击款全数追回。",
+  "transaction_ids": [
+    "TXN-000176",
+    "TXN-000201",
+    "TXN-000266",
+    "TXN-000482",
+    "TXN-000567",
+    "TXN-000686",
+    "TXN-000687",
+    "TXN-000689"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "CertiK 跨链攻击技术分析",
+      "url": "https://www.certik.com/blog/cross-chain-bridge-attacks-explained"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Wormhole 官方事故报告",
+      "url": "https://wormholecrypto.medium.com/wormhole-incident-report-02-02-22-ad9b8f21eec6"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "Governor 白皮书",
+      "url": "https://github.com/wormhole-foundation/wormhole/blob/main/whitepapers/0007_governor.md"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需要固定 Solana 升级交易和修复版本，并把增发、跨出、补足及后续追回分别对账；不能由用户资产重新背书推导项目最终经济损失为零。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-02-02；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Wormhole；资金补足方 Jump Crypto |\n| 跨链桥或产品 | Solana Core Bridge／Token Bridge（原记录：Wormhole Core/Token Bridge） |\n| 底层协议 | Wormhole Guardian 消息协议 |\n| 涉及链／范围 | Solana → Ethereum |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 无抵押铸造120,000 wETH，账本估值约3.20亿—3.26亿美元；这是增发规模，不能自动视作同额ETH全从Ethereum流出。后续补足不等于攻击款全数追回。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Solana 端验证签名时没有确认传入的 sysvar 账户身份，攻击者可提供伪造的指令上下文，使桥把未得到真实 Guardian 签名的消息当成已验证消息。Token Bridge 随后据此铸出无抵押 wETH。\n\n伪造资产被跨回 Ethereum 兑换底层 ETH，另有部分在 Solana 市场出售。即使 Token Bridge 的对端配置正确，核心证明层被绕过仍足以破坏资产背书。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：验证修补与资金补足已报告，部署细节沿用历史证据。**\n\n账本记载 Wormhole 修补验证逻辑、由支持方补足 ETH，之后还引入 Governor 额度限制。验证修补对应攻击入口，补足对应资产缺口，限流属于额外损害控制，不能混为一种修复。\n\n本轮读到 CertiK 的直接技术分析，确认伪造 sysvar 根因；官方旧事故长文未成功加载，具体补丁上线与资金补足时间仍沿用已核账本，未伪称本轮重核。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [CertiK 跨链攻击技术分析](https://www.certik.com/blog/cross-chain-bridge-attacks-explained)：本轮网页核读；支持 Wormhole sysvar 身份检查根因，文末通用建议不作实际修复证明。\n- [Wormhole 官方事故报告](https://wormholecrypto.medium.com/wormhole-incident-report-02-02-22-ad9b8f21eec6)：沿用账本；本轮链接加载失败，修复与补足叙述未在此重新核读。\n- [Governor 白皮书](https://github.com/wormhole-foundation/wormhole/blob/main/whitepapers/0007_governor.md)：沿用账本；支持后续限额设计，不证明事故当日已上线。\n\n待确认：需要固定 Solana 升级交易和修复版本，并把增发、跨出、补足及后续追回分别对账；不能由用户资产重新背书推导项目最终经济损失为零。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-003",
+  "source_card_markdown": "# Wormhole 伪造签名验证状态导致无抵押增发\n\n> 事件编号：EV2022-003｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-02-02；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Wormhole；资金补足方 Jump Crypto |\n| 跨链桥或产品 | Solana Core Bridge／Token Bridge（原记录：Wormhole Core/Token Bridge） |\n| 底层协议 | Wormhole Guardian 消息协议 |\n| 涉及链／范围 | Solana → Ethereum |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 无抵押铸造120,000 wETH，账本估值约3.20亿—3.26亿美元；这是增发规模，不能自动视作同额ETH全从Ethereum流出。后续补足不等于攻击款全数追回。 |\n\n## 2. 原因与经过\n\nSolana 端验证签名时没有确认传入的 sysvar 账户身份，攻击者可提供伪造的指令上下文，使桥把未得到真实 Guardian 签名的消息当成已验证消息。Token Bridge 随后据此铸出无抵押 wETH。\n\n伪造资产被跨回 Ethereum 兑换底层 ETH，另有部分在 Solana 市场出售。即使 Token Bridge 的对端配置正确，核心证明层被绕过仍足以破坏资产背书。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：验证修补与资金补足已报告，部署细节沿用历史证据。**\n\n账本记载 Wormhole 修补验证逻辑、由支持方补足 ETH，之后还引入 Governor 额度限制。验证修补对应攻击入口，补足对应资产缺口，限流属于额外损害控制，不能混为一种修复。\n\n本轮读到 CertiK 的直接技术分析，确认伪造 sysvar 根因；官方旧事故长文未成功加载，具体补丁上线与资金补足时间仍沿用已核账本，未伪称本轮重核。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [CertiK 跨链攻击技术分析](https://www.certik.com/blog/cross-chain-bridge-attacks-explained)：本轮网页核读；支持 Wormhole sysvar 身份检查根因，文末通用建议不作实际修复证明。\n- [Wormhole 官方事故报告](https://wormholecrypto.medium.com/wormhole-incident-report-02-02-22-ad9b8f21eec6)：沿用账本；本轮链接加载失败，修复与补足叙述未在此重新核读。\n- [Governor 白皮书](https://github.com/wormhole-foundation/wormhole/blob/main/whitepapers/0007_governor.md)：沿用账本；支持后续限额设计，不证明事故当日已上线。\n\n待确认：需要固定 Solana 升级交易和修复版本，并把增发、跨出、补足及后续追回分别对账；不能由用户资产重新背书推导项目最终经济损失为零。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

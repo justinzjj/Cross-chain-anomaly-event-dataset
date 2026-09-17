@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000046",
+  "event_name": "Omni 消息在 EthereumPoW 分叉副本被重放",
+  "summary": "攻击者先完成涉及 Gnosis／Ethereum 的200 WETH消息，再把同一 calldata 提交到 EthereumPoW 上的合约副本，额外领取200 ETHW。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "BlockSec典型交易显示额外取得200 ETHW；这是分叉币而非ETH，亦非总损。原表约420万美元缺少一手支撑，本卡不采作已核损失；总流出和净损未知。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "BlockSec 原始消息重放分析",
+      "url": "https://blocksec.com/blog/reveal-the-message-replay-attacks-on-ethereum-po-w"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "PoW攻击交易",
+      "url": "https://www.oklink.com/en/ethw/tx/0x9c072551861ce384203516f4d705176a2d2e262d5b571d853467425f1a861fb4"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "原账本SharkTeam分析",
+      "url": "https://sharkteam.org/report/analysis/20220920001A_en.pdf"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需补PoW副本维护者、升级／停用交易及全部攻击量。原420万美元口径、原链方向和已修复表述均与本轮一手材料无法闭合，保留CSV原记录并在卡片注明。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件2022-09-16；BlockSec公开告警2022-09-18，分析发表于09-19。 |\n| 团队／项目 | Omni／Gnosis 桥相关部署；EthereumPoW 分叉环境 |\n| 跨链桥或产品 | PoW 链上的 Omni／AMB 合约副本（原记录：Omni Bridge replay） |\n| 底层协议 | 跨链消息域分离；不是Ethereum交易签名防重放失效 |\n| 涉及链／范围 | Gnosis／Ethereum的合法消息 → EthereumPoW复制合约上的重放 |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | BlockSec典型交易显示额外取得200 ETHW；这是分叉币而非ETH，亦非总损。原表约420万美元缺少一手支撑，本卡不采作已核损失；总流出和净损未知。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者先完成涉及 Gnosis／Ethereum 的200 WETH消息，再把同一 calldata 提交到 EthereumPoW 上的合约副本，额外领取200 ETHW。两笔交易不同，重放的是桥消息内容。\n\n复制合约从存储读取旧 chainId，未把消息目的域绑定到当前链的真实 chainId。因此底层交易采用不同链ID防重放，也无法阻止应用层接受旧域消息。直接受影响资产位于PoW副本。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已披露并联系相关方，实际补丁和总损无法确认。**\n\nBlockSec于9月16日发现并联系EthereumPoW，9月18日公开提醒；正文支持告警与协调，不提供修复部署或全面恢复证明。原表“已patched并遏制”超出本轮取得的直接证据，故下调为待核。\n\n校验实际执行链域、停用不受支持副本是修复方向，不是已确认实施措施；本卡不声称Gnosis或Ethereum主桥遭同额盗取。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [BlockSec 原始消息重放分析](https://blocksec.com/blog/reveal-the-message-replay-attacks-on-ethereum-po-w)：本轮网页核读；支持PoW范围、200 ETHW示例、链ID根因与仅披露协调的处置。\n- [PoW攻击交易](https://www.oklink.com/en/ethw/tx/0x9c072551861ce384203516f4d705176a2d2e262d5b571d853467425f1a861fb4)：BlockSec正文给出的根交易；本轮未重新读取receipt。\n- [原账本SharkTeam分析](https://sharkteam.org/report/analysis/20220920001A_en.pdf)：沿用账本；本轮直开失败，不能支持420万美元总损或已部署修复。\n\n待确认：需补PoW副本维护者、升级／停用交易及全部攻击量。原420万美元口径、原链方向和已修复表述均与本轮一手材料无法闭合，保留CSV原记录并在卡片注明。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-018",
+  "source_card_markdown": "# Omni 消息在 EthereumPoW 分叉副本被重放\n\n> 2026-09-12 v0.5 接续：本条已在 CSV 同步部分事实/来源或别名；具体修改见[字段修订](../../29-既有事件字段修订.csv)。下文提及“原账本”的差异以修改前基线理解，未涉及的处置限定仍保留。\n\n> 事件编号：EV2022-018｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件2022-09-16；BlockSec公开告警2022-09-18，分析发表于09-19。 |\n| 团队／项目 | Omni／Gnosis 桥相关部署；EthereumPoW 分叉环境 |\n| 跨链桥或产品 | PoW 链上的 Omni／AMB 合约副本（原记录：Omni Bridge replay） |\n| 底层协议 | 跨链消息域分离；不是Ethereum交易签名防重放失效 |\n| 涉及链／范围 | Gnosis／Ethereum的合法消息 → EthereumPoW复制合约上的重放 |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | BlockSec典型交易显示额外取得200 ETHW；这是分叉币而非ETH，亦非总损。原表约420万美元缺少一手支撑，本卡不采作已核损失；总流出和净损未知。 |\n\n## 2. 原因与经过\n\n攻击者先完成涉及 Gnosis／Ethereum 的200 WETH消息，再把同一 calldata 提交到 EthereumPoW 上的合约副本，额外领取200 ETHW。两笔交易不同，重放的是桥消息内容。\n\n复制合约从存储读取旧 chainId，未把消息目的域绑定到当前链的真实 chainId。因此底层交易采用不同链ID防重放，也无法阻止应用层接受旧域消息。直接受影响资产位于PoW副本。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已披露并联系相关方，实际补丁和总损无法确认。**\n\nBlockSec于9月16日发现并联系EthereumPoW，9月18日公开提醒；正文支持告警与协调，不提供修复部署或全面恢复证明。原表“已patched并遏制”超出本轮取得的直接证据，故下调为待核。\n\n校验实际执行链域、停用不受支持副本是修复方向，不是已确认实施措施；本卡不声称Gnosis或Ethereum主桥遭同额盗取。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [BlockSec 原始消息重放分析](https://blocksec.com/blog/reveal-the-message-replay-attacks-on-ethereum-po-w)：本轮网页核读；支持PoW范围、200 ETHW示例、链ID根因与仅披露协调的处置。\n- [PoW攻击交易](https://www.oklink.com/en/ethw/tx/0x9c072551861ce384203516f4d705176a2d2e262d5b571d853467425f1a861fb4)：BlockSec正文给出的根交易；本轮未重新读取receipt。\n- [原账本SharkTeam分析](https://sharkteam.org/report/analysis/20220920001A_en.pdf)：沿用账本；本轮直开失败，不能支持420万美元总损或已部署修复。\n\n待确认：需补PoW副本维护者、升级／停用交易及全部攻击量。原420万美元口径、原链方向和已修复表述均与本轮一手材料无法闭合，保留CSV原记录并在卡片注明。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

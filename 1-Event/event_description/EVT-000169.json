@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000169",
+  "event_name": "SKALE Ethereum 侧 IMA 基础设施失陷（SKALE IMA Bridge）",
+  "summary": "运行验证者节点的基础设施服务商被攻破，攻击者经SKALE的IMA桥转走受影响ERC-20资产。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "官方确认ERC-20桥资产流出，但金额、冻结追回及最终净损均待完整报告。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "SKALE 官方 IMA 事件说明",
+      "url": "https://www.skale.space/blog/security-incident-update-skale-ima-bridge"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本补充来源",
+      "url": "https://github.com/skalenetwork/IMA"
+    }
+  ],
+  "uncertainties": [
+    "待确认：原表底层协议误填LayerZero，本卡按官方范围更正为SKALE原生IMA；没有证据支持LayerZero是受影响组件。仍缺完整报告、根交易、修复和净损。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-27（UTC账本事件日） |\n| 披露/报告时间 | 2026-08-28（官方事件说明） |\n| 团队/项目 | SKALE |\n| 跨链桥或产品 | SKALE IMA Bridge |\n| 底层协议 | SKALE原生IMA（Interchain Messaging Agent）；非已证LayerZero事故 |\n| 涉及链 | SKALE Europa / Ethereum IMA；SKALE on Base未受影响 |\n| 事件性质 | 确认安全异常，细节未闭合 |\n| 损失与回收 | 官方确认ERC-20桥资产流出，但金额、冻结追回及最终净损均待完整报告。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "运行验证者节点的基础设施服务商被攻破，攻击者经SKALE的IMA桥转走受影响ERC-20资产。官方尚未公布究竟是主机、钥匙还是软件路径直接导致授权失效。\n\n8月27日约21:00 UTC事件局限于Ethereum侧IMA/Europa资产范围；SKALE on Base是独立部署，公告称未受影响，Ethereum上SKL和已质押SKL亦未受该桥损失影响。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：桥已暂停，根因及修复恢复尚待报告。**\n\n8月28日官方说明确认发现后立即停桥，并联络受害方、执法机构及资产追踪方。冻结追回和恢复前安全措施仍在推进，未给出金额、补丁或重开证据；不应把调查中的措施写为完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [SKALE 官方 IMA 事件说明](https://www.skale.space/blog/security-incident-update-skale-ima-bridge)：本轮网页核读；支持Ethereum侧IMA范围、基础设施失陷及尚未公开完整根因。\n- [账本补充来源](https://github.com/skalenetwork/IMA)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：原表底层协议误填LayerZero，本卡按官方范围更正为SKALE原生IMA；没有证据支持LayerZero是受影响组件。仍缺完整报告、根交易、修复和净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-043",
+  "source_card_markdown": "# SKALE Ethereum 侧 IMA 基础设施失陷（SKALE IMA Bridge）\n\n> 2026-09-12 v0.5 接续：本条已在 CSV 同步部分事实/来源或别名；具体修改见[字段修订](../../29-既有事件字段修订.csv)。下文提及“原账本”的差异以修改前基线理解，未涉及的处置限定仍保留。\n\n> 事件编号：EV2026-043｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-27（UTC账本事件日） |\n| 披露/报告时间 | 2026-08-28（官方事件说明） |\n| 团队/项目 | SKALE |\n| 跨链桥或产品 | SKALE IMA Bridge |\n| 底层协议 | SKALE原生IMA（Interchain Messaging Agent）；非已证LayerZero事故 |\n| 涉及链 | SKALE Europa / Ethereum IMA；SKALE on Base未受影响 |\n| 事件性质 | 确认安全异常，细节未闭合 |\n| 损失与回收 | 官方确认ERC-20桥资产流出，但金额、冻结追回及最终净损均待完整报告。 |\n\n## 2. 原因与经过\n\n运行验证者节点的基础设施服务商被攻破，攻击者经SKALE的IMA桥转走受影响ERC-20资产。官方尚未公布究竟是主机、钥匙还是软件路径直接导致授权失效。\n\n8月27日约21:00 UTC事件局限于Ethereum侧IMA/Europa资产范围；SKALE on Base是独立部署，公告称未受影响，Ethereum上SKL和已质押SKL亦未受该桥损失影响。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：桥已暂停，根因及修复恢复尚待报告。**\n\n8月28日官方说明确认发现后立即停桥，并联络受害方、执法机构及资产追踪方。冻结追回和恢复前安全措施仍在推进，未给出金额、补丁或重开证据；不应把调查中的措施写为完成。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [SKALE 官方 IMA 事件说明](https://www.skale.space/blog/security-incident-update-skale-ima-bridge)：本轮网页核读；支持Ethereum侧IMA范围、基础设施失陷及尚未公开完整根因。\n- [账本补充来源](https://github.com/skalenetwork/IMA)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：原表底层协议误填LayerZero，本卡按官方范围更正为SKALE原生IMA；没有证据支持LayerZero是受影响组件。仍缺完整报告、根交易、修复和净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

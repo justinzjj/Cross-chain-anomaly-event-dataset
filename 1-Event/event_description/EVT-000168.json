@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000168",
+  "event_name": "warp.green 将无价值CAT销毁误认作wUSDC销毁（warp.green ERC20 Bridge）",
+  "summary": "Chialisp的burner puzzle让无价值CAT代币看似完成wUSDC销毁，验证者对错误的资产语义签名，使目标端以为有应予兑付的美元稳定币。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "Base流出约8.5万 USDC，Ethereum约0.8万 USDC，合计约9.3万；净损待确认。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://www.warp.green/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：主源仍为官网入口；需具体复盘、burner及验证交易、验证者补丁发布、背书与净损对账。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-23（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | warp.green |\n| 跨链桥或产品 | warp.green ERC20 Bridge |\n| 底层协议 | Chia CAT/Chialisp与warp.green验证者桥 |\n| 涉及链 | Chia → Base/Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Base流出约8.5万 USDC，Ethereum约0.8万 USDC，合计约9.3万；净损待确认。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Chialisp的burner puzzle让无价值CAT代币看似完成wUSDC销毁，验证者对错误的资产语义签名，使目标端以为有应予兑付的美元稳定币。\n\n真实性失效点在“究竟销毁了哪一种资产”的应用语义，不能把Chia共识确认了该交易理解为确认了wUSDC背书存在。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已暂停桥，验证者检查仍属计划。**\n\n账本记录停桥、安排补足背书，并计划在验证者侧加入支持应用和资产身份检查。计划中的检查不能写成已部署；本轮未验证桥重启或全部背书修复完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.warp.green/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：主源仍为官网入口；需具体复盘、burner及验证交易、验证者补丁发布、背书与净损对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-042",
+  "source_card_markdown": "# warp.green 将无价值CAT销毁误认作wUSDC销毁（warp.green ERC20 Bridge）\n\n> 事件编号：EV2026-042｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-23（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | warp.green |\n| 跨链桥或产品 | warp.green ERC20 Bridge |\n| 底层协议 | Chia CAT/Chialisp与warp.green验证者桥 |\n| 涉及链 | Chia → Base/Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Base流出约8.5万 USDC，Ethereum约0.8万 USDC，合计约9.3万；净损待确认。 |\n\n## 2. 原因与经过\n\nChialisp的burner puzzle让无价值CAT代币看似完成wUSDC销毁，验证者对错误的资产语义签名，使目标端以为有应予兑付的美元稳定币。\n\n真实性失效点在“究竟销毁了哪一种资产”的应用语义，不能把Chia共识确认了该交易理解为确认了wUSDC背书存在。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已暂停桥，验证者检查仍属计划。**\n\n账本记录停桥、安排补足背书，并计划在验证者侧加入支持应用和资产身份检查。计划中的检查不能写成已部署；本轮未验证桥重启或全部背书修复完成。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.warp.green/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：主源仍为官网入口；需具体复盘、burner及验证交易、验证者补丁发布、背书与净损对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

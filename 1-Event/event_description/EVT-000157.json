@@ -1,0 +1,48 @@
+{
+  "event_id": "EVT-000157",
+  "event_name": "AFX 托管桥热验证者密钥失陷（AFX custody bridge）",
+  "summary": "开发环境或供应链入侵暴露足够的热验证者私钥，使攻击者达到约三分之二签名门槛。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "流出2,415万 USDC，随后约换为12,467 ETH；兑换前后是同一资金，不重复计损。",
+  "transaction_ids": [
+    "TXN-000196"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://medium.com/@AFXTrade/a-detailed-post-mortem-on-the-afx-security-incident-57d564ef812f"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://www.coindesk.com/tech/2026/07/23/arbitrum-based-afx-trade-drained-of-usd24-million-after-bridge-keys-compromised"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需入侵起点证据、受影响签名者集合、全量钥匙替换及最终追回/补偿账。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-22（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | AFX Trade |\n| 跨链桥或产品 | AFX custody bridge |\n| 底层协议 | AFX热验证者托管桥；阈值签名授权 |\n| 涉及链 | Arbitrum ↔ Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 流出2,415万 USDC，随后约换为12,467 ETH；兑换前后是同一资金，不重复计损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "开发环境或供应链入侵暴露足够的热验证者私钥，使攻击者达到约三分之二签名门槛。具体最初入侵路径仍需与完整官方取证对应。\n\n攻击者拿到足额有效签名后，桥按既定授权规则提款。直接失效的是签名身份和运行环境控制，不能把合约按有效门槛执行描述为额外验证器漏洞。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已停桥调查，信任架构重建未证完成。**\n\n既有官方复盘记录停桥和调查，并计划重新设计验证者、密钥及信任边界。本轮未取得完整换钥迁移、重部署、恢复和用户补偿闭环。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/@AFXTrade/a-detailed-post-mortem-on-the-afx-security-incident-57d564ef812f)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://www.coindesk.com/tech/2026/07/23/arbitrum-based-afx-trade-drained-of-usd24-million-after-bridge-keys-compromised)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：需入侵起点证据、受影响签名者集合、全量钥匙替换及最终追回/补偿账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-031",
+  "source_card_markdown": "# AFX 托管桥热验证者密钥失陷（AFX custody bridge）\n\n> 事件编号：EV2026-031｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-22（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | AFX Trade |\n| 跨链桥或产品 | AFX custody bridge |\n| 底层协议 | AFX热验证者托管桥；阈值签名授权 |\n| 涉及链 | Arbitrum ↔ Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 流出2,415万 USDC，随后约换为12,467 ETH；兑换前后是同一资金，不重复计损。 |\n\n## 2. 原因与经过\n\n开发环境或供应链入侵暴露足够的热验证者私钥，使攻击者达到约三分之二签名门槛。具体最初入侵路径仍需与完整官方取证对应。\n\n攻击者拿到足额有效签名后，桥按既定授权规则提款。直接失效的是签名身份和运行环境控制，不能把合约按有效门槛执行描述为额外验证器漏洞。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已停桥调查，信任架构重建未证完成。**\n\n既有官方复盘记录停桥和调查，并计划重新设计验证者、密钥及信任边界。本轮未取得完整换钥迁移、重部署、恢复和用户补偿闭环。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/@AFXTrade/a-detailed-post-mortem-on-the-afx-security-incident-57d564ef812f)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://www.coindesk.com/tech/2026/07/23/arbitrum-based-afx-trade-drained-of-usd24-million-after-bridge-keys-compromised)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：需入侵起点证据、受影响签名者集合、全量钥匙替换及最终追回/补偿账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

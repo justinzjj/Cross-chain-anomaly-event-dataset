@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000127",
+  "event_name": "SquidMulticall 用户授权资产被转走（SquidMulticall user approval drain）",
+  "summary": "用户向可被任意人调用的 multicall 辅助合约授予无限代币额度，该合约又允许调用者指定目标和 calldata。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "公开数字约11.97万—51.7万美元，是否合并多个受害者未闭合；不能任选其一当净损。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://blocksec.com/blog/weekly-web3-security-incident-roundup-apr-6-apr-12-2026"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=2"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需受害账户和转账集合统一金额；还缺项目补丁、部署及补偿证据。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-07（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Squid |\n| 跨链桥或产品 | SquidMulticall user approval drain |\n| 底层协议 | Squid 通用 multicall/用户 ERC-20 授权 |\n| 涉及链 | BNB Chain、Arbitrum、Optimism、Avalanche、Base；本地授权事件 |\n| 事件性质 | 跨链相邻事件，保留边界分类 |\n| 损失与回收 | 公开数字约11.97万—51.7万美元，是否合并多个受害者未闭合；不能任选其一当净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "用户向可被任意人调用的 multicall 辅助合约授予无限代币额度，该合约又允许调用者指定目标和 calldata。攻击者可借它的既有 allowance 转走用户资产。\n\n入口是本地授权与通用执行器的组合。虽然该辅助设施属于跨链产品体系，现有证据没有证明桥消息验证、底层 Axelar 或跨链托管储备遭破坏。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：撤销授权可止损，合约修复未证实。**\n\n账本列有撤销 allowance 的处置方向；调用者和目标白名单属于改进建议，本卡不把建议写成已部署措施。未见资金追回、用户赔付或全量授权撤销的核验结论。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://blocksec.com/blog/weekly-web3-security-incident-roundup-apr-6-apr-12-2026)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需受害账户和转账集合统一金额；还缺项目补丁、部署及补偿证据。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-006",
+  "source_card_markdown": "# SquidMulticall 用户授权资产被转走（SquidMulticall user approval drain）\n\n> 事件编号：EV2026-006｜账本类别：boundary（跨链相邻边界事件）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-07（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Squid |\n| 跨链桥或产品 | SquidMulticall user approval drain |\n| 底层协议 | Squid 通用 multicall/用户 ERC-20 授权 |\n| 涉及链 | BNB Chain、Arbitrum、Optimism、Avalanche、Base；本地授权事件 |\n| 事件性质 | 跨链相邻事件，保留边界分类 |\n| 损失与回收 | 公开数字约11.97万—51.7万美元，是否合并多个受害者未闭合；不能任选其一当净损。 |\n\n## 2. 原因与经过\n\n用户向可被任意人调用的 multicall 辅助合约授予无限代币额度，该合约又允许调用者指定目标和 calldata。攻击者可借它的既有 allowance 转走用户资产。\n\n入口是本地授权与通用执行器的组合。虽然该辅助设施属于跨链产品体系，现有证据没有证明桥消息验证、底层 Axelar 或跨链托管储备遭破坏。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：撤销授权可止损，合约修复未证实。**\n\n账本列有撤销 allowance 的处置方向；调用者和目标白名单属于改进建议，本卡不把建议写成已部署措施。未见资金追回、用户赔付或全量授权撤销的核验结论。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://blocksec.com/blog/weekly-web3-security-incident-roundup-apr-6-apr-12-2026)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需受害账户和转账集合统一金额；还缺项目补丁、部署及补偿证据。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

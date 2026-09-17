@@ -1,0 +1,204 @@
+event_id,event_name,event_date,date_precision,record_type,project_name,protocols,chains,crosschain_scope,description,review_status
+EVT-000001,tBTC 初版赎回证明失败与暂停存款,2020-05-18,day,independent_event,Keep Network,"[""tBTC rc.0 redemption-proof anomaly桥协议""]","[""Bitcoin"",""Ethereum""]",direct,2020-05-18 02:29 UTC，一笔已向赎回人支付 BTC 的操作无法在 Ethereum 完成证明。,pending
+EVT-000002,Zapper 已废弃 Polygon Bridge Zap 的授权救援,2021-06-14,day,independent_event,Zapper,"[""Zapper桥协议""]","[""Polygon"",""Ethereum""]",partial,旧 Zap 即使前端不再使用，仍保留用户的无限代币授权。,pending
+EVT-000003,THORChain 将伪造代币识别为原生 ETH,2021-06-28,day,independent_event,THORChain,"[""THORChain桥协议""]","[""Ethereum"",""THORChain""]",direct,攻击者构造特殊 ERC-20 代币，使 Bifrost 的资产初始化与 symbol 分支把它识别成原生 ETH。,pending
+EVT-000004,ChainSwap 第一次桥授权异常,2021-07-02,day,independent_event,ChainSwap,"[""ChainSwap桥协议""]","[""Ethereum""]",direct,现有账本与受影响项目的复盘将本次事件归于桥的签名／授权处理，攻击者获得了本不应允许的代币转移或增发能力。,pending
+EVT-000005,Anyswap V3 重用签名随机数导致 MPC 密钥暴露,2021-07-10,day,independent_event,Anyswap／Multichain,"[""Multichain桥协议""]","[""BNB Chain"",""Ethereum"",""Fantom""]",direct,MPC 签名流程重复使用 ECDSA 随机数，表现为重复的 R 值，使攻击者能够推导签名私钥并控制桥托管资金。,pending
+EVT-000006,ChainSwap 第二次额度校验与非法增发,2021-07-10,day,independent_event,ChainSwap,"[""ChainSwap桥协议""]","[""BNB Chain""]",direct,第二次攻击利用额度处理逻辑：本不在许可名单内的地址在校验过程中仍可能自动获得额度增量，随后以这些额度触发未经授权的代币铸造。,pending
+EVT-000007,THORChain ETH Router 第一次虚假存款攻击,2021-07-15,day,independent_event,THORChain,"[""THORChain桥协议""]","[""Ethereum"",""THORChain""]",direct,攻击合约包在 Router 外层，将收到的 ETH 退给攻击者，再以零 value 调用存款入口。,pending
+EVT-000008,Bondly,2021-07-15,day,independent_event,Bondly,[],[],unclear,,pending
+EVT-000009,THORChain,2021-07-16,day,pending_split_group,THORChain,"[""THORChain桥协议""]",[],unclear,,pending
+EVT-000010,THORChain ETH Router 第二次假事件退款攻击,2021-07-23,day,independent_event,THORChain,"[""THORChain桥协议""]","[""Ethereum"",""THORChain""]",direct,攻击者把假 Router 置于真实 Router 之后，利用 returnVaultAssets 的转发路径，让假 Asgard 接收少量 ETH 并发出带恶意 memo 的存款事件。,pending
+EVT-000011,THORChain 用户遭 UniH 空投钓鱼,2021-07-24,day,independent_event,THORChain,"[""THORChain桥协议""]",[],non_crosschain,用户与恶意空投 UniH 代币交互，攻击路径利用非标准 tx.origin 相关权限行为，转走其钱包中的 RUNE。,pending
+EVT-000012,Levyathan 管理权限与本地资金事件（排除项）,2021-07-30,day,independent_event,Levyathan,[],"[""BNB Chain"",""Ethereum""]",non_crosschain,公开材料把该事件描述为 Timelock、MasterChef 控制、代币增发与管理权限滥用。,pending
+EVT-000013,Poly Network 跨链管理权限被改写,2021-08-10,day,independent_event,Poly Network,"[""Poly Network桥协议""]","[""Ethereum"",""Poly Network"",""BNB Chain"",""Polygon""]",direct,攻击者利用跨链管理合约可被消息触达的敏感调用路径，改写 keeper／公钥，再让伪造授权指令释放 Ethereum、BSC 和 Polygon 上的资产。,pending
+EVT-000014,pNetwork 接受伪造 pBTC 销毁事件并放出 BTC,2021-09-19,day,independent_event,pNetwork,"[""pNetwork桥协议""]","[""BNB Chain"",""Bitcoin""]",direct,攻击者的合约生成貌似 peg-out 的日志，节点没有把事件来源合约与字段格式充分绑定到可信 pBTC 入口，于是将伪造记录当作赎回请求，在 Bitcoin 侧释放托管 BTC。,pending
+EVT-000015,Polygon Plasma 提款重复验证漏洞的白帽披露,2021-10-05,day,independent_event,Polygon,"[""Polygon Plasma Bridge桥协议""]","[""Polygon"",""Ethereum""]",direct,白帽发现 Plasma 退出验证存在弱点，可使同一底层资产对应的提款被重复接受，从而形成双重或重复退出。,pending
+EVT-000016,Synapse nUSD 元池攻击被验证者阻断跨链兑现,2021-11-06,day,independent_event,Synapse Protocol,"[""Synapse桥协议""]","[""Avalanche""]",partial,攻击者利用元池虚拟价格及记账缺陷提取超出其应得的 LP 价值，随后试图通过桥在目的链获得对应资产。,pending
+EVT-000017,Nerve Bridge 元池定价被闪电贷操纵,2021-11-15,day,independent_event,Nerve Finance／Nerve Bridge,"[""Nerve桥协议""]","[""BNB Chain""]",partial,攻击利用 fork 自 Saddle 的元池定价与 LP 记账逻辑，通过闪电贷放大池内状态变动，再以不一致的估值进行套利或退出，抽走池中真实价值。,pending
+EVT-000018,Zenon 桥资金池的公开销毁与闪电贷攻击,2021-11-21,day,independent_event,Zenon,"[""Zenon桥协议""]","[""BNB Chain""]",partial,沿用技术分析：攻击者把可公开触发的代币销毁与闪电贷组合，改变桥池代币供给或余额关系，使资金池按异常状态释放价值，最终耗尽部分池资产。,pending
+EVT-000019,PolkaBridge 本地提款权限异常（边界项）,2021-11-22,day,independent_event,PolkaBridge,"[""PolkaBridge桥协议""]","[""Ethereum""]",partial,现有论文和交易线索将异常归于本地 withdrawal／ownership 校验不足，使调用者有可能提取不属于自己的资产。,pending
+EVT-000020,Optics 治理路由恢复模式的权限争议,2021-11-23,day,independent_event,Optics,"[""Optics桥协议""]","[""Ethereum"",""Celo""]",direct,现有材料称 GovernanceRouter 进入恢复模式后，治理多签权限在有争议的运营背景下发生变化。,pending
+EVT-000021,Multichain Router 借 permit 路径转走用户授权资产,2022-01-18,day,independent_event,Multichain,"[""Multichain桥协议""]","[""Ethereum""]",partial,用户过去授予 Router 的代币额度仍然有效，攻击者通过可操控的参数和 permit 相关路径触发转账，把这些授权变成从用户钱包取款的能力。,pending
+EVT-000022,Qubit QBridge 无真实存款却铸造 qXETH,2022-01-27,day,independent_event,Qubit Finance,"[""Qubit桥协议""]","[""BNB Chain"",""Ethereum""]",direct,攻击者在 Ethereum 侧向零地址代币路径发起存款调用。,pending
+EVT-000023,Wormhole 伪造签名验证状态导致无抵押增发,2022-02-02,day,independent_event,Wormhole,"[""Wormhole / VAA""]","[""Ethereum"",""Solana""]",direct,Solana 端验证签名时没有确认传入的 sysvar 账户身份，攻击者可提供伪造的指令上下文，使桥把未得到真实 Guardian 签名的消息当成已验证消息。,pending
+EVT-000024,Meter Passport 包装原生币假存款,2022-02-05,day,independent_event,Meter,"[""Meter Passport桥协议""]","[""BNB Chain"",""Ethereum"",""Meter Network"",""Moonriver""]",direct,攻击利用原生 ETH／BNB 与其包装币的特殊分支。,pending
+EVT-000025,Wormhole 未初始化 implementation 代理停摆漏洞,2022-02-24,day,independent_event,Wormhole,"[""Wormhole / VAA""]","[""Ethereum""]",direct,实现层自身保留可初始化入口，授权与生命周期约束未覆盖该地址；历史 EVM selfdestruct 语义放大影响。,pending
+EVT-000026,EvoDeFi 域名转移与前端收款地址被替换,2022-03-08,day,independent_event,EvoDeFi,"[""EvoDeFi桥协议""]",[],partial,EvoDeFi 发布的说明称，Vercel 的域名转移过程未充分确认合法所有权，使攻击者取得域名／前端控制并替换页面展示的收款地址。,pending
+EVT-000027,LI.FI 首次路由任意调用与授权资金损失,2022-03-20,day,independent_event,LI.FI,"[""LI.FI桥协议""]","[""Ethereum""]",partial,攻击者利用跨链前置 swap 中未充分约束的外部调用，令 Router 调用代币转账功能，从已给予无限授权的用户钱包转走资产。,pending
+EVT-000028,EVODeFi,2022-03-22,day,independent_event,EvoDeFi,"[""EvoDeFi桥协议""]",[],unclear,,pending
+EVT-000029,Ronin 验证者密钥失守与伪造提款,2022-03-23,day,independent_event,Sky Mavis／Ronin,"[""Ronin桥协议""]","[""Ethereum"",""Ronin""]",direct,攻击者取得足够验证者签名能力，达到当时九个验证者中五个签名的提款门槛，使未获合法资产支持的提款在 Ethereum 侧被执行。,pending
+EVT-000030,WonderHero 桥签名或部署权限异常报告（候选）,2022-04-07,day,independent_event,WonderHero,"[""WonderHero桥协议""]","[""BNB Chain""]",direct,现有公开线索将事件与桥部署者、owner 或签名权限遭控制联系起来，资产据称随后被转出或变现。,pending
+EVT-000031,Marvin Inu 桥代币被盗报告（候选）,2022-04-11,day,independent_event,Marvin Inu,"[""Marvin Inu桥协议""]",[],direct,事件目录与研究资料称，攻击者利用桥相关合约或权限缺陷提取代币并卖出。,pending
+EVT-000032,Aurora 退出预编译 delegatecall 导致资产通胀漏洞,2022-04-26,day,independent_event,,"[""Aurora 退出预编译 delegatecall 导致资产通胀漏洞桥协议""]","[""Aurora"",""NEAR"",""Ethereum""]",direct,攻击者控制的调用上下文能触发对外转移而不对应减少其 Aurora ETH，形成可重复的通胀/支出。,pending
+EVT-000033,Rainbow Bridge 第一次伪造 NEAR 区块尝试被挑战,2022-05-02,day,independent_event,Aurora／Rainbow Bridge,"[""Rainbow桥协议""]","[""Ethereum"",""NEAR""]",direct,攻击者向 Ethereum 侧提交伪造 NEAR 区块或相关证明，试图让桥接受错误的源链状态。,pending
+EVT-000034,CENNZnet 桥假事件／解析问题报告（候选）,2022-05-08,day,independent_event,CENNZnet,"[""CENNZnet桥协议""]",[],direct,二手研究材料和目录把事件描述为伪造事件或链下事件解析错误：桥可能把不真实的资产记录当成可兑现事实。,pending
+EVT-000035,QANX 桥第一次密钥相关资产转出,2022-05-18,day,independent_event,QANplatform,"[""QANplatform桥协议""]","[""Ethereum""]",direct,账本记载桥或开发者密钥被用于未经授权的提款和抛售。,pending
+EVT-000036,EvoDeFi,2022-06-07,day,pending_split_group,EvoDeFi,"[""EvoDeFi桥协议""]",[],unclear,,pending
+EVT-000037,Aurora ft_on_transfer 未获授权扣取接收方 ETH 费用,2022-06-10,day,independent_event,Aurora ft_on_transfer 未获授权扣取接收方 ETH 费用,"[""Aurora ft_on_transfer 未获授权扣取接收方 ETH 费用桥协议""]","[""NEAR"",""Aurora""]",direct,攻击者通过输入桥接费用字段，让任意收款方的 Aurora ETH 被扣走；代币到账不等于同意支付另一资产。,pending
+EVT-000038,Aurora EthCustodian 将普通执行输出误作销毁证明,2022-06-16,day,independent_event,Aurora EthCustodian 将普通执行输出误作销毁证明,"[""Aurora EthCustodian 将普通执行输出误作销毁证明桥协议""]","[""NEAR"",""Aurora"",""Ethereum""]",direct,普通 EVM 调用返回可解析为提款事件的数据，真实执行证明被升级为不存在的销毁事实。,pending
+EVT-000039,Harmony Horizon 多签密钥失守,2022-06-23,day,independent_event,Harmony,"[""Harmony Horizon桥协议""]","[""Ethereum"",""Harmony"",""BNB Chain""]",direct,官方复盘称攻击者至少控制四把验证者私钥中的两把，于2022-06-23 11:06:46 UTC开始转走桥资产。,pending
+EVT-000040,Chainswap,2022-07-02,day,pending_split_group,ChainSwap,"[""ChainSwap桥协议""]",[],unclear,,pending
+EVT-000041,Multichain,2022-07-10,day,pending_split_group,Multichain,"[""Multichain桥协议""]",[],unclear,,pending
+EVT-000042,Nomad 零根初始化使任意消息可被兑现,2022-08-01,day,independent_event,Nomad,"[""Nomad桥协议""]","[""Ethereum"",""Moonbeam"",""Evmos"",""Avalanche""]",direct,升级初始化使零值根被当作可接受状态。,pending
+EVT-000043,deBridge 团队收到恶意文件，钓鱼尝试被识别,2022-08-05,day,independent_event,deBridge,"[""deBridge桥协议""]",[],partial,攻击者使用社会工程和恶意附件，尝试诱导团队成员在工作终端执行文件，从而进入开发或运营环境。,pending
+EVT-000044,Celer cBridge DNS／BGP 劫持诱导恶意授权,2022-08-17,day,independent_event,Celer,"[""Celer桥协议""]",[],partial,攻击者通过第三方 DNS／BGP 路径把正常访问 cBridge 的用户引向恶意页面。,pending
+EVT-000045,Rainbow Bridge 第二次伪造区块尝试快速被挑战,2022-08-20,day,independent_event,Aurora／Rainbow Bridge,"[""Rainbow桥协议""]","[""NEAR"",""Ethereum""]",direct,攻击者提交伪造的 NEAR 区块，企图让 Ethereum 侧桥接受其源链状态。,pending
+EVT-000046,Omni 消息在 EthereumPoW 分叉副本被重放,2022-09-16,day,independent_event,OmniBridge Replay,"[""OmniBridge Replay桥协议""]","[""Gnosis"",""EthereumPoW"",""Ethereum""]",direct,攻击者先完成涉及 Gnosis／Ethereum 的200 WETH消息，再把同一 calldata 提交到 EthereumPoW 上的合约副本，额外领取200 ETHW。,pending
+EVT-000047,Arbitrum Nitro Inbox 可被重新初始化的白帽漏洞,2022-09-19,day,independent_event,Offchain Labs／Arbitrum,"[""Arbitrum Nitro Delayed Inbox reinitialization vulnerability桥协议""]","[""Ethereum"",""Arbitrum""]",direct,迁移升级后初始化状态未被正确锁定，公开initialize仍能重新设置受信bridge地址。,pending
+EVT-000048,Transit Swap 路由任意调用耗用用户授权,2022-10-02,day,independent_event,Transit Swap,"[""Transit桥协议""]",[],partial,claimTokens未把外部调用目标与合法业务语义充分绑定，攻击者可以让路由执行非预期调用。,pending
+EVT-000049,pNetwork,2022-10-03,day,pending_split_group,pNetwork,"[""pNetwork桥协议""]",[],unclear,,pending
+EVT-000050,BSC Token Hub 接受伪造证明并放出 200 万 BNB,2022-10-06,day,independent_event,BNB Chain,"[""BSC Token Hub桥协议""]","[""BNB Chain"",""BNB Beacon Chain""]",direct,攻击者构造能够通过 IAVL／Merkle 证明验证器的伪造跨链包，使 BSC 侧系统接受不存在的有效转移并释放 BNB。,pending
+EVT-000051,Cosmos IBC Dragonberry 伪造超时证明漏洞,2022-10-09,day,independent_event,,"[""IBC / ICS-20""]",[],direct,ICS-23对IAVL证明结构校验不足，可使伪造的“不存在证明”被接受。,pending
+EVT-000052,QANplatform 第二次桥钱包失守与 Profanity 风险,2022-10-11,day,independent_event,QANplatform,"[""QANplatform桥协议""]","[""Ethereum"",""BNB Chain""]",direct,公开技术归因指向 Profanity 靓号地址生成的密钥弱点，使攻击者能够获得桥钱包控制权，随后转走并抛售QANX等资产。,pending
+EVT-000053,THORChain memo 字符串转换分歧导致共识停顿,2022-10-28,day,independent_event,THORChain,"[""THORChain桥协议""]","[""THORChain""]",direct,cosmos.Uint转换为字符串时出现不一致结果，使不同节点对相同交易memo产生不同解释，无法继续取得一致状态，区块生产及正常跨链处理停止。,pending
+EVT-000054,Rubic 管理钱包私钥失守与 RBC／BRBC 卖出,2022-11-02,day,independent_event,Rubic,"[""Rubic桥协议""]","[""Ethereum"",""BNB Chain""]",partial,管理 RBC／BRBC 桥相关资产与奖励的钱包私钥遭到控制，攻击者用其权限转移并出售代币。,pending
+EVT-000055,pGALA 升级控制钥匙暴露与争议性增发救援,2022-11-03,day,independent_event,pNetwork,"[""pNetwork桥协议""]","[""BNB Chain""]",direct,SlowMist指出ProxyAdmin owner私钥以明文暴露在GitHub，owner于2022-08-28被替换，旧pGALA升级路径因此失去独占控制。,pending
+EVT-000056,Ankr aBNBc 部署权限被利用进行无抵押增发,2022-12-01,day,independent_event,Ankr,"[""Ankr桥协议""]","[""BNB Chain""]",partial,部署者密钥失守后，攻击者通过代理升级路径改写aBNBc逻辑，铸造没有真实BNB担保的代币并在市场出售。,pending
+EVT-000057,RubicProxy 把 USDC 列为路由目标导致授权资产被取走,2022-12-25,day,independent_event,Rubic,"[""Rubic桥协议""]","[""Ethereum""]",partial,USDC代币地址被错误加入路由目标白名单，routerCallNative又未充分绑定目标的合法业务语义。,pending
+EVT-000058,Multichain 旧路由 permit 竞态盗取授权资金,2023-02-15,day,independent_event,Multichain,"[""Multichain桥协议""]","[""Ethereum""]",partial,既有账本将本次问题归于 WETH 的 fallback 行为与路由 permit 处理组合：路由没有可靠区分签名授权是否真实完成，交易竞争者可利用用户既存额度移动资产。,pending
+EVT-000059,Poolz Finance,2023-03-15,day,independent_event,Poolz,[],[],unclear,,pending
+EVT-000060,Allbridge Core BNB 链资金池定价攻击,2023-04-02,day,independent_event,Allbridge,"[""Allbridge桥协议""]","[""BNB Chain""]",partial,官方复盘指出，旧池在存取款时按同量增减虚拟 vUSD；极端失衡时，取走的流动性可超过销毁 LP 份额对应的流动性。,pending
+EVT-000061,zkLink Discord 钓鱼链接事件,2023-04-19,day,independent_event,zkLink,"[""zkLink Discord phishing桥协议""]",[],non_crosschain,既有账本记录官方 Discord 账号或频道被用于传播钓鱼链接。,pending
+EVT-000062,Celer SGN 验证者重复投票漏洞披露,2023-05-24,day,independent_event,Celer Network,"[""Celer桥协议""]",[],direct,漏洞位于 SGN 的 EndBlocker 更新处理：同一验证者可对同一次更新重复投票，系统未把“同一身份的一票”与“独立验证者的投票权重”可靠绑定。,pending
+EVT-000063,Multichain 跨链路线延迟与积压,2023-05-25,day,independent_event,Multichain,"[""Multichain桥协议""]",[],direct,本次是后台节点或路线不可用导致的转账积压。,pending
+EVT-000064,Cellframe CELL 代币迁移池价格操纵,2023-06-01,day,independent_event,Cellframe,"[""Cellframe migration-pool exploit桥协议""]","[""BNB Chain""]",non_crosschain,旧 CELL 与新 CELL 的迁移逻辑未充分处理两池间的流动性和价格差。,pending
+EVT-000065,Hector Lending 新桥入口任意调用盗款,2023-06-02,day,independent_event,Hector Lending,"[""Hector Lending桥协议""]",[],partial,既有技术描述称攻击者提交假 USDC，再利用任意调用／授权接口，从已授权的钱包或对应路径转走真实 USDC。,pending
+EVT-000066,Hashflow 废弃路由残留授权盗取,2023-06-14,day,independent_event,Hashflow,"[""Hashflow桥协议""]","[""Ethereum""]",partial,废弃路由的某调用入口缺少访问控制，使任意调用者可使用用户残留授权触发 transferFrom。,pending
+EVT-000067,Poly Network 中继共识密钥泄露与异常增发,2023-07-01,day,independent_event,Poly Network,"[""Poly Network桥协议""]","[""Ethereum"",""Poly Network""]",direct,既有核验材料将根因定位为中继共识私钥被攻破；紧凑表进一步记录构建环境中的木马可能导致密钥泄露。,pending
+EVT-000068,Multichain 托管资产异常大额流出,2023-07-06,day,independent_event,Multichain,"[""Multichain桥协议""]","[""Ethereum""]",direct,公开材料支持托管或 MPC 资产控制权被用于预期桥业务之外的提款。,pending
+EVT-000069,Shibarium 上线拥堵与桥资金暂时无法使用,2023-08-16,day,independent_event,Shiba Inu／Shibarium,"[""Shibarium桥协议""]","[""Ethereum"",""Shibarium""]",direct,既有资料将故障归于上线流量激增及基础设施容量问题。,pending
+EVT-000070,Threshold tBTC 比特币 SPV 证明可塑性漏洞,2023-08-20,day,independent_event,Threshold Network,"[""Threshold tBTC SPV coinbase-proof malleability桥协议""]","[""Bitcoin"",""Ethereum""]",direct,SPV 验证器对 coinbase 交易证明及 Merkle 树同层约束检查不足。,pending
+EVT-000071,Connext 空投领取异常,2023-09-05,day,independent_event,Connext,"[""Connext airdrop claim disruption桥协议""]","[""Ethereum""]",non_crosschain,既有账本描述空投领取合约遭抢跑或类似女巫领取行为利用，使领取结果偏离预期分发规则。,pending
+EVT-000072,Aztec Connect 领取证明多次支出漏洞,2023-09-12,day,independent_event,Aztec Network,"[""Aztec桥协议""]","[""Ethereum""]",direct,领取证明电路存在未约束的残余 witness，加上68位分肢及模数处理问题，使不合法领取金额或重复领取仍可能满足电路约束。,pending
+EVT-000073,Mixin 云数据库入侵与托管资产损失,2023-09-23,day,independent_event,Mixin Network,"[""Mixin桥协议""]",[],partial,既有资料记录第三方云服务数据库遭入侵，影响 Mixin 的托管资产控制流程。,pending
+EVT-000074,OmniBTC Discord 账号被盗与钓鱼传播,2023-10-08,day,independent_event,OmniBTC,"[""OmniBTC Discord compromise桥协议""]",[],non_crosschain,账本记录社交账号失守后传播钓鱼内容。,pending
+EVT-000075,Rainbow Bridge log_index 截断导致同一存款证明重复铸币漏洞,2023-11-16,day,independent_event,Rainbow,"[""Rainbow桥协议""]","[""Ethereum"",""NEAR""]",direct,不同宽整数索引能命中相同日志，却形成不同防重键，破坏一次性消费。,pending
+EVT-000076,HECO Bridge 托管提款权限失守,2023-11-22,day,independent_event,HECO,"[""HECO桥协议""]","[""Ethereum""]",direct,既有账本将直接失效定位为运营权限或私钥被攻破／滥用，使桥资产被未经授权释放。,pending
+EVT-000077,Stargate Snapshot 恶意提案钓鱼,2023-12-04,day,independent_event,Stargate Finance,"[""Stargate Snapshot phishing proposal桥协议""]",[],non_crosschain,恶意 Snapshot 提案或其中链接引导用户访问钓鱼页面并提交代币授权。,pending
+EVT-000078,Hypr 的 OP Stack 桥异常提款,2023-12-13,day,independent_event,Hypr,"[""Hypr桥协议""]","[""Ethereum""]",direct,既有独立技术分析支持 Hypr 的 OP Stack 桥实现或验证路径允许未经授权提款，但账本保留的根因描述仍较宽。,pending
+EVT-000079,Orbit Bridge 以太坊金库异常提款,2023-12-31,day,independent_event,Orbit Chain／Orbit Bridge,"[""Orbit桥协议""]","[""Ethereum"",""Orbit Chain""]",direct,已确认异常提款经过 Orbit 的验证者／桥控制路径。,pending
+EVT-000080,ZilBridge 升级兼容问题引发长期停运,2024-01-06,day,independent_event,ZilBridge extended downtime,"[""ZilBridge extended downtime桥协议""]","[""Zilliqa"",""Ethereum""]",direct,Zilliqa v9.3 升级后，桥所依赖的同步或兼容机制失效，正常转账处理被中断。,pending
+EVT-000081,Hector 清算合约特权被滥用提款,2024-01-15,day,independent_event,Hector Network,"[""Hector Network liquidation privilege drain桥协议""]","[""Fantom""]",partial,特权角色遭攻破或被滥用后，攻击者把其控制的钱包加入可领取名单，再调用 mintWithdraw 或 transferRedemption 提取清算资产。,pending
+EVT-000082,Socket Gateway 新路由任意调用盗取授权资产,2024-01-16,day,independent_event,Socket／Bungee,"[""Socket桥协议""]","[""Ethereum""]",partial,新加入的路由未充分校验用户传入的调用数据，使攻击者能把本应执行兑换的调用改为代币 transferFrom。,pending
+EVT-000083,Polygon Heimdall UnpackLog 事件类型混淆漏洞,2024-02-08,day,independent_event,,"[""Polygon Heimdall UnpackLog 事件类型混淆漏洞桥协议""]","[""Ethereum"",""Polygon""]",direct,日志真实性被当成 stake/validator 更新语义真实性，可能污染验证者权重并影响桥状态同步。,pending
+EVT-000084,OrdiZK 疑似退出骗局,2024-03-05,day,independent_event,OrdiZK,"[""OrdiZK桥协议""]",[],non_crosschain,既有索引将事件描述为项目控制的资金被移走，疑似退出骗局。,pending
+EVT-000085,LayerSwap 域名被劫持与用户钓鱼,2024-03-20,day,independent_event,LayerSwap,"[""LayerSwap桥协议""]",[],partial,域名控制权失守使访问者被导向恶意网站。,pending
+EVT-000086,IBC timeout 回调重入导致退款重复执行漏洞,2024-03-26,day,independent_event,,"[""IBC / ICS-20""]",[],direct,回调进入时原包仍未标记已消费，应用层能重复获得同一包退款。,pending
+EVT-000087,Meson 第三方发帖接口遭滥用传播钓鱼,2024-04-19,day,independent_event,Meson,"[""Meson桥协议""]",[],non_crosschain,既有账本记录第三方发帖 API 被攻破后，官方 X 账号发布了钓鱼链接。,pending
+EVT-000088,XBridge 以太坊—BNB 桥资产异常提取,2024-04-24,day,independent_event,XBridge,"[""XBridge桥协议""]","[""Ethereum"",""BNB Chain""]",direct,账本将事件列为已确认利用，公开材料支持桥资产被未经授权提取，但具体权限检查或资金记账的失效点尚不足以精确定位。,pending
+EVT-000089,Pike 首次事件：CCTP 接入消息校验不足,2024-04-26,day,independent_event,Pike Finance,"[""Circle CCTP（集成路径）""]","[""Arbitrum"",""Ethereum"",""Optimism""]",direct,Pike 把未经充分验证的 CCTP 相关跨链消息当成合法存款或领取依据。,pending
+EVT-000090,Pike 第二次事件：应急升级存储冲突,2024-04-30,day,independent_event,Pike Finance,"[""Circle CCTP（集成路径）""]","[""Arbitrum"",""Ethereum"",""Optimism""]",partial,为应对4月26日事件，紧急升级加入暂停功能却破坏了代理与实现的存储布局。,pending
+EVT-000091,ALEX XLink 部署密钥失守与恶意升级,2024-05-14,day,independent_event,ALEX／XLink,"[""ALEX桥协议""]","[""Stacks""]",direct,部署者私钥遭攻破后，攻击者可把桥或应用合约升级为恶意实现。,pending
+EVT-000092,Holograph 操作员权限遭滥用跨链增发 HLG,2024-06-13,day,independent_event,Holograph,"[""LayerZero""]","[""Ethereum""]",direct,既有账本将原因限定为操作员凭据失守或被保留的特权遭滥用。,pending
+EVT-000093,LI.FI 新 facet 漏校验盗取无限授权资产,2024-07-16,day,independent_event,LI.FI,"[""LI.FI桥协议""]","[""Ethereum"",""Arbitrum""]",partial,新增 facet 上线时遗漏了其他路径所用的目标地址和函数白名单校验。,pending
+EVT-000094,Fuel 回滚交易的 MessageOut 仍可用于提款漏洞,2024-07-22,day,independent_event,Fuel Labs,"[""Fuel native bridge reverted-transaction MessageOut vulnerability桥协议""]","[""Fuel"",""Ethereum""]",direct,执行器 update_execution_data 对已回滚交易产生的 MessageOut 标识仍进行保存或认可。,pending
+EVT-000095,Ronin 桥升级漏初始化导致提款门槛归零,2024-08-06,day,independent_event,Sky Mavis／Ronin,"[""Ronin桥协议""]","[""Ronin"",""Ethereum""]",direct,从版本2升级至版本4时遗漏版本3的初始化逻辑，使总操作员权重保持默认零值。,pending
+EVT-000096,Poly CMCC 桥热钱包失窃与 Flamingo 资产支持,2024-08-12,day,independent_event,Poly Network,"[""Poly Network桥协议""]","[""Neo N3""]",direct,已知异常提款触及 Poly 的 CMCC 跨链合约／热钱包权限，但公开材料没有闭合其具体合约缺陷或授权失守方式。,pending
+EVT-000097,Noble CCTP 未绑定远端 TokenMessenger 的 USDC 铸币漏洞,2024-08-27,day,independent_event,,"[""Circle CCTP（集成路径）""]","[""Noble""]",direct,被认证的普通消息被解释为资产销毁授权，使 Noble 的业务铸币条件被绕过。,pending
+EVT-000098,FEG SmartBridge 伪造消息白名单与余额提款,2024-12-29,day,independent_event,FEG／Feed Every Gorilla,"[""Wormhole / VAA""]","[""BNB Chain"",""Base"",""Ethereum""]",direct,FEG 处理跨链消息时，允许 payload 内声明 user=admin 的内容改变来源地址白名单，却未把该身份与可信远端发送者绑定。,pending
+EVT-000099,NoOnes 跨链桥基础设施失守,2025-01-01,day,independent_event,NoOnes,"[""NoOnes cross-chain bridge breach桥协议""]","[""Solana"",""Ethereum"",""TRON""]",direct,既有账本记录桥基础设施或热钱包控制权遭攻破，随后多链资产被未经授权提走。,pending
+EVT-000100,Zilliqa X-Bridge 无抵押铸币与代币迁移,2025-02-06,day,independent_event,Zilliqa,"[""XBridge桥协议""]","[""Zilliqa"",""Ethereum"",""BNB Chain""]",direct,新引入的 Token Manager 可在没有对应 Ethereum／BNB 锁定资产时铸造 zETH、zBNB。,pending
+EVT-000101,IBC acknowledgement 非确定性 JSON 解析及补丁扩展,2025-02-18,day,independent_event,IBC acknowledgement 非确定性 JSON 解析及补丁扩展,"[""IBC / ICS-20""]",[],direct,特殊 ack 输入让执行结果不一致，可能中断共识；后续公告扩展到 transfer 以外模块。,pending
+EVT-000102,WEMIX 桥服务／签名环境失守,2025-02-28,day,independent_event,WEMIX,"[""XBridge桥协议""]","[""WEMIX"",""Ethereum""]",direct,账本记录攻击者进入服务或签名环境后，反复发起未经授权的桥提款。,pending
+EVT-000103,Chainge 的 NEXA／wNEXA 桥服务不可用,2025-04-05,day,independent_event,Chainge Finance,"[""Chainge Finance NEXA bridge unavailability桥协议""]","[""Nexa""]",direct,Nexa 生态公告记录，Chainge 金库地址因服务被滥用而遭列入黑名单，桥接服务因此不可用。,pending
+EVT-000104,Force Bridge 恶意 Docker 镜像窃取验证者密钥,2025-06-01,day,independent_event,Force Bridge,"[""Force Bridge桥协议""]","[""BNB Chain"",""Nervos""]",direct,受污染的第三方 Docker 镜像在部署环境中窃取三个验证者私钥，使攻击者达到桥的签名授权条件。,pending
+EVT-000105,ALEX Protocol 2025,2025-06-06,day,independent_event,ALEX,"[""ALEX桥协议""]",[],unclear,,pending
+EVT-000106,ZKSwap L1 紧急提款证明校验失效,2025-07-09,day,independent_event,ZKSwap,"[""ZKSwap L1 emergency withdrawal桥协议""]","[""Ethereum""]",direct,既有账本将问题归于紧急提款验证器未强制执行预期密码学有效性检查，使本不应成立的证明路径仍被接受。,pending
+EVT-000107,Pundi AI 跨链代币特权操作异常,2025-07-12,day,independent_event,Pundi AI,"[""Pundi AI cross-chain token event桥协议""]",[],partial,既有记录称桥或代币控制私钥的特权被用于未授权代币操作。,pending
+EVT-000108,Shibarium PoS 桥验证权被夺取,2025-09-12,day,independent_event,Shibarium／Shiba Inu,"[""Shibarium桥协议""]","[""Ethereum"",""Shibarium""]",direct,既有账本称攻击者结合已失守的控制权与临时取得的质押票权，达到能够授权提款的验证者权重。,pending
+EVT-000109,Yala 桥校验不足导致 YU 无抵押铸币,2025-09-14,day,independent_event,Yala,"[""Yala桥协议""]",[],direct,账本将直接问题归为桥消息或交易校验不足，允许在没有有效抵押资产支持时铸造 YU。,pending
+EVT-000110,Relay Solana Ed25519 偏移未绑定漏洞披露（待交叉核验）,2025-09-22,day,independent_event,,"[""Relay Solana Ed25519 偏移未绑定漏洞披露（待交叉核验）桥协议""]","[""Solana""]",direct,原生验签成功不保证所验证的公钥和消息就是桥随后读取的 allocator/请求。,pending
+EVT-000111,Seedify SFUND OFT 开发凭据失守,2025-09-23,day,independent_event,Seedify,"[""LayerZero""]","[""BNB Chain"",""Ethereum""]",direct,开发者凭据被攻破后，攻击者能够修改全链代币配置或使用特权铸币能力。,pending
+EVT-000112,Griffin AI 伪造 LayerZero 可信对端增发,2025-09-24,day,independent_event,Griffin AI,"[""LayerZero""]","[""Ethereum""]",direct,既有记录称攻击者把伪造的 LayerZero 远端 peer 登记为可信对端，随后利用这一信任关系铸币，再跨链转移并出售。,pending
+EVT-000113,Snowbridge 两个 Hub 升级不同步导致单向停机,2025-09-30,day,independent_event,Snowbridge,"[""Snowbridge桥协议""]","[""Polkadot Asset Hub"",""Ethereum""]",direct,1.7.1 升级改变 Asset Hub 发往 Bridge Hub 的消息为免付费执行。,pending
+EVT-000114,Squid Router,2025-10-07,day,independent_event,Squid,"[""Squid桥协议""]",[],unclear,,pending
+EVT-000115,402Bridge 团队密钥与用户授权盗取事件,2025-10-28,day,independent_event,402Bridge,"[""402Bridge桥协议""]",[],partial,账本记录团队钱包密钥暴露，同时出现针对部分用户授权的恶意支出。,pending
+EVT-000116,Garden Finance 求解器基础设施被攻破,2025-10-30,day,independent_event,Garden Finance／受影响 Solver,"[""Garden桥协议""]",[],partial,事件直接失效在求解器运行环境及资产控制，而非已证实的桥协议合约。,pending
+EVT-000117,DIMO 桥部署权限异常线索（待核实）,2025-11-07,day,independent_event,DIMO,"[""DIMO桥协议""]",[],direct,候选材料称发生未经授权的铸造与抛售；流程与交易未独立重建。,pending
+EVT-000118,Port3 Network 桥控制账户异常代币操作,2025-11-23,day,independent_event,Port3 Network,"[""Port3 Network bridge event桥协议""]",[],direct,账本将根因描述为特权密钥或桥控制账户失守后产生未授权代币移动。,pending
+EVT-000119,thirdweb 旧版 Bridge 代理漏退役导致授权盗取,2025-12-10,day,independent_event,thirdweb,"[""thirdweb 旧 Bridge 代理未退役导致授权资金被盗桥协议""]","[""Ethereum""]",partial,2025年4月 Bridge 抢跑／授权滥用漏洞响应时，团队修复了当前合约，却遗漏仍在链上运行的旧版代理。,pending
+EVT-000120,Dusk 跨链签名钱包失陷（Dusk Bridge）,2026-01-16,day,independent_event,Dusk,"[""Dusk Bridge桥协议""]","[""Dusk"",""BNB Chain""]",direct,攻击者取得 Dusk→EVM 桥使用的签名钱包权限，可直接在 Dusk 转走资金。,pending
+EVT-000121,CrossCurve 接收器快速执行绕过验证（CrossCurve EYWA ReceiverAxelar）,2026-02-01,day,independent_event,CrossCurve / EYWA,"[""Axelar GMP（接收器集成路径）""]","[""Ethereum""]",direct,CrossCurve/EYWA 的 ReceiverAxelar 在 expressExecute 快速路径中绕过应由网关完成的来源验证，伪造消息因此进入应用执行逻辑。,pending
+EVT-000122,IoTeX ioTube 验证者管理密钥失陷（IoTeX ioTube）,2026-02-21,day,independent_event,IoTeX,"[""IoTeX桥协议""]","[""Ethereum"",""IoTeX"",""BNB Chain""]",direct,员工遭社会工程攻击导致验证者 owner 密钥泄露，攻击者利用管理权限将验证者合约升级成恶意实现。,pending
+EVT-000123,DGLD 旧代币假转账触发跨链增发（DGLD Bridge）,2026-02-23,day,independent_event,DGLD,"[""DGLD Bridge桥协议""]","[""Ethereum"",""Base"",""Optimism""]",direct,旧版 DGLD 的 transferFrom 可以返回成功，却未实际转移代币。,pending
+EVT-000124,SolvBTC 跨链异常线索（待确认）（SolvBTC bridge-classified anomaly）,2026-03-06,day,independent_event,SolvBTC,"[""SolvBTC桥协议""]",[],unclear,安全事件库将一组 SolvBTC 相关代币异动归入 Bridge 类，但当前证据未把具体产品、交易和直接根因对应起来。,pending
+EVT-000125,Stake DAO,2026-03-12,day,independent_event,Stake DAO,[],[],unclear,,pending
+EVT-000126,Drift Protocol,2026-04-01,day,independent_event,Drift Protocol,[],[],unclear,,pending
+EVT-000127,SquidMulticall 用户授权资产被转走（SquidMulticall user approval drain）,2026-04-07,day,independent_event,Squid,"[""Squid桥协议""]","[""BNB Chain"",""Arbitrum"",""Optimism"",""Avalanche"",""Base""]",partial,用户向可被任意人调用的 multicall 辅助合约授予无限代币额度，该合约又允许调用者指定目标和 calldata。,pending
+EVT-000128,Aethir ATH 跨链适配器权限异常（Aethir ATH adapters）,2026-04-09,day,independent_event,Aethir,"[""Aethir ATH adapters桥协议""]","[""Solana"",""Ethereum"",""BNB Chain""]",direct,事件涉及 ATH 跨链适配器的所有权转移或访问控制路径。,pending
+EVT-000129,Crypto.com DeFi Bridge 260万CRO滞留投诉（待确认）（Crypto.com DeFi Bridge 2.6m CRO stuck report）,2026-04-09,day,independent_event,Crypto.com（事件尚待官方确认）,"[""Crypto.com DeFi Bridge 2.6m CRO stuck report桥协议""]","[""Ethereum"",""Cronos POS""]",direct,Reddit发帖者称源侧销毁已成功，目标侧未铸币，随后进入支持和退款反复处理流程。,pending
+EVT-000130,Hyperbridge MMR 证明验证漏洞（Hyperbridge Token Gateway）,2026-04-13,day,independent_event,Hyperbridge,"[""Hyperbridge桥协议""]","[""Polkadot"",""Ethereum"",""Base"",""BNB Chain"",""Arbitrum""]",direct,MMR 验证器在边界或叶子证明处理上存在缺陷，使构造的跨链消息被当作有效证明。,pending
+EVT-000131,KelpDAO rsETH 单一 DVN 信任路径受攻（KelpDAO rsETH LayerZero route）,2026-04-18,day,independent_event,KelpDAO,"[""LayerZero""]","[""Ethereum""]",direct,攻击者先通过社会工程取得会话凭证，进入 LayerZero Labs 的 RPC 云环境，篡改内部节点向 DVN 返回的链状态，同时对外部 RPC 发起拒绝服务。,pending
+EVT-000132,ZetaChain GatewayEVM 任意调用组合盗转（ZetaChain GatewayEVM）,2026-04-27,day,independent_event,ZetaChain,"[""ZetaChain桥协议""]","[""ZetaChain"",""Ethereum"",""Arbitrum"",""Base"",""BNB Chain""]",direct,跨链任意调用的限制不足，攻击者能经 GatewayEVM 调用 transferFrom；历史上对网关授予的无限额度让团队钱包成为可被扣款对象。,pending
+EVT-000133,Syndicate Commons 桥升级私钥失陷（Syndicate Commons Bridge）,2026-04-29,day,independent_event,Syndicate,"[""Syndicate桥协议""]","[""Base""]",direct,桥升级私钥遭泄露，攻击者据此提交恶意升级，改变合约行为后进行代币增发和资产转出。,pending
+EVT-000134,Wasabi Perps,2026-04-30,day,independent_event,Wasabi,[],[],unclear,,pending
+EVT-000135,TAC 桥误认伪造 TON Jetton 钱包（TAC Bridge）,2026-05-11,day,independent_event,TAC,"[""TAC Bridge桥协议""]","[""TON"",""TAC""]",direct,攻击者部署外观类似合法 Jetton 钱包的 TON 合约。,pending
+EVT-000136,Transit Finance 旧路由遗留授权被利用（Transit Finance legacy TRON router）,2026-05-13,day,independent_event,Transit Finance,"[""Transit桥协议""]","[""TRON"",""Ethereum""]",partial,一份2022年已弃用的路由合约仍可调用，而且保留了用户授权额度。,pending
+EVT-000137,THORChain GG20 阈值签名份额泄漏（THORChain TSS GG20）,2026-05-15,day,independent_event,THORChain,"[""THORChain桥协议""]","[""THORChain""]",direct,恶意节点诱发864次 GG20 MTA 签名失败，借失败过程中泄露的信息收集足够份额，最终重建金库私钥。,pending
+EVT-000138,Adshares 桥铸币签名异常（待确认）（Adshares Bridge）,2026-05-15,day,independent_event,Adshares,"[""Adshares桥协议""]","[""Adshares"",""Ethereum""]",direct,已有线索称桥 minter 的 EOA 为不存在的主链交易签发 wrapTo，且没有独立源状态证明把该签名与真实存款绑定。,pending
+EVT-000139,Verus—Ethereum 桥首次空导出验证事件（Verus-Ethereum Bridge first incident）,2026-05-18,day,independent_event,Verus,"[""Verus桥协议""]","[""Ethereum"",""Verus""]",direct,空 export 或补充输出被桥解析成有效跨链转移，价值约束及语义检查不足，允许没有对应资产意义的证明驱动提款。,pending
+EVT-000140,Echo Bridge 攻击告警（待确认）（Echo Bridge）,2026-05-18,day,independent_event,Echo,"[""Echo桥协议""]",[],direct,安全事件库出现 Echo Bridge 遭攻击的告警，但原始根因分析和精确受影响产品尚未找到。,pending
+EVT-000141,MAP/Butter V3.1 重试消息编码碰撞（MAP or Butter Bridge V3.1）,2026-05-20,day,independent_event,MAP Protocol / Butter（沿用账本归属）,"[""Butter桥协议""]","[""Ethereum"",""MAP Protocol"",""BNB Chain""]",direct,OmniServiceProxy 的 retry 消息将多个动态字节字段直接紧密拼接，未保留边界；不同输入因此可能得到同一哈希，原有认证被重新解释。,pending
+EVT-000142,New Market Trading,2026-05-25,day,independent_event,New Market Trading,[],[],unclear,,pending
+EVT-000143,Gravity Bridge 代币映射污染（Gravity Bridge denom poisoning）,2026-05-30,day,independent_event,Gravity Bridge,"[""Gravity桥协议""]","[""Ethereum"",""Gravity""]",direct,无需许可的 deployERC20 路径缺少 denom 与地址冲突检查，攻击者污染代币映射，使一个资产标识被解析为错误的代币关系。,pending
+EVT-000144,Alephium 桥观察节点被隔离后签出假事件（Alephium TokenBridge）,2026-05-30,day,independent_event,Alephium,"[""Wormhole / VAA""]","[""BNB Chain"",""Ethereum"",""Alephium""]",direct,观察者使用的全节点遭网络隔离，较弱的重新观察兜底逻辑接受了错误源事件，促使持有有效密钥的 Guardians 对虚假事实签名。,pending
+EVT-000145,Syscoin UTXO—NEVM 重复资产承诺歧义（Syscoin UTXO-NEVM Bridge）,2026-06-07,day,independent_event,Syscoin,"[""Syscoin桥协议""]","[""Syscoin NEVM"",""Syscoin UTXO""]",direct,同一交易包含重复的资产承诺，Syscoin Core 和 NEVM 中继对歧义载荷采用不同解析结果，后者将某些内容解释为原生 SYS。,pending
+EVT-000146,Humanity 跨链路线多签凭证集中失陷（Humanity Protocol Hyperlane route）,2026-06-08,day,independent_event,Humanity Protocol,"[""Hyperlane""]",[],direct,攻击者通过恶意软件和远程桌面控制一台同时持有三个 Safe 签名者凭证的工作站，因而突破表面的多签分散性。,pending
+EVT-000147,Secret—Axelar 集成桥未验证源通道（Secret-Axelar IBC bridge）,2026-06-10,day,independent_event,Secret Network,"[""IBC / ICS-20""]","[""Axelar"",""Ethereum"",""Secret Network"",""Osmosis"",""BNB Chain""]",direct,Secret 侧 ics20-for-axelar 从托管模型改为铸销模型时移除了隐含来源认证，却只补了币种白名单。,pending
+EVT-000148,已停用 Aztec Connect 结算约束漏洞（Aztec Connect deprecated rollup）,2026-06-14,day,independent_event,Aztec Labs（旧Aztec Connect）,"[""Aztec桥协议""]","[""Ethereum""]",direct,旧 Aztec Connect 的证明未充分约束其副作用与结算系统实际处理的存入、提出效果一致。,pending
+EVT-000149,Aztec 旧隐私桥逃生证明未绑定收款人（Aztec Private Rollup Bridge）,2026-06-17,day,independent_event,Aztec Labs（旧Private Rollup）,"[""Aztec桥协议""]","[""Ethereum""]",direct,已弃用隐私 rollup 的逃生证明没有把 outputOwner/recipient 与合法 note 所有人充分绑定，使提款证明能够指定不应取得资产的接收者。,pending
+EVT-000150,Namada MASP / IBC 转账资金异常线索（待核实）,2026-06-19,day,independent_event,,"[""IBC / ICS-20""]","[""Namada""]",direct,存在资金流出线索，但漏洞步骤、交易归属和实际损失尚不能确认。,pending
+EVT-000151,Taiko 桥接受调试证明者的虚假最终性（Taiko Bridge）,2026-06-21,day,independent_event,Taiko,"[""Taiko桥协议""]","[""Ethereum"",""Taiko""]",direct,签名密钥暴露，加上证明认证未拒绝 debug prover，使攻击者能够提供不应被生产环境认可的 L2 最终性证明。,pending
+EVT-000152,Nomic nBTC 自定义转发重复花费（Nomic nBTC custom-forwarding double-spend）,2026-06-25,day,independent_event,Nomic DAO Foundation,"[""IBC / ICS-20""]","[""Nomic"",""Osmosis""]",direct,Nomic的custom forwarding路径允许同一nBTC价值重复使用，形成无真实BTC支撑的凭据，并通过IBC进入Osmosis的Alloyed BTC组合。,pending
+EVT-000153,TeleSwap 比特币热钱包异常流出（待确认）（TeleSwap）,2026-07-15,day,independent_event,TeleSwap,"[""TeleSwap桥协议""]","[""Bitcoin""]",direct,比特币热钱包出现与密钥失陷相符的异常转出，但没有找到运营方公开根因报告，因此“密钥失陷”仍是线索解释而非已确认结论。,pending
+EVT-000154,Across Solana 中继器误认伪造存款日志（Across Solana relayer）,2026-07-17,day,independent_event,Across,"[""Across桥协议""]","[""Solana""]",direct,链下 SVM 事件读取器漏查 Anchor 的8字节事件 discriminator，把攻击者提供的 CPI/日志字节解析成真实存款，即使源链没有资金到账也触发 Risk Labs 中继器垫款。,pending
+EVT-000155,Allbridge Core Solana 稳定币池比例操纵（Allbridge Core Solana pool）,2026-07-19,day,independent_event,Allbridge,"[""Allbridge桥协议""]","[""Solana""]",partial,攻击者利用大额闪电贷在Solana的USDC/USDT池内快速换币，操纵内部资产比例，再按被扭曲的条件取走池中流动性。,pending
+EVT-000156,Wanchain Cardano—BNB 桥数值字段拼接歧义（Wanchain Cardano-BNB Bridge）,2026-07-21,day,independent_event,Wanchain,"[""Wanchain桥协议""]","[""Cardano"",""BNB Chain""]",direct,签名消息对相邻、可变长的 NIGHT 数量与 ADA 数量直接拼接后哈希，没有固定边界。,pending
+EVT-000157,AFX 托管桥热验证者密钥失陷（AFX custody bridge）,2026-07-22,day,independent_event,AFX Trade,"[""AFX桥协议""]","[""Ethereum"",""Arbitrum""]",direct,开发环境或供应链入侵暴露足够的热验证者私钥，使攻击者达到约三分之二签名门槛。,pending
+EVT-000158,Verus—Ethereum 桥第二次提款背书验证事件（Verus-Ethereum Bridge second incident）,2026-07-23,day,independent_event,Verus,"[""Verus桥协议""]","[""Ethereum"",""Verus""]",direct,现有直接技术分析指出，导入证明验证了付款列表自身完整性，却没有保证同等价值已在源链锁定或销毁，从而让无足额背书的提款通过。,pending
+EVT-000159,Garden 独立 Solver 数据库伪造结算记录（Garden independent solver database）,2026-07-26,day,independent_event,Garden,"[""Garden桥协议""]","[""Ethereum"",""Base"",""Arbitrum"",""BNB Chain""]",partial,独立solver的数据库被修改，插入伪造HTLC结算记录，导致该solver按虚假业务状态释放自己的资金。,pending
+EVT-000160,ChainConnect EVM 集成侧未授权访问（ChainConnect Bridge）,2026-07-26,day,independent_event,ChainConnect,"[""ChainConnect桥协议""]","[""Ethereum"",""BNB Chain"",""Avalanche"",""Polygon"",""Venom""]",direct,ChainConnect的EVM集成部分出现未经授权的访问，随后发生异常资产流出；最终的技术入口没有公开，不能替它补成密钥泄漏或消息验证绕过。,pending
+EVT-000161,WEMIX Dollar 管理权限导致未授权增发（WEMIX unauthorized mint）,2026-07-26,day,independent_event,WEMIX,"[""WEMIX unauthorized mint桥协议""]",[],partial,WEMIX Dollar的owner权限被控制，攻击者凭管理能力铸出未获授权的代币，再使用CCIP及PLAY Bridge路线转移和兑换。,pending
+EVT-000162,Coreum—XRPL 桥把路由付款误当存款（Coreum-XRPL Bridge）,2026-08-09,day,independent_event,Coreum（后称tx）,"[""Coreum桥协议""]","[""XRP Ledger"",""Coreum""]",direct,XRPL的rippling使第三方付款也出现在桥发行账户的历史里。,pending
+EVT-000163,Oraichain EVM 跨链路径未授权铸币（Oraichain EVM cross-chain path）,2026-08-09,day,independent_event,Oraichain,"[""Oraichain EVM cross-chain path桥协议""]","[""Oraichain""]",direct,官方承认EVM跨链转账路径可被利用来未经授权铸造ORAI，但未公布具体函数、缺失检查和受影响版本。,pending
+EVT-000164,Maya 观测记录覆盖触发虚假惩罚补贴（Maya Protocol）,2026-08-18,day,independent_event,Maya Protocol,"[""Maya Protocol桥协议""]","[""Bitcoin""]",direct,一笔含23条消息的MsgDeposit中，后续消息覆盖共享ObservedTxVoter，出站匹配因此误判真实提款未发生，触发了错误“失窃”惩罚。,pending
+EVT-000165,Allbridge Next 把真实 CCTP 通用证明误当USDC到账（Allbridge CCTP Next Router）,2026-08-19,day,independent_event,Allbridge,"[""Circle CCTP（集成路径）""]","[""Base"",""Polygon""]",direct,攻击者7月26日经无许可sendMessage提交通用消息，Circle对该真实消息签发attestation；这里没有伪造Circle签名，也没有相应USDC销毁和铸币。,pending
+EVT-000166,Cosmos EVM 宿主链余额漏洞及跨链转出（Cosmos EVM series bridge usage）,2026-08-20,day,independent_event,Cosmos EVM及受影响宿主链,"[""Cosmos EVM series bridge usage桥协议""]",[],partial,共享Cosmos EVM代码的vesting账户下溢和受害余额上溢使宿主链真实余额被重新分配，而非在宿主链增加总供应。,pending
+EVT-000167,The Sandbox SAND OFT 验证配置被改写（The Sandbox LayerZero OFT bridge）,2026-08-21,day,independent_event,The Sandbox,"[""LayerZero""]","[""Ethereum"",""Base"",""BNB Chain""]",direct,SAND的LayerZero集成配置权限存在问题，攻击者可将自身设成入站消息的唯一验证者，进而在Base和BNB Chain发行无背书SAND。,pending
+EVT-000168,warp.green 将无价值CAT销毁误认作wUSDC销毁（warp.green ERC20 Bridge）,2026-08-23,day,independent_event,warp.green,"[""warp.green桥协议""]","[""Chia"",""Base"",""Ethereum""]",direct,Chialisp的burner puzzle让无价值CAT代币看似完成wUSDC销毁，验证者对错误的资产语义签名，使目标端以为有应予兑付的美元稳定币。,pending
+EVT-000169,SKALE Ethereum 侧 IMA 基础设施失陷（SKALE IMA Bridge）,2026-08-27,day,independent_event,SKALE,"[""SKALE IMA Bridge桥协议""]","[""SKALE"",""Ethereum""]",direct,运行验证者节点的基础设施服务商被攻破，攻击者经SKALE的IMA桥转走受影响ERC-20资产。,pending
+EVT-000170,ICON—Sonic 迁移桥整数序列化重放（ICON-Sonic migration bridge）,2026-08-27,day,independent_event,ICON迁移桥,"[""ICON-Sonic migration bridge桥协议""]","[""ICON"",""Sonic""]",direct,"两个端点对整数序列化处理不同，攻击者将两条已签提款消息改造成更大数值并反复重放，共执行约1,492次。",pending
+EVT-000171,Avail 主网升级导致出块与最终性中断（Avail DA mainnet liveness and finality）,2026-08-31,day,independent_event,Avail,"[""Avail DA mainnet liveness and finality桥协议""]","[""Avail""]",partial,故障紧急runtime升级使Avail主网失去正常出块和最终性，依赖该链确认结果的服务无法按原时序推进。,pending
+EVT-000172,Circle CCTP 证明服务短时延迟（Circle CCTP attestation delay）,2026-09-02,day,independent_event,Circle,"[""Circle CCTP（集成路径）""]",[],direct,CCTP的链下attestation处理短时落后，源交易之后未能按正常时延取得证明，目标链铸币步骤因而需要继续等待。,pending
+EVT-000173,Kraken 多条Cosmos系链充值提现延迟（Kraken Cosmos-family funding delays）,2026-09-04,day,independent_event,Kraken,"[""Kraken Cosmos-family funding delays桥协议""]",[],non_crosschain,Kraken资金服务出现未披露内部原因的问题，影响多个Cosmos系网络的充值提现网关；当前没有证据表明这些链的桥协议共同遭攻击。,pending
+EVT-000174,Liquid 范围证明缓存键碰撞及BTC兑出（Liquid Network peg-out）,2026-09-06,day,independent_event,Liquid Federation / Blockstream,"[""Liquid Network peg-out桥协议""]","[""Liquid"",""Bitcoin""]",direct,Elements把范围证明、承诺、资产承诺与scriptPubKey直接拼接生成成功验证缓存键，字段边界可变却无唯一编码。,pending
+EVT-000175,Symbiosis BTC Bridge syBTC 异常铸造与兑现,2026-09-11,day,independent_event,Symbiosis,"[""Symbiosis桥协议""]","[""BNB Chain"",""Ethereum""]",direct,监测到异常巨量 syBTC 铸造及相关受益人在 Ethereum 池卖出 WBTC；尚未完成跨链全量资金闭环。,pending
+EVT-000176,JFIN,,unknown,pending_split_group,JFIN,"[""JFIN桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000177,ALEX / XLink Bridge,,unknown,pending_split_group,ALEX,"[""ALEX桥协议""]",[],unclear,,pending
+EVT-000178,Poly Network,,unknown,pending_split_group,Poly Network,"[""Poly Network桥协议""]",[],unclear,,pending
+EVT-000179,88mph,,unknown,pending_split_group,88mph,[],"[""Ethereum""]",unclear,,pending
+EVT-000180,zkSync,,unknown,pending_split_group,zkSync,"[""zkSync桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000181,Cheese Bank,,unknown,pending_split_group,Cheese Bank,[],"[""Ethereum""]",unclear,,pending
+EVT-000182,Rainbow Bridge failed attack May 2022,,unknown,pending_split_group,Rainbow,"[""Rainbow桥协议""]",[],unclear,,pending
+EVT-000183,Badger,,unknown,pending_split_group,Badger,[],"[""Ethereum""]",unclear,,pending
+EVT-000184,Beanstalk,,unknown,pending_split_group,Beanstalk,[],"[""Ethereum""]",unclear,,pending
+EVT-000185,bZx,,unknown,pending_split_group,bZx,[],"[""Ethereum""]",unclear,,pending
+EVT-000186,Wormhole,,unknown,pending_split_group,Wormhole,"[""Wormhole / VAA""]","[""Ethereum"",""Solana""]",unclear,,pending
+EVT-000187,pNetwork,,unknown,pending_split_group,pNetwork,"[""pNetwork桥协议""]","[""BNB Chain""]",unclear,,pending
+EVT-000188,WarpFinance,,unknown,pending_split_group,WarpFinance,[],"[""Ethereum""]",unclear,,pending
+EVT-000189,Hacken,,unknown,pending_split_group,Hacken,"[""Hacken桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000190,Ronin Bridge #2,,unknown,pending_split_group,Ronin,"[""Ronin桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000191,X bridge,,unknown,pending_split_group,XBridge,"[""XBridge桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000192,QANplatform Bridge,,unknown,pending_split_group,QANplatform,"[""QANplatform桥协议""]","[""BNB Chain"",""Ethereum""]",unclear,,pending
+EVT-000193,Akropolis,,unknown,pending_split_group,Akropolis,[],"[""Ethereum""]",unclear,,pending
+EVT-000194,Transit Swap,,unknown,pending_split_group,Transit,"[""Transit桥协议""]","[""BNB Chain"",""Ethereum""]",unclear,,pending
+EVT-000195,Poly Network #2,,unknown,pending_split_group,Poly Network,"[""Poly Network桥协议""]","[""BNB Chain"",""Ethereum""]",unclear,,pending
+EVT-000196,Ronin Bridge,,unknown,pending_split_group,Ronin,"[""Ronin桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000197,certik-bridge-tracing-2024,,unknown,pending_split_group,Bridge Tracing,"[""Bridge Tracing桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000198,AllBridge,,unknown,pending_split_group,Allbridge,"[""Allbridge桥协议""]","[""BNB Chain""]",unclear,,pending
+EVT-000199,LI.FI 早期攻击,,unknown,pending_split_group,LI.FI,"[""LI.FI桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000200,Verus-Ethereum Bridge,,unknown,pending_split_group,Verus,"[""Verus桥协议""]",[],unclear,,pending
+EVT-000201,Rubic router exploit,,unknown,pending_split_group,Rubic,"[""Rubic桥协议""]","[""Ethereum""]",unclear,,pending
+EVT-000202,Opyn,,unknown,pending_split_group,Opyn,[],"[""Ethereum""]",unclear,,pending
+EVT-000203,Thorchain DEX Vault Churn,,unknown,pending_split_group,THORChain,"[""THORChain桥协议""]","[""Ethereum""]",unclear,,pending

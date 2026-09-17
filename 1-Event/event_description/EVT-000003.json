@@ -1,0 +1,80 @@
+{
+  "event_id": "EVT-000003",
+  "event_name": "THORChain 将伪造代币识别为原生 ETH",
+  "summary": "攻击者构造特殊 ERC-20 代币，使 THORChain Bifrost 将其识别为原生 ETH，零 ETH 入账的交易被计作有效存款并换出池中真实资产。",
+  "background": "事件涉及 Ethereum Bifrost 入站解析。事件卡片记载事件日沿用账本链上基线 2021-06-28，官方复盘发表于 2021-06-29。",
+  "timeline": [
+    {
+      "time": "2021-06-28",
+      "description": "事件按账本链上基线记录。攻击者利用特殊 ERC-20 代币与 symbol 解析路径制造虚假 ETH 存款。",
+      "reference_ids": [
+        "ref-1"
+      ]
+    },
+    {
+      "time": "2021-06-29",
+      "description": "THORChain 官方复盘披露根因、资产清单及停网、修复和恢复交换的处置过程。",
+      "reference_ids": [
+        "ref-1"
+      ]
+    }
+  ],
+  "root_cause": "资产初始化与 symbol 分支把特殊 ERC-20 代币识别成原生 ETH，导致零 ETH 交易被接受为有效存款。",
+  "impact": "官方复盘约 13.9 万—14 万美元，资产含 ETH、PERP、YFI、SUSHI；原表另保留约 35 万美元报道，口径有冲突，最终净损未独立核算。",
+  "transaction_ids": [
+    "TXN-000133",
+    "TXN-000143",
+    "TXN-000181",
+    "TXN-000273",
+    "TXN-000370",
+    "TXN-000424",
+    "TXN-000435",
+    "TXN-000440",
+    "TXN-000487",
+    "TXN-000501",
+    "TXN-000505"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "THORChain 官方解析漏洞复盘",
+      "url": "https://blog.thorchain.org/eth-parsing-error-and-exploit"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "修复合并请求 #1783",
+      "url": "https://gitlab.com/thorchain/thornode/-/merge_requests/1783/diffs"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "SlowMist 事件目录",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=5"
+    }
+  ],
+  "uncertainties": [
+    "事件日沿用账本链上基线，官方复盘发表于次日。",
+    "官方约 13.9 万—14 万美元与旧表约 35 万美元的金额口径不能相加，最终净损未独立核算。",
+    "修复合并请求正文未在本轮读取，不能仅据卡片确认全部部署和复测闭环。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件 2021-06-28（账本链上基线）；官方复盘发表于 2021-06-29。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | Ethereum Bifrost 入站解析（原记录：THORChain ETH symbol parsing） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 官方复盘约 13.9万—14万美元，资产含 ETH、PERP、YFI、SUSHI；原表另保留约35万美元报道，口径有冲突，不能相加。最终净损未独立核算。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者构造特殊 ERC-20 代币，使 Bifrost 的资产初始化与 symbol 分支把它识别成原生 ETH。于是零 ETH 入账的交易也被计作有效 ETH 存款，并换出池中的真实资产。\n\n问题在资产身份绑定：代币名称相同不能证明是原生 ETH。后续仍待观察的恶意交易还可能在节点重新上线时继续执行，因此恢复不仅需要修改解析器。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：解析器已修补并恢复交换，最终补偿对账待核。**\n\n官方称节点停网后约两小时形成软件修复、约四小时达到升级超多数、约六小时恢复交换。修复以空资产初始化并分开处理原生 ETH 与 ERC-20，同时临时忽略已识别的待处理攻击交易。\n\n复盘另列金库补足、节点保证金返还与举报奖励；这些是资金及运营安排，本文未核到逐笔完成记录。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 官方解析漏洞复盘](https://blog.thorchain.org/eth-parsing-error-and-exploit)：本轮网页核读；支持根因、损失清单及恢复时间。\n- [修复合并请求 #1783](https://gitlab.com/thorchain/thornode/-/merge_requests/1783/diffs)：官方复盘提供的代码锚点；本轮未读取差异正文。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=5)：沿用账本；仅作日期／金额冲突线索。\n\n待确认：事件日沿用已核链上基线 2021-06-28；官方文章日期为 06-29。13.9万美元优先引用官方资产清单，旧表35万美元来源范围仍待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2021-001",
+  "source_card_markdown": "# THORChain 将伪造代币识别为原生 ETH\n\n> 事件编号：EV2021-001｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件 2021-06-28（账本链上基线）；官方复盘发表于 2021-06-29。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | Ethereum Bifrost 入站解析（原记录：THORChain ETH symbol parsing） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 官方复盘约 13.9万—14万美元，资产含 ETH、PERP、YFI、SUSHI；原表另保留约35万美元报道，口径有冲突，不能相加。最终净损未独立核算。 |\n\n## 2. 原因与经过\n\n攻击者构造特殊 ERC-20 代币，使 Bifrost 的资产初始化与 symbol 分支把它识别成原生 ETH。于是零 ETH 入账的交易也被计作有效 ETH 存款，并换出池中的真实资产。\n\n问题在资产身份绑定：代币名称相同不能证明是原生 ETH。后续仍待观察的恶意交易还可能在节点重新上线时继续执行，因此恢复不仅需要修改解析器。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：解析器已修补并恢复交换，最终补偿对账待核。**\n\n官方称节点停网后约两小时形成软件修复、约四小时达到升级超多数、约六小时恢复交换。修复以空资产初始化并分开处理原生 ETH 与 ERC-20，同时临时忽略已识别的待处理攻击交易。\n\n复盘另列金库补足、节点保证金返还与举报奖励；这些是资金及运营安排，本文未核到逐笔完成记录。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 官方解析漏洞复盘](https://blog.thorchain.org/eth-parsing-error-and-exploit)：本轮网页核读；支持根因、损失清单及恢复时间。\n- [修复合并请求 #1783](https://gitlab.com/thorchain/thornode/-/merge_requests/1783/diffs)：官方复盘提供的代码锚点；本轮未读取差异正文。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=5)：沿用账本；仅作日期／金额冲突线索。\n\n待确认：事件日沿用已核链上基线 2021-06-28；官方文章日期为 06-29。13.9万美元优先引用官方资产清单，旧表35万美元来源范围仍待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

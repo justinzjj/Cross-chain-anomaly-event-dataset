@@ -1,0 +1,53 @@
+{
+  "event_id": "EVT-000165",
+  "event_name": "Allbridge Next 把真实 CCTP 通用证明误当USDC到账（Allbridge CCTP Next Router）",
+  "summary": "攻击者7月26日经无许可sendMessage提交通用消息，Circle对该真实消息签发attestation；这里没有伪造Circle签名，也没有相应USDC销毁和铸币。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "Base Router原有191,156 USDC流动性被耗尽；主攻击者利润189,751.554381 USDC，另有1,000 USDC费用由模仿者取得；利润不等于协议最终净损。",
+  "transaction_ids": [
+    "TXN-000087",
+    "TXN-000088"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "SlowMist Allbridge 攻击分析",
+      "url": "https://slowmist.medium.com/a-cross-chain-attack-spanning-one-month-analysis-of-the-allbridge-hack-32a6183bce08"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Circle CCTP 技术指南",
+      "url": "https://developers.circle.com/cctp/references/technical-guide"
+    }
+  ],
+  "uncertainties": [
+    "待确认：还需Allbridge官方事故及部署报告、追回和最终净损。Circle文档明确通用消息不自动具备USDC到账语义；两方互相假定校验的说法不成立。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-19（UTC账本事件日） |\n| 披露/报告时间 | 2026-08-22（SlowMist技术分析） |\n| 团队/项目 | Allbridge |\n| 跨链桥或产品 | Allbridge CCTP Next Router |\n| 底层协议 | Circle CCTP MessageTransmitterV2通用消息；Allbridge Next Router |\n| 涉及链 | Polygon通用消息 → Base Router |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Base Router原有191,156 USDC流动性被耗尽；主攻击者利润189,751.554381 USDC，另有1,000 USDC费用由模仿者取得；利润不等于协议最终净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者7月26日经无许可sendMessage提交通用消息，Circle对该真实消息签发attestation；这里没有伪造Circle签名，也没有相应USDC销毁和铸币。\n\nAllbridge未将header.sender/recipient绑定到两端TokenMessenger，也未核Router可归因USDC增量，便记入100万USDC虚假credit。8月19日真实入金补足部分余额后，攻击者借流动性完成提款。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：账本记载停用路由，部署修复尚无证据。**\n\n账本保留路由停用措施。本轮父agent核读SlowMist原文，文末发送者/接收者绑定与到账校验均为修复建议，没有项目已部署证明。建议应以真实mint或可归因余额增量建credit，并绑定币种、域、金额、接收者及单次消费；不写为已完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [SlowMist Allbridge 攻击分析](https://slowmist.medium.com/a-cross-chain-attack-spanning-one-month-analysis-of-the-allbridge-hack-32a6183bce08)：本轮网页核读（主任务复核）；支持真实通用证明被误当入金、损失数与仅有修复建议。\n- [Circle CCTP 技术指南](https://developers.circle.com/cctp/references/technical-guide)：本轮网页核读；支持通用sendMessage与USDC burn/mint不同的责任边界。\n\n待确认：还需Allbridge官方事故及部署报告、追回和最终净损。Circle文档明确通用消息不自动具备USDC到账语义；两方互相假定校验的说法不成立。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->"
+    },
+    {
+      "title": "2026-09-12 CVV审计证据与机制补充",
+      "content": "以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [消息载荷解析必须拒绝无效视图](../../CVV补全/审计卡片/CVVR-315b19c4bf65.md#f-002) | 历史架构背景（非事故根因） | CCTP历史架构和解析背景，不是Pike或Allbridge事件根因；真实attestation仍不等于burn/mint到账。 原报告核验：primary_report_read。 |\n| [Hyperlane与Circle域号映射歧义](../../CVV补全/审计卡片/CVVR-b9cb415534ca.md#f-001) | 机制类比（非本事故证据） | 域映射属于集成语义，不证明Circle通用消息层失效。 原报告核验：not_read。 |\n| [mint/burn返回值未绑定资产操作结果](../../CVV补全/审计卡片/CVVR-73ed0b8825c9.md#f-005) | 机制类比（非本事故证据） | 消息成功与资产事实分开；不能据此归责Allbridge所用CCTP或LayerZero核心。 原报告核验：not_read。 |\n| [只确认消息ID却未绑定完整内容](../../CVV补全/审计卡片/CVVR-edc266ad8af3.md#f-003) | 机制类比（非本事故证据） | 确认对象与执行载荷必须绑定；Hashi审计发现不是Allbridge事故证据。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->"
+    }
+  ],
+  "source_event_id": "EV2026-039",
+  "source_card_markdown": "# Allbridge Next 把真实 CCTP 通用证明误当USDC到账（Allbridge CCTP Next Router）\n\n> 2026-09-12 v0.5 接续：本条已在 CSV 同步部分事实/来源或别名；具体修改见[字段修订](../../29-既有事件字段修订.csv)。下文提及“原账本”的差异以修改前基线理解，未涉及的处置限定仍保留。\n\n> 事件编号：EV2026-039｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-19（UTC账本事件日） |\n| 披露/报告时间 | 2026-08-22（SlowMist技术分析） |\n| 团队/项目 | Allbridge |\n| 跨链桥或产品 | Allbridge CCTP Next Router |\n| 底层协议 | Circle CCTP MessageTransmitterV2通用消息；Allbridge Next Router |\n| 涉及链 | Polygon通用消息 → Base Router |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Base Router原有191,156 USDC流动性被耗尽；主攻击者利润189,751.554381 USDC，另有1,000 USDC费用由模仿者取得；利润不等于协议最终净损。 |\n\n## 2. 原因与经过\n\n攻击者7月26日经无许可sendMessage提交通用消息，Circle对该真实消息签发attestation；这里没有伪造Circle签名，也没有相应USDC销毁和铸币。\n\nAllbridge未将header.sender/recipient绑定到两端TokenMessenger，也未核Router可归因USDC增量，便记入100万USDC虚假credit。8月19日真实入金补足部分余额后，攻击者借流动性完成提款。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：账本记载停用路由，部署修复尚无证据。**\n\n账本保留路由停用措施。本轮父agent核读SlowMist原文，文末发送者/接收者绑定与到账校验均为修复建议，没有项目已部署证明。建议应以真实mint或可归因余额增量建credit，并绑定币种、域、金额、接收者及单次消费；不写为已完成。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [SlowMist Allbridge 攻击分析](https://slowmist.medium.com/a-cross-chain-attack-spanning-one-month-analysis-of-the-allbridge-hack-32a6183bce08)：本轮网页核读（主任务复核）；支持真实通用证明被误当入金、损失数与仅有修复建议。\n- [Circle CCTP 技术指南](https://developers.circle.com/cctp/references/technical-guide)：本轮网页核读；支持通用sendMessage与USDC burn/mint不同的责任边界。\n\n待确认：还需Allbridge官方事故及部署报告、追回和最终净损。Circle文档明确通用消息不自动具备USDC到账语义；两方互相假定校验的说法不成立。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->\n## 2026-09-12 CVV审计证据与机制补充\n\n以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [消息载荷解析必须拒绝无效视图](../../CVV补全/审计卡片/CVVR-315b19c4bf65.md#f-002) | 历史架构背景（非事故根因） | CCTP历史架构和解析背景，不是Pike或Allbridge事件根因；真实attestation仍不等于burn/mint到账。 原报告核验：primary_report_read。 |\n| [Hyperlane与Circle域号映射歧义](../../CVV补全/审计卡片/CVVR-b9cb415534ca.md#f-001) | 机制类比（非本事故证据） | 域映射属于集成语义，不证明Circle通用消息层失效。 原报告核验：not_read。 |\n| [mint/burn返回值未绑定资产操作结果](../../CVV补全/审计卡片/CVVR-73ed0b8825c9.md#f-005) | 机制类比（非本事故证据） | 消息成功与资产事实分开；不能据此归责Allbridge所用CCTP或LayerZero核心。 原报告核验：not_read。 |\n| [只确认消息ID却未绑定完整内容](../../CVV补全/审计卡片/CVVR-edc266ad8af3.md#f-003) | 机制类比（非本事故证据） | 确认对象与执行载荷必须绑定；Hashi审计发现不是Allbridge事故证据。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->\n",
+  "review_status": "pending"
+}

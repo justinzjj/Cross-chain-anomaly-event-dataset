@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000097",
+  "event_name": "Noble CCTP 未绑定远端 TokenMessenger 的 USDC 铸币漏洞",
+  "summary": "被认证的普通消息被解释为资产销毁授权，使 Noble 的业务铸币条件被绕过。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "验证了通用消息 attestation，但未将 header sender 绑定到该 source domain 的可信 TokenMessenger。",
+  "impact": "研究报告称无利用损失；约 3,500 万 USDC 是当时铸币额度风险上限，不是无限已实现损失。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://blog.asymmetric.re/circles-cctp-noble-mint-bug/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://github.com/noble-assets/noble/blob/main/CHANGELOG.md"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://github.com/circlefin/noble-cctp/commit/253cf7eb943669e283b4dcb25f83c7096080e67a"
+    }
+  ],
+  "uncertainties": [
+    "待补：历史铸币额度与每个节点的部署状态未独立重建。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2024-08-27。事件日期采用 2024-08-27 公开披露日；修复 commit 为 2024-05-10；原始接报日期未建立。\n- 对象：Noble CCTP message receiver；底层协议：Circle CCTP Noble integration。\n- 路线：CCTP source domains → Noble。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E1+E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：仅由对应域可信 TokenMessenger 发送的真实 USDC 销毁消息可在 Noble 铸币。\n\n异常流程：被认证的普通消息被解释为资产销毁授权，使 Noble 的业务铸币条件被绕过。\n\n直接原因：验证了通用消息 attestation，但未将 header sender 绑定到该 source domain 的可信 TokenMessenger。\n\n资金影响：研究报告称无利用损失；约 3,500 万 USDC 是当时铸币额度风险上限，不是无限已实现损失。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "接报后暂停并修复；2024-05-10 commit 与 Noble v4.1.3 变更日志互相对应。\n\n取 source domain 的 RemoteTokenMessenger，比较 message.Sender 与其登记地址；已核读 commit diff。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "漏洞边界是 Noble CCTP 接入，不是 Circle 所有部署。与 EV2024-012 Pike、EV2026-039 Allbridge 是机制相近的不同事件。 日期口径：事件日期采用 2024-08-27 公开披露日；修复 commit 为 2024-05-10；原始接报日期未建立。\n\n待补：历史铸币额度与每个节点的部署状态未独立重建。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://blog.asymmetric.re/circles-cctp-noble-mint-bug/)\n- [来源 2](https://github.com/noble-assets/noble/blob/main/CHANGELOG.md)\n- [来源 3](https://github.com/circlefin/noble-cctp/commit/253cf7eb943669e283b4dcb25f83c7096080e67a)"
+    }
+  ],
+  "source_event_id": "EV2024-019",
+  "source_card_markdown": "# EV2024-019 · Noble CCTP 未绑定远端 TokenMessenger 的 USDC 铸币漏洞\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2024-08-27。事件日期采用 2024-08-27 公开披露日；修复 commit 为 2024-05-10；原始接报日期未建立。\n- 对象：Noble CCTP message receiver；底层协议：Circle CCTP Noble integration。\n- 路线：CCTP source domains → Noble。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E1+E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：仅由对应域可信 TokenMessenger 发送的真实 USDC 销毁消息可在 Noble 铸币。\n\n异常流程：被认证的普通消息被解释为资产销毁授权，使 Noble 的业务铸币条件被绕过。\n\n直接原因：验证了通用消息 attestation，但未将 header sender 绑定到该 source domain 的可信 TokenMessenger。\n\n资金影响：研究报告称无利用损失；约 3,500 万 USDC 是当时铸币额度风险上限，不是无限已实现损失。\n\n## 3. 是否解决、如何解决\n\n接报后暂停并修复；2024-05-10 commit 与 Noble v4.1.3 变更日志互相对应。\n\n取 source domain 的 RemoteTokenMessenger，比较 message.Sender 与其登记地址；已核读 commit diff。\n\n## 4. 证据与边界\n\n漏洞边界是 Noble CCTP 接入，不是 Circle 所有部署。与 EV2024-012 Pike、EV2026-039 Allbridge 是机制相近的不同事件。 日期口径：事件日期采用 2024-08-27 公开披露日；修复 commit 为 2024-05-10；原始接报日期未建立。\n\n待补：历史铸币额度与每个节点的部署状态未独立重建。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://blog.asymmetric.re/circles-cctp-noble-mint-bug/)\n- [来源 2](https://github.com/noble-assets/noble/blob/main/CHANGELOG.md)\n- [来源 3](https://github.com/circlefin/noble-cctp/commit/253cf7eb943669e283b4dcb25f83c7096080e67a)\n",
+  "review_status": "pending"
+}

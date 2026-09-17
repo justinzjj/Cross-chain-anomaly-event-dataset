@@ -1,0 +1,47 @@
+{
+  "event_id": "EVT-000075",
+  "event_name": "Rainbow Bridge log_index 截断导致同一存款证明重复铸币漏洞",
+  "summary": "不同宽整数索引能命中相同日志，却形成不同防重键，破坏一次性消费。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "log_index 的防重表示与 wasm32 数组访问表示不一致：u64 转 usize 截断后指向同一日志。",
+  "impact": "披露为白帽报告；未建立实际盗损。80 万美元是奖励；2^32 是理论重用倍数，不是资产损失额。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://lapitsky.com/how-to-get-paid-800k-for-a-clippy-warning/"
+    }
+  ],
+  "uncertainties": [
+    "待补：原始报告日、补丁 commit、部署交易及奖励台账日期与文章回顾年份的核对。",
+    "冲突：官方论坛奖励支付写 2022-09-08，2023-11-16 技术回顾使用相对年份；不得把奖励日当攻击日。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2023-11-16。事件日期暂用技术文章公开日 2023-11-16，非发现/利用日。论坛列奖励支付 2022-09-08；原始发现与修复日期未知。\n- 对象：Rainbow Bridge NEAR deposit proof consumer；底层协议：Rainbow Bridge。\n- 路线：Ethereum → NEAR。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：每个 Ethereum 存款日志在 NEAR 上只铸币一次。\n\n异常流程：不同宽整数索引能命中相同日志，却形成不同防重键，破坏一次性消费。\n\n直接原因：log_index 的防重表示与 wasm32 数组访问表示不一致：u64 转 usize 截断后指向同一日志。\n\n资金影响：披露为白帽报告；未建立实际盗损。80 万美元是奖励；2^32 是理论重用倍数，不是资产损失额。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方奖励台账确认已处理的报告；技术回顾指出转换与 lint 覆盖缺口，具体部署补丁待补。\n\n本轮未取得确定的补丁提交/部署锚点，不能以 lint 建议代替已部署修复。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "作者属于项目技术背景，官方链接到该文；两页并非两家独立监测机构。确认的是公开漏洞披露，不主张发生盗损。 日期口径：事件日期暂用技术文章公开日 2023-11-16，非发现/利用日。论坛列奖励支付 2022-09-08；原始发现与修复日期未知。\n\n待补：原始报告日、补丁 commit、部署交易及奖励台账日期与文章回顾年份的核对。\n\n冲突：官方论坛奖励支付写 2022-09-08，2023-11-16 技术回顾使用相对年份；不得把奖励日当攻击日。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 2](https://lapitsky.com/how-to-get-paid-800k-for-a-clippy-warning/)"
+    }
+  ],
+  "source_event_id": "EV2023-021",
+  "source_card_markdown": "# EV2023-021 · Rainbow Bridge log_index 截断导致同一存款证明重复铸币漏洞\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2023-11-16。事件日期暂用技术文章公开日 2023-11-16，非发现/利用日。论坛列奖励支付 2022-09-08；原始发现与修复日期未知。\n- 对象：Rainbow Bridge NEAR deposit proof consumer；底层协议：Rainbow Bridge。\n- 路线：Ethereum → NEAR。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：每个 Ethereum 存款日志在 NEAR 上只铸币一次。\n\n异常流程：不同宽整数索引能命中相同日志，却形成不同防重键，破坏一次性消费。\n\n直接原因：log_index 的防重表示与 wasm32 数组访问表示不一致：u64 转 usize 截断后指向同一日志。\n\n资金影响：披露为白帽报告；未建立实际盗损。80 万美元是奖励；2^32 是理论重用倍数，不是资产损失额。\n\n## 3. 是否解决、如何解决\n\n官方奖励台账确认已处理的报告；技术回顾指出转换与 lint 覆盖缺口，具体部署补丁待补。\n\n本轮未取得确定的补丁提交/部署锚点，不能以 lint 建议代替已部署修复。\n\n## 4. 证据与边界\n\n作者属于项目技术背景，官方链接到该文；两页并非两家独立监测机构。确认的是公开漏洞披露，不主张发生盗损。 日期口径：事件日期暂用技术文章公开日 2023-11-16，非发现/利用日。论坛列奖励支付 2022-09-08；原始发现与修复日期未知。\n\n待补：原始报告日、补丁 commit、部署交易及奖励台账日期与文章回顾年份的核对。\n\n冲突：官方论坛奖励支付写 2022-09-08，2023-11-16 技术回顾使用相对年份；不得把奖励日当攻击日。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 2](https://lapitsky.com/how-to-get-paid-800k-for-a-clippy-warning/)\n",
+  "review_status": "pending"
+}

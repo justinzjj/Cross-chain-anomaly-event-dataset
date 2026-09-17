@@ -1,0 +1,42 @@
+{
+  "event_id": "EVT-000117",
+  "event_name": "DIMO 桥部署权限异常线索（待核实）",
+  "summary": "候选材料称发生未经授权的铸造与抛售；流程与交易未独立重建。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "二级材料声称桥部署密钥被获取并异常铸造 DIMO，尚无本轮取得的官方/链上根因证据。",
+  "impact": "报道 3,000 万 DIMO；约 4 万美元套现与约 100 万美元名义估值不可互换；金额未确认。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://www.nominis.io/insights/nominis-monthly-report-crypto-attacks-in-november-2025"
+    }
+  ],
+  "uncertainties": [
+    "待补：官方原始公告、攻击交易/合约、mint 与流出对账、关键权限及修复证据。",
+    "冲突：不同材料混用代币增发量、名义估值和实际套现；不填确定净损。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2025-11-07。2025-11-07 来自二级汇总，未获原始交易时间确认。\n- 对象：DIMO bridge deployer；底层协议：DIMO token bridge。\n- 路线：Unresolved → Unresolved。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 C（E5）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：授权部署/铸币权限只处理对应的真实资产转移。\n\n异常流程：候选材料称发生未经授权的铸造与抛售；流程与交易未独立重建。\n\n直接原因：二级材料声称桥部署密钥被获取并异常铸造 DIMO，尚无本轮取得的官方/链上根因证据。\n\n资金影响：报道 3,000 万 DIMO；约 4 万美元套现与约 100 万美元名义估值不可互换；金额未确认。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "尚缺可核实的桥方事件说明、修复和资金处置结果。\n\n尚未取得可核实的修复部署证据。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "DeFiHackLabs 本轮获取的目录未给出 DIMO 命中；生成式转载页面不作独立技术佐证。 日期口径：2025-11-07 来自二级汇总，未获原始交易时间确认。\n\n待补：官方原始公告、攻击交易/合约、mint 与流出对账、关键权限及修复证据。\n\n冲突：不同材料混用代币增发量、名义估值和实际套现；不填确定净损。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://www.nominis.io/insights/nominis-monthly-report-crypto-attacks-in-november-2025)"
+    }
+  ],
+  "source_event_id": "EV2025-019",
+  "source_card_markdown": "# EV2025-019 · DIMO 桥部署权限异常线索（待核实）\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2025-11-07。2025-11-07 来自二级汇总，未获原始交易时间确认。\n- 对象：DIMO bridge deployer；底层协议：DIMO token bridge。\n- 路线：Unresolved → Unresolved。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 C（E5）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：授权部署/铸币权限只处理对应的真实资产转移。\n\n异常流程：候选材料称发生未经授权的铸造与抛售；流程与交易未独立重建。\n\n直接原因：二级材料声称桥部署密钥被获取并异常铸造 DIMO，尚无本轮取得的官方/链上根因证据。\n\n资金影响：报道 3,000 万 DIMO；约 4 万美元套现与约 100 万美元名义估值不可互换；金额未确认。\n\n## 3. 是否解决、如何解决\n\n尚缺可核实的桥方事件说明、修复和资金处置结果。\n\n尚未取得可核实的修复部署证据。\n\n## 4. 证据与边界\n\nDeFiHackLabs 本轮获取的目录未给出 DIMO 命中；生成式转载页面不作独立技术佐证。 日期口径：2025-11-07 来自二级汇总，未获原始交易时间确认。\n\n待补：官方原始公告、攻击交易/合约、mint 与流出对账、关键权限及修复证据。\n\n冲突：不同材料混用代币增发量、名义估值和实际套现；不填确定净损。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://www.nominis.io/insights/nominis-monthly-report-crypto-attacks-in-november-2025)\n",
+  "review_status": "pending"
+}

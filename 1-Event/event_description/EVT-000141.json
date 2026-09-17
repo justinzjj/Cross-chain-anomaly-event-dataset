@@ -1,0 +1,59 @@
+{
+  "event_id": "EVT-000141",
+  "event_name": "MAP/Butter V3.1 重试消息编码碰撞（MAP or Butter Bridge V3.1）",
+  "summary": "OmniServiceProxy 的 retry 消息将多个动态字节字段直接紧密拼接，未保留边界；不同输入因此可能得到同一哈希，原有认证被重新解释。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "理论可增发约10¹⁵ MAPO，约10亿枚被卖出，已变现约52.21 ETH；理论数量不作损失美元估值。",
+  "transaction_ids": [
+    "TXN-000170",
+    "TXN-000192",
+    "TXN-000209",
+    "TXN-000225",
+    "TXN-000276",
+    "TXN-000342",
+    "TXN-000419",
+    "TXN-000461",
+    "TXN-000569",
+    "TXN-000577",
+    "TXN-000623",
+    "TXN-000647"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://medium.com/mapprotocol/map-protocol-may-updates-5003b0fc5d8f"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需漏洞函数、根交易、替代合约地址与上线记录，以及变现、追回、补偿对账。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-05-20（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | MAP Protocol / Butter（沿用账本归属） |\n| 跨链桥或产品 | MAP or Butter Bridge V3.1 |\n| 底层协议 | MAP/Butter Bridge V3.1；OmniServiceProxy |\n| 涉及链 | MAPO → Ethereum/BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论可增发约10¹⁵ MAPO，约10亿枚被卖出，已变现约52.21 ETH；理论数量不作损失美元估值。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "OmniServiceProxy 的 retry 消息将多个动态字节字段直接紧密拼接，未保留边界；不同输入因此可能得到同一哈希，原有认证被重新解释。\n\n被认可的重试消息驱动异常铸币。根因是编码与消息语义未唯一绑定，不能把结果简化为哈希算法本身遭破解。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已暂停并安排替代合约，部署待确认。**\n\n既有官方月报记录服务暂停、快照以及替代合约审计和补偿安排。审计与替代计划不是已上线证明；本轮未核验新桥部署、复桥或全部补偿完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/mapprotocol/map-protocol-may-updates-5003b0fc5d8f)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需漏洞函数、根交易、替代合约地址与上线记录，以及变现、追回、补偿对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-018",
+  "source_card_markdown": "# MAP/Butter V3.1 重试消息编码碰撞（MAP or Butter Bridge V3.1）\n\n> 事件编号：EV2026-018｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-05-20（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | MAP Protocol / Butter（沿用账本归属） |\n| 跨链桥或产品 | MAP or Butter Bridge V3.1 |\n| 底层协议 | MAP/Butter Bridge V3.1；OmniServiceProxy |\n| 涉及链 | MAPO → Ethereum/BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论可增发约10¹⁵ MAPO，约10亿枚被卖出，已变现约52.21 ETH；理论数量不作损失美元估值。 |\n\n## 2. 原因与经过\n\nOmniServiceProxy 的 retry 消息将多个动态字节字段直接紧密拼接，未保留边界；不同输入因此可能得到同一哈希，原有认证被重新解释。\n\n被认可的重试消息驱动异常铸币。根因是编码与消息语义未唯一绑定，不能把结果简化为哈希算法本身遭破解。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已暂停并安排替代合约，部署待确认。**\n\n既有官方月报记录服务暂停、快照以及替代合约审计和补偿安排。审计与替代计划不是已上线证明；本轮未核验新桥部署、复桥或全部补偿完成。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/mapprotocol/map-protocol-may-updates-5003b0fc5d8f)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需漏洞函数、根交易、替代合约地址与上线记录，以及变现、追回、补偿对账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

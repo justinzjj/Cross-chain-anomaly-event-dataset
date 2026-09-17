@@ -1,0 +1,62 @@
+{
+  "event_id": "EVT-000089",
+  "event_name": "Pike 首次事件：CCTP 接入消息校验不足",
+  "summary": "Pike 把未经充分验证的 CCTP 相关跨链消息当成合法存款或领取依据。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "299,107美元毛流出及实际盗取；最终追回与净损未知",
+  "transaction_ids": [
+    "TXN-000001",
+    "TXN-000144",
+    "TXN-000671"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "CertiK 两次 Pike 事件技术分析",
+      "url": "https://www.certik.com/blog/pike-finance-incident-analysis"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "项目公告／既有来源",
+      "url": "https://mirror.xyz/pikefinance.eth/M1ToE42vwEHuE6xlz0dVRQwPT0xpaRtpIIw2arOdBAM"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "链上交易／合约锚点",
+      "url": "https://arbiscan.io/tx/0x979ad9b7f5331ea8034305a83b5cd50aea88adec395fff8298dd90eb1b87667f"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "链上交易／合约锚点",
+      "url": "https://etherscan.io/tx/0x167c97b5897d11b23a6694f30acb71e8deead771d22fe88aee04ca8696a2bffa"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 首次攻击2024-04-26；CertiK 技术分析发表于2024-05-22；与4月30日后续事件分开 |\n| 团队／项目 | Pike Finance |\n| 跨链桥或产品 | Pike 跨链存款／领取路径 |\n| 底层协议／依赖 | Circle CCTP 接入；Circle 本身未被证明失效 |\n| 涉及链／路线 | Pike 多链部署；本次金额明确列于 Arbitrum |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 299,107美元毛流出及实际盗取；最终追回与净损未知 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Pike 把未经充分验证的 CCTP 相关跨链消息当成合法存款或领取依据。这里的“伪造 CCTP 消息”描述接入端接受了虚假业务内容，不足以证明 Circle 的 attestation 或底层 CCTP 安全机制失效。\n\nCertiK 的金额表把首次事件299,107美元列于 Arbitrum。攻击后，原合约缺少暂停功能，团队先紧急升级再停用；这一响应后来引发4月30日独立存储冲突事件，两笔损失不可互相替代。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：先升级后暂停，首次校验修复部署仍待核。**\n\n本轮技术分析确认团队为了暂停而先升级合约；该操作只证明应急响应已经发生，不直接证明首次消息校验漏洞已彻底修复。4月30日再次受攻按另一条卡片记录；后续恢复计划也未给出本笔最终追回／赔偿核算。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [CertiK 两次 Pike 事件技术分析](https://www.certik.com/blog/pike-finance-incident-analysis)：2026-09-12本轮网页核读；支持4月26日约299,107美元及4月30日独立漏洞／资金流。\n- [项目公告／既有来源](https://mirror.xyz/pikefinance.eth/M1ToE42vwEHuE6xlz0dVRQwPT0xpaRtpIIw2arOdBAM)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [链上交易／合约锚点](https://arbiscan.io/tx/0x979ad9b7f5331ea8034305a83b5cd50aea88adec395fff8298dd90eb1b87667f)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n- [链上交易／合约锚点](https://etherscan.io/tx/0x167c97b5897d11b23a6694f30acb71e8deead771d22fe88aee04ca8696a2bffa)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n\n待确认及口径说明：原表路线写 Arbitrum／Ethereum／Optimism，不能据此说首笔在三链各损299,107美元。官方 Mirror 原文本轮未成功读取；CertiK 已核读，首次具体补丁与最终资金结算仍缺。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->"
+    },
+    {
+      "title": "2026-09-12 CVV审计证据与机制补充",
+      "content": "以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [消息载荷解析必须拒绝无效视图](../../CVV补全/审计卡片/CVVR-315b19c4bf65.md#f-002) | 历史架构背景（非事故根因） | CCTP历史架构和解析背景，不是Pike或Allbridge事件根因；真实attestation仍不等于burn/mint到账。 原报告核验：primary_report_read。 |\n| [Hyperlane与Circle域号映射歧义](../../CVV补全/审计卡片/CVVR-b9cb415534ca.md#f-001) | 机制类比（非本事故证据） | 域映射属于集成语义，不证明Circle通用消息层失效。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->"
+    }
+  ],
+  "source_event_id": "EV2024-012",
+  "source_card_markdown": "# Pike 首次事件：CCTP 接入消息校验不足\n\n> 事件编号：EV2024-012｜账本类别：confirmed（已确认主事件，含漏洞披露／运行异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 首次攻击2024-04-26；CertiK 技术分析发表于2024-05-22；与4月30日后续事件分开 |\n| 团队／项目 | Pike Finance |\n| 跨链桥或产品 | Pike 跨链存款／领取路径 |\n| 底层协议／依赖 | Circle CCTP 接入；Circle 本身未被证明失效 |\n| 涉及链／路线 | Pike 多链部署；本次金额明确列于 Arbitrum |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 299,107美元毛流出及实际盗取；最终追回与净损未知 |\n\n## 2. 原因与经过\n\nPike 把未经充分验证的 CCTP 相关跨链消息当成合法存款或领取依据。这里的“伪造 CCTP 消息”描述接入端接受了虚假业务内容，不足以证明 Circle 的 attestation 或底层 CCTP 安全机制失效。\n\nCertiK 的金额表把首次事件299,107美元列于 Arbitrum。攻击后，原合约缺少暂停功能，团队先紧急升级再停用；这一响应后来引发4月30日独立存储冲突事件，两笔损失不可互相替代。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：先升级后暂停，首次校验修复部署仍待核。**\n\n本轮技术分析确认团队为了暂停而先升级合约；该操作只证明应急响应已经发生，不直接证明首次消息校验漏洞已彻底修复。4月30日再次受攻按另一条卡片记录；后续恢复计划也未给出本笔最终追回／赔偿核算。\n\n## 4. 依据与待确认\n\n下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [CertiK 两次 Pike 事件技术分析](https://www.certik.com/blog/pike-finance-incident-analysis)：2026-09-12本轮网页核读；支持4月26日约299,107美元及4月30日独立漏洞／资金流。\n- [项目公告／既有来源](https://mirror.xyz/pikefinance.eth/M1ToE42vwEHuE6xlz0dVRQwPT0xpaRtpIIw2arOdBAM)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [链上交易／合约锚点](https://arbiscan.io/tx/0x979ad9b7f5331ea8034305a83b5cd50aea88adec395fff8298dd90eb1b87667f)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n- [链上交易／合约锚点](https://etherscan.io/tx/0x167c97b5897d11b23a6694f30acb71e8deead771d22fe88aee04ca8696a2bffa)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n\n待确认及口径说明：原表路线写 Arbitrum／Ethereum／Optimism，不能据此说首笔在三链各损299,107美元。官方 Mirror 原文本轮未成功读取；CertiK 已核读，首次具体补丁与最终资金结算仍缺。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->\n## 2026-09-12 CVV审计证据与机制补充\n\n以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [消息载荷解析必须拒绝无效视图](../../CVV补全/审计卡片/CVVR-315b19c4bf65.md#f-002) | 历史架构背景（非事故根因） | CCTP历史架构和解析背景，不是Pike或Allbridge事件根因；真实attestation仍不等于burn/mint到账。 原报告核验：primary_report_read。 |\n| [Hyperlane与Circle域号映射歧义](../../CVV补全/审计卡片/CVVR-b9cb415534ca.md#f-001) | 机制类比（非本事故证据） | 域映射属于集成语义，不证明Circle通用消息层失效。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->\n",
+  "review_status": "pending"
+}

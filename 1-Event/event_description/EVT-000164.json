@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000164",
+  "event_name": "Maya 观测记录覆盖触发虚假惩罚补贴（Maya Protocol）",
+  "summary": "一笔含23条消息的MsgDeposit中，后续消息覆盖共享ObservedTxVoter，出站匹配因此误判真实提款未发生，触发了错误“失窃”惩罚。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "错误记入约4,945万 CACAO，随后约4,887万 CACAO被提出；真实资产提取约165万—170万美元。约1,090万美元池市值下跌不是直接被盗额。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "QuillAudits 的 Maya 直接技术分析",
+      "url": "https://www.quillaudits.com/blog/hack-analysis/mayachain-slash-subsidy-exploit"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本主来源",
+      "url": "https://x.com/Maya_Protocol/status/2090105358140227765"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "账本补充来源",
+      "url": "https://x.com/AaluxxMyth/status/2089792721086996703"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需稳定官方最终复盘、确切生产版本、恢复方案执行和逐资产净损；4,945万记账与4,887万提现两个数字不可混同。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-18（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Maya Protocol |\n| 跨链桥或产品 | Maya Protocol |\n| 底层协议 | Maya/mayanode；ObservedTxVoter、Asgard及惩罚补贴会计 |\n| 涉及链 | Maya链、金库与BTC/ETH/RUNE等多链池 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 错误记入约4,945万 CACAO，随后约4,887万 CACAO被提出；真实资产提取约165万—170万美元。约1,090万美元池市值下跌不是直接被盗额。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "一笔含23条消息的MsgDeposit中，后续消息覆盖共享ObservedTxVoter，出站匹配因此误判真实提款未发生，触发了错误“失窃”惩罚。\n\n补贴计算未设上限，在极薄LINK池写入约4,945万CACAO；储备转账失败却未回滚。攻击者据虚增池余额取得几乎全部份额，提款并换走BTC等真资产，形成多缺陷串联。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已停链并报告会计修复，部署和恢复待核。**\n\n账本记录停链、修正观测交易及出站逻辑、宣布恢复计划。本轮直接分析给出完整根因，但没有证明全部补丁已部署或恢复已完成；限定共享状态、限制补贴及失败回滚是技术要求，不能冒充已做措施。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [QuillAudits 的 Maya 直接技术分析](https://www.quillaudits.com/blog/hack-analysis/mayachain-slash-subsidy-exploit)：本轮网页核读；支持23消息覆盖、无上限补贴及非原子写入；含根交易。\n- [账本主来源](https://x.com/Maya_Protocol/status/2090105358140227765)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本补充来源](https://x.com/AaluxxMyth/status/2089792721086996703)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n\n待确认：需稳定官方最终复盘、确切生产版本、恢复方案执行和逐资产净损；4,945万记账与4,887万提现两个数字不可混同。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-038",
+  "source_card_markdown": "# Maya 观测记录覆盖触发虚假惩罚补贴（Maya Protocol）\n\n> 事件编号：EV2026-038｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-18（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Maya Protocol |\n| 跨链桥或产品 | Maya Protocol |\n| 底层协议 | Maya/mayanode；ObservedTxVoter、Asgard及惩罚补贴会计 |\n| 涉及链 | Maya链、金库与BTC/ETH/RUNE等多链池 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 错误记入约4,945万 CACAO，随后约4,887万 CACAO被提出；真实资产提取约165万—170万美元。约1,090万美元池市值下跌不是直接被盗额。 |\n\n## 2. 原因与经过\n\n一笔含23条消息的MsgDeposit中，后续消息覆盖共享ObservedTxVoter，出站匹配因此误判真实提款未发生，触发了错误“失窃”惩罚。\n\n补贴计算未设上限，在极薄LINK池写入约4,945万CACAO；储备转账失败却未回滚。攻击者据虚增池余额取得几乎全部份额，提款并换走BTC等真资产，形成多缺陷串联。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已停链并报告会计修复，部署和恢复待核。**\n\n账本记录停链、修正观测交易及出站逻辑、宣布恢复计划。本轮直接分析给出完整根因，但没有证明全部补丁已部署或恢复已完成；限定共享状态、限制补贴及失败回滚是技术要求，不能冒充已做措施。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [QuillAudits 的 Maya 直接技术分析](https://www.quillaudits.com/blog/hack-analysis/mayachain-slash-subsidy-exploit)：本轮网页核读；支持23消息覆盖、无上限补贴及非原子写入；含根交易。\n- [账本主来源](https://x.com/Maya_Protocol/status/2090105358140227765)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本补充来源](https://x.com/AaluxxMyth/status/2089792721086996703)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n\n待确认：需稳定官方最终复盘、确切生产版本、恢复方案执行和逐资产净损；4,945万记账与4,887万提现两个数字不可混同。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,55 @@
+{
+  "event_id": "EVT-000144",
+  "event_name": "Alephium 桥观察节点被隔离后签出假事件（Alephium TokenBridge）",
+  "summary": "观察者使用的全节点遭网络隔离，较弱的重新观察兜底逻辑接受了错误源事件，促使持有有效密钥的 Guardians 对虚假事实签名。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "无背书增发约1,376万 wALPH；抵押影响约30.5万美元；据报96.4%无背书供应被销毁。",
+  "transaction_ids": [
+    "TXN-000064",
+    "TXN-000077",
+    "TXN-000116",
+    "TXN-000186",
+    "TXN-000399",
+    "TXN-000422",
+    "TXN-000484",
+    "TXN-000502"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://alephium.org/news/post/alephium-bridge-exploit-postmortem/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：最终经济净损、余下3.6%异常供应的处置及全部部署版本仍需逐项确认。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-05-30（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Alephium |\n| 跨链桥或产品 | Alephium TokenBridge |\n| 底层协议 | Alephium TokenBridge；Guardian/观察者验证机制 |\n| 涉及链 | Alephium → Ethereum/BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 无背书增发约1,376万 wALPH；抵押影响约30.5万美元；据报96.4%无背书供应被销毁。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "观察者使用的全节点遭网络隔离，较弱的重新观察兜底逻辑接受了错误源事件，促使持有有效密钥的 Guardians 对虚假事实签名。\n\n签名真实性本身没有失败；失败的是观察者关于源链状态和最终性的判断，目标侧由此接受无真实背书的 wALPH。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：官方复盘记载检查加固、补足背书及复桥。**\n\n既有官方材料记录新增源链最终性和 canonical 事件检查、独立审计、为用户补回背书并重新开放桥。异常供应销毁比例不能直接当作美元回收率；本轮未复核所有补足资金交易。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://alephium.org/news/post/alephium-bridge-exploit-postmortem/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：最终经济净损、余下3.6%异常供应的处置及全部部署版本仍需逐项确认。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-020",
+  "source_card_markdown": "# Alephium 桥观察节点被隔离后签出假事件（Alephium TokenBridge）\n\n> 事件编号：EV2026-020｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-05-30（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Alephium |\n| 跨链桥或产品 | Alephium TokenBridge |\n| 底层协议 | Alephium TokenBridge；Guardian/观察者验证机制 |\n| 涉及链 | Alephium → Ethereum/BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 无背书增发约1,376万 wALPH；抵押影响约30.5万美元；据报96.4%无背书供应被销毁。 |\n\n## 2. 原因与经过\n\n观察者使用的全节点遭网络隔离，较弱的重新观察兜底逻辑接受了错误源事件，促使持有有效密钥的 Guardians 对虚假事实签名。\n\n签名真实性本身没有失败；失败的是观察者关于源链状态和最终性的判断，目标侧由此接受无真实背书的 wALPH。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：官方复盘记载检查加固、补足背书及复桥。**\n\n既有官方材料记录新增源链最终性和 canonical 事件检查、独立审计、为用户补回背书并重新开放桥。异常供应销毁比例不能直接当作美元回收率；本轮未复核所有补足资金交易。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://alephium.org/news/post/alephium-bridge-exploit-postmortem/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：最终经济净损、余下3.6%异常供应的处置及全部部署版本仍需逐项确认。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

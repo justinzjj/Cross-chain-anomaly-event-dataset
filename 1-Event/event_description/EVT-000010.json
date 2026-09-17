@@ -1,0 +1,58 @@
+{
+  "event_id": "EVT-000010",
+  "event_name": "THORChain ETH Router 第二次假事件退款攻击",
+  "summary": "攻击者把假 Router 置于真实 Router 之后，利用 returnVaultAssets 的转发路径，让假 Asgard 接收少量 ETH 并发出带恶意 memo 的存款事件。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约800万美元，流出含 ALCX、XRUNE、USDC、SUSHI、YFI、USDT；该数与第一次事件分开，最终净损未核。",
+  "transaction_ids": [
+    "TXN-000305",
+    "TXN-000321",
+    "TXN-000358",
+    "TXN-000385",
+    "TXN-000537",
+    "TXN-000558"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "THORChain 官方两次攻击复盘",
+      "url": "https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "攻击合约锚点",
+      "url": "https://etherscan.io/address/0x700196e226283671a3de6704ebcdb37a76658805"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "SlowMist 目录",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=4"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需要定位第二次攻击的专属补丁、受信 Router／vault 约束及其部署交易；完整补偿和重开时间线尚未核到。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件沿用账本 2021-07-23；合并复盘发表于 2021-07-30。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | ETH Router／Bifrost（原记录：THORChain ETH Router exploit 2） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约800万美元，流出含 ALCX、XRUNE、USDC、SUSHI、YFI、USDT；该数与第一次事件分开，最终净损未核。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者把假 Router 置于真实 Router 之后，利用 returnVaultAssets 的转发路径，让假 Asgard 接收少量 ETH 并发出带恶意 memo 的存款事件。Bifrost 将其视为真实存款，又因错误 memo 向攻击者退款，实际支付真实 ERC-20。\n\n因此根因应具体写作事件来源及调用路径未充分约束，原表笼统的“ERC-20 金额／记账异常”不足以描述此次过程。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已停网审查，专项修复部署与恢复结果待进一步闭合。**\n\n官方复盘确认停网、开展两家审计，并列出改造监控和分阶段恢复方案。第一次事件已经发布的暂停控制不能自动证明这第二条伪造事件路径也已彻底修复。\n\n财政资金覆盖 LP 缺口属于补偿目标；本文未把计划中的监控、限流、保险和复网时间视作全部完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 官方两次攻击复盘](https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/)：本轮网页核读；支持假 Router、恶意 memo 退款及审计计划。\n- [攻击合约锚点](https://etherscan.io/address/0x700196e226283671a3de6704ebcdb37a76658805)：官方复盘所列；本轮未重放交易。\n- [SlowMist 目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本；事件日和历史金额索引。\n\n待确认：需要定位第二次攻击的专属补丁、受信 Router／vault 约束及其部署交易；完整补偿和重开时间线尚未核到。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2021-006",
+  "source_card_markdown": "# THORChain ETH Router 第二次假事件退款攻击\n\n> 事件编号：EV2021-006｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件沿用账本 2021-07-23；合并复盘发表于 2021-07-30。 |\n| 团队／项目 | THORChain |\n| 跨链桥或产品 | ETH Router／Bifrost（原记录：THORChain ETH Router exploit 2） |\n| 底层协议 | THORChain |\n| 涉及链／范围 | Ethereum → THORChain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约800万美元，流出含 ALCX、XRUNE、USDC、SUSHI、YFI、USDT；该数与第一次事件分开，最终净损未核。 |\n\n## 2. 原因与经过\n\n攻击者把假 Router 置于真实 Router 之后，利用 returnVaultAssets 的转发路径，让假 Asgard 接收少量 ETH 并发出带恶意 memo 的存款事件。Bifrost 将其视为真实存款，又因错误 memo 向攻击者退款，实际支付真实 ERC-20。\n\n因此根因应具体写作事件来源及调用路径未充分约束，原表笼统的“ERC-20 金额／记账异常”不足以描述此次过程。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已停网审查，专项修复部署与恢复结果待进一步闭合。**\n\n官方复盘确认停网、开展两家审计，并列出改造监控和分阶段恢复方案。第一次事件已经发布的暂停控制不能自动证明这第二条伪造事件路径也已彻底修复。\n\n财政资金覆盖 LP 缺口属于补偿目标；本文未把计划中的监控、限流、保险和复网时间视作全部完成。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [THORChain 官方两次攻击复盘](https://blog.thorchain.org/post-mortem-eth-router-exploits-1-2-and-premature-return-to-trading-incident/)：本轮网页核读；支持假 Router、恶意 memo 退款及审计计划。\n- [攻击合约锚点](https://etherscan.io/address/0x700196e226283671a3de6704ebcdb37a76658805)：官方复盘所列；本轮未重放交易。\n- [SlowMist 目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本；事件日和历史金额索引。\n\n待确认：需要定位第二次攻击的专属补丁、受信 Router／vault 约束及其部署交易；完整补偿和重开时间线尚未核到。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

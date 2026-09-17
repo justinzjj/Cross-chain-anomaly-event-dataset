@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000002",
+  "event_name": "Zapper 已废弃 Polygon Bridge Zap 的授权救援",
+  "summary": "旧 Zap 即使前端不再使用，仍保留用户的无限代币授权。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约250万美元被迁入救援分发合约；抢跑部分据报返还，账本记录用户最终损失为零。救援转移不能全部计作盗款。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主要事故材料",
+      "url": "https://medium.com/zapper-protocol/post-mortem-polygon-bridge-vulnerability-cb8029275622"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本补充技术材料",
+      "url": "https://noeonfinance.medium.com/zapper-polygon-bridge-post-mortem-unlimited-approvals-are-bad-efe324588005"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需固定白帽 sweep、抢跑、返还及分发的完整交易集合，并核验收款主体；不能把救援金额当作黑帽实际收益。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2021-06-14；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Zapper；救援安全研究者 |\n| 跨链桥或产品 | 已废弃的 Polygon Bridge Zap（原记录：Zapper deprecated Polygon Bridge Zap rescue） |\n| 底层协议 | Zapper 本地外部调用；Polygon Bridge非直接失效点 |\n| 涉及链／范围 | Polygon/Ethereum → 本地用户钱包 |\n| 事件性质 | 跨链相邻或上层事件，保留边界分类 |\n| 损失与口径 | 约250万美元被迁入救援分发合约；抢跑部分据报返还，账本记录用户最终损失为零。救援转移不能全部计作盗款。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "旧 Zap 即使前端不再使用，仍保留用户的无限代币授权。其转发外部调用时未充分限制目标与 calldata，潜在攻击者可借这些授权移动用户资产。\n\n救援人员通过受控转移保护仍暴露的余额，过程中有抢跑及后续返还。失效发生在跨链入口上层的 Zap 与授权边界，不是 Polygon Bridge 的跨链证明验证。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：旧入口停用并完成救援分发有报告，逐笔对账待核。**\n\n官方复盘及救援方材料记载禁用旧入口、把受威胁资产转入分发地址，并处理返还。旧合约停用和用户撤销遗留授权共同决定残留风险，不能只看新版前端是否上线。\n\n账本中的“零最终损失”沿用历史救援结论，本轮未重算每个用户地址、抢跑款与分发交易。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡沿用冻结于2026-09-10的事件全集及截至2026-09-11的既有证据；本轮只做中文整理，没有重新核实项目截至2026-09-12的运行状态。\n\n- [账本主要事故材料](https://medium.com/zapper-protocol/post-mortem-polygon-bridge-vulnerability-cb8029275622)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n- [账本补充技术材料](https://noeonfinance.medium.com/zapper-polygon-bridge-post-mortem-unlimited-approvals-are-bad-efe324588005)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n\n待确认：需固定白帽 sweep、抢跑、返还及分发的完整交易集合，并核验收款主体；不能把救援金额当作黑帽实际收益。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2021-016",
+  "source_card_markdown": "# Zapper 已废弃 Polygon Bridge Zap 的授权救援\n\n> 事件编号：EV2021-016｜账本类别：boundary（边界事件，不等同于直接跨链验证失效）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2021-06-14；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Zapper；救援安全研究者 |\n| 跨链桥或产品 | 已废弃的 Polygon Bridge Zap（原记录：Zapper deprecated Polygon Bridge Zap rescue） |\n| 底层协议 | Zapper 本地外部调用；Polygon Bridge非直接失效点 |\n| 涉及链／范围 | Polygon/Ethereum → 本地用户钱包 |\n| 事件性质 | 跨链相邻或上层事件，保留边界分类 |\n| 损失与口径 | 约250万美元被迁入救援分发合约；抢跑部分据报返还，账本记录用户最终损失为零。救援转移不能全部计作盗款。 |\n\n## 2. 原因与经过\n\n旧 Zap 即使前端不再使用，仍保留用户的无限代币授权。其转发外部调用时未充分限制目标与 calldata，潜在攻击者可借这些授权移动用户资产。\n\n救援人员通过受控转移保护仍暴露的余额，过程中有抢跑及后续返还。失效发生在跨链入口上层的 Zap 与授权边界，不是 Polygon Bridge 的跨链证明验证。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：旧入口停用并完成救援分发有报告，逐笔对账待核。**\n\n官方复盘及救援方材料记载禁用旧入口、把受威胁资产转入分发地址，并处理返还。旧合约停用和用户撤销遗留授权共同决定残留风险，不能只看新版前端是否上线。\n\n账本中的“零最终损失”沿用历史救援结论，本轮未重算每个用户地址、抢跑款与分发交易。\n\n## 4. 依据与待确认\n\n本卡沿用冻结于2026-09-10的事件全集及截至2026-09-11的既有证据；本轮只做中文整理，没有重新核实项目截至2026-09-12的运行状态。\n\n- [账本主要事故材料](https://medium.com/zapper-protocol/post-mortem-polygon-bridge-vulnerability-cb8029275622)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n- [账本补充技术材料](https://noeonfinance.medium.com/zapper-polygon-bridge-post-mortem-unlimited-approvals-are-bad-efe324588005)：沿用账本，非本轮网页核读；支持账本所述事件、机制或历史响应；证据缺口见正文。\n\n待确认：需固定白帽 sweep、抢跑、返还及分发的完整交易集合，并核验收款主体；不能把救援金额当作黑帽实际收益。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

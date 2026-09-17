@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000156",
+  "event_name": "Wanchain Cardano—BNB 桥数值字段拼接歧义（Wanchain Cardano-BNB Bridge）",
+  "summary": "签名消息对相邻、可变长的 NIGHT 数量与 ADA 数量直接拼接后哈希，没有固定边界。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "涉及约5.152亿 NIGHT；变现估计900万—1,300万美元，部分交易所冻结。冻结金额与最终净损未统一。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://medium.com/@wanchain_org/cardano-bnb-chain-bridge-incident-post-mortem-353e465276e7"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本补充来源",
+      "url": "https://www.midnight.foundation/news/update-on-the-wanchain-cardano-bnb-bridge-incident"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需修复部署、Maestro/Ogmios相关时序、冻结和追回数量及最终净损。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-21（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Wanchain |\n| 跨链桥或产品 | Wanchain Cardano-BNB Bridge |\n| 底层协议 | Wanchain Cardano↔BNB bridge；跨端签名序列化 |\n| 涉及链 | Cardano ↔ BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 涉及约5.152亿 NIGHT；变现估计900万—1,300万美元，部分交易所冻结。冻结金额与最终净损未统一。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "签名消息对相邻、可变长的 NIGHT 数量与 ADA 数量直接拼接后哈希，没有固定边界。攻击者把已签小额提款重新拆分成更大金额的语义。\n\n签名对应的字节可以保持有效，但提款数值发生改变；失效的是规范编码与字段绑定，不能表述为签名算法被破解或所有签名者私钥失窃。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：据报修复规范编码，部署和回收待核。**\n\n既有官方复盘记录停桥、修复编码并协调交易所冻结。当前仍缺公开固定合约/提交与重部署信息，本轮不把编码修复报告扩展为所有服务已恢复；冻结资产也尚不能全算返还。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/@wanchain_org/cardano-bnb-chain-bridge-incident-post-mortem-353e465276e7)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本补充来源](https://www.midnight.foundation/news/update-on-the-wanchain-cardano-bnb-bridge-incident)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需修复部署、Maestro/Ogmios相关时序、冻结和追回数量及最终净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-030",
+  "source_card_markdown": "# Wanchain Cardano—BNB 桥数值字段拼接歧义（Wanchain Cardano-BNB Bridge）\n\n> 事件编号：EV2026-030｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-21（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Wanchain |\n| 跨链桥或产品 | Wanchain Cardano-BNB Bridge |\n| 底层协议 | Wanchain Cardano↔BNB bridge；跨端签名序列化 |\n| 涉及链 | Cardano ↔ BNB Chain |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 涉及约5.152亿 NIGHT；变现估计900万—1,300万美元，部分交易所冻结。冻结金额与最终净损未统一。 |\n\n## 2. 原因与经过\n\n签名消息对相邻、可变长的 NIGHT 数量与 ADA 数量直接拼接后哈希，没有固定边界。攻击者把已签小额提款重新拆分成更大金额的语义。\n\n签名对应的字节可以保持有效，但提款数值发生改变；失效的是规范编码与字段绑定，不能表述为签名算法被破解或所有签名者私钥失窃。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：据报修复规范编码，部署和回收待核。**\n\n既有官方复盘记录停桥、修复编码并协调交易所冻结。当前仍缺公开固定合约/提交与重部署信息，本轮不把编码修复报告扩展为所有服务已恢复；冻结资产也尚不能全算返还。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://medium.com/@wanchain_org/cardano-bnb-chain-bridge-incident-post-mortem-353e465276e7)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本补充来源](https://www.midnight.foundation/news/update-on-the-wanchain-cardano-bnb-bridge-incident)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需修复部署、Maestro/Ogmios相关时序、冻结和追回数量及最终净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

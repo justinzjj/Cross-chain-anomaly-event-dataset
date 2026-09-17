@@ -1,0 +1,53 @@
+{
+  "event_id": "EVT-000066",
+  "event_name": "Hashflow 废弃路由残留授权盗取",
+  "summary": "废弃路由的某调用入口缺少访问控制，使任意调用者可使用用户残留授权触发 transferFrom。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约60.5万—64万美元受影响；约10万美元归于黑帽盗取；最终协议净成本未知",
+  "transaction_ids": [
+    "TXN-000119",
+    "TXN-000492",
+    "TXN-000594"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "CertiK 技术分析",
+      "url": "https://www.certik.com/blog/post-mortem-hashflow"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Revoke.cash 事件页",
+      "url": "https://revoke.cash/exploits/hashflow"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "同期报道／案例发现来源",
+      "url": "https://www.theblock.co/post/234671/trading-firm-hashflow-faces-ongoing-exploit-with-600000-lost-so-far-peckshield"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2023-06-14为同期材料支持的事件日；BridgeGuard所列2023-07-14已在账本纠正；披露日未单列 |\n| 团队／项目 | Hashflow |\n| 跨链桥或产品 | 废弃 Router 合约 |\n| 底层协议／依赖 | 本地 ERC20 授权执行；非跨链证明层 |\n| 涉及链／路线 | EVM 用户钱包；无已证实目标链失效 |\n| 事件性质 | 项目相关边界事件 |\n| 损失与口径 | 约60.5万—64万美元受影响；约10万美元归于黑帽盗取；最终协议净成本未知 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "废弃路由的某调用入口缺少访问控制，使任意调用者可使用用户残留授权触发 transferFrom。路由虽已被产品停用，只要仍在链上可调用，历史额度就继续赋予资产转移能力。\n\n这次资金移动既包含恶意盗取，也包括救援或白帽活动。约60余万美元是受影响／被移动范围，不能全部算作黑帽获利；不同材料关于用户补足与协议最终成本仍需分别核对。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：旧路由已记载停用，救援与净成本待核。**\n\n账本记录关闭废弃路径并开展救援及补偿调查；深审另有用户已被补足的报道。关闭调用面、返还救援款和承担赔偿成本属于不同结果，本轮未取得最终逐钱包结算表。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [CertiK 技术分析](https://www.certik.com/blog/post-mortem-hashflow)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [Revoke.cash 事件页](https://revoke.cash/exploits/hashflow)：沿用账本及此前核验；补充受影响授权与已记录用户处置线索。\n- [同期报道／案例发现来源](https://www.theblock.co/post/234671/trading-firm-hashflow-faces-ongoing-exploit-with-600000-lost-so-far-peckshield)：沿用账本及此前核验；仅用于补充报道范围和金额；不提升技术细节的确定性。\n\n待确认及口径说明：BridgeGuard 的2023-07-14已由既有账本纠正为2023-06-14。缺完整攻击／白帽交易区分及最终协议净成本，不能把所有流出作永久损失。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2023-018",
+  "source_card_markdown": "# Hashflow 废弃路由残留授权盗取\n\n> 事件编号：EV2023-018｜账本类别：boundary（边界事件，不作为直接桥协议攻破）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2023-06-14为同期材料支持的事件日；BridgeGuard所列2023-07-14已在账本纠正；披露日未单列 |\n| 团队／项目 | Hashflow |\n| 跨链桥或产品 | 废弃 Router 合约 |\n| 底层协议／依赖 | 本地 ERC20 授权执行；非跨链证明层 |\n| 涉及链／路线 | EVM 用户钱包；无已证实目标链失效 |\n| 事件性质 | 项目相关边界事件 |\n| 损失与口径 | 约60.5万—64万美元受影响；约10万美元归于黑帽盗取；最终协议净成本未知 |\n\n## 2. 原因与经过\n\n废弃路由的某调用入口缺少访问控制，使任意调用者可使用用户残留授权触发 transferFrom。路由虽已被产品停用，只要仍在链上可调用，历史额度就继续赋予资产转移能力。\n\n这次资金移动既包含恶意盗取，也包括救援或白帽活动。约60余万美元是受影响／被移动范围，不能全部算作黑帽获利；不同材料关于用户补足与协议最终成本仍需分别核对。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：旧路由已记载停用，救援与净成本待核。**\n\n账本记录关闭废弃路径并开展救援及补偿调查；深审另有用户已被补足的报道。关闭调用面、返还救援款和承担赔偿成本属于不同结果，本轮未取得最终逐钱包结算表。\n\n## 4. 依据与待确认\n\n本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [CertiK 技术分析](https://www.certik.com/blog/post-mortem-hashflow)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [Revoke.cash 事件页](https://revoke.cash/exploits/hashflow)：沿用账本及此前核验；补充受影响授权与已记录用户处置线索。\n- [同期报道／案例发现来源](https://www.theblock.co/post/234671/trading-firm-hashflow-faces-ongoing-exploit-with-600000-lost-so-far-peckshield)：沿用账本及此前核验；仅用于补充报道范围和金额；不提升技术细节的确定性。\n\n待确认及口径说明：BridgeGuard 的2023-07-14已由既有账本纠正为2023-06-14。缺完整攻击／白帽交易区分及最终协议净成本，不能把所有流出作永久损失。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

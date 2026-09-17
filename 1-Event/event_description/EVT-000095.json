@@ -1,0 +1,58 @@
+{
+  "event_id": "EVT-000095",
+  "event_name": "Ronin 桥升级漏初始化导致提款门槛归零",
+  "summary": "从版本2升级至版本4时遗漏版本3的初始化逻辑，使总操作员权重保持默认零值。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约1,200万美元被提出；账本记本金返还及约50万美元赏金，最终账未重核",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "OpenZeppelin 年度技术复盘（Faulty Upgrades）",
+      "url": "https://www.openzeppelin.com/news/web3-security-auditors-2024-rewind"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Olympix 对 Ronin 的直接代码分析",
+      "url": "https://olympix.security/blog/how-olympix-could-have-prevented-the-12m-ronin-network-exploit"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "项目公告／既有来源",
+      "url": "https://roninchain.com/blog/posts/ronin-bridge-incident-report"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "SlowMist 事件索引",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=2"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2024-08-06（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Sky Mavis／Ronin |\n| 跨链桥或产品 | Ronin Bridge |\n| 底层协议／依赖 | 桥操作员签名权重与可升级代理 |\n| 涉及链／路线 | Ronin → Ethereum 提款端 |\n| 事件性质 | 白帽／险情，提款与净损需区分 |\n| 损失与口径 | 约1,200万美元被提出；账本记本金返还及约50万美元赏金，最终账未重核 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "从版本2升级至版本4时遗漏版本3的初始化逻辑，使总操作员权重保持默认零值。提款所需票权阈值随之归零，调用者不提交正常有效签名也能满足检查条件。\n\n异常调用据此提出资产并触发白帽处置。根因是升级状态迁移不完整，和2022年 Ronin 验证者私钥被盗是两次独立事件；“提出约1,200万美元”也不能直接等同永久盗损。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：桥已暂停并追回资金，修复部署锚点待核。**\n\n账本记录暂停桥、本金返还、约50万美元白帽赏金及升级流程整改。本轮核读直接技术分析确认零权重原因，但官方事故页未能读取；技术分析对追回的描述停留在不同历史阶段，不能独立证明最终全部返还或部署已完成。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [OpenZeppelin 年度技术复盘（Faulty Upgrades）](https://www.openzeppelin.com/news/web3-security-auditors-2024-rewind)：2026-09-12本轮网页核读；支持漏调版本3初始化导致提款阈值归零。\n- [Olympix 对 Ronin 的直接代码分析](https://olympix.security/blog/how-olympix-could-have-prevented-the-12m-ronin-network-exploit)：2026-09-12本轮网页核读；支持未初始化总权重和约1,200万美元提款；其追回描述为历史阶段，不能作最终余额。\n- [项目公告／既有来源](https://roninchain.com/blog/posts/ronin-bridge-incident-report)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [SlowMist 事件索引](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本及此前核验；仅支持既有发现、日期与报道量级，不独立证明根因或修复。\n\n待确认及口径说明：“本金已返还”与“无经济成本”不同，赏金须另计。最终返还交易、修复初始化的生产升级及重启证据，本轮未重新验证；不把旧官方链接读取失败写成未修复。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->"
+    },
+    {
+      "title": "2026-09-12 CVV审计证据与机制补充",
+      "content": "以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [升级迁移未初始化签名权重](../../CVV补全/审计卡片/CVVR-bea3e3f847a7.md#f-001) | 同一事故根因补证 | 补充事故根因、恢复调用与脚本验证；生产部署生效仍需交易证据。 原报告核验：primary_report_read。 |\n| [批量存款重复使用同一笔msg.value](../../CVV补全/审计卡片/CVVR-f06697495466.md#f-001) | 事后审计的不同发现 | 同一桥的事后审计另行发现；未证实发生攻击；修复状态冲突单列。 原报告核验：primary_report_read_with_status_conflict。 |\n| [迁移到SuperRoots可能意外解除暂停](../../CVV补全/审计卡片/CVVR-c21fea167780.md#f-002) | 机制类比（非本事故证据） | 升级前后安全状态应保持；仅机制相似，且与Upgrade16报告存在重复观察。 原报告核验：not_read。 |\n\n本轮核读Beosin原报告§2.2–2.4：升级流程设置代币映射并调用initializeV4，却没有设置_operatorWeight与_totalOperatorWeight。报告用恢复提案调用onBridgeOperatorsAdded，并测试更新权重后伪造凭证提款失败。该测试支持恢复方案；本轮未核生产部署交易。\n\nVerichains 2024-08-21原报告§2.1还列出事故修复PR65与提款加固PR58。§2.2.1的批量存款msg.value问题是不同发现；摘要称已解决，发现表仍Open，正文称旧问题重新引入。应保留修复状态冲突，不将其归入8月6日根因或新增盗损。\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->"
+    }
+  ],
+  "source_event_id": "EV2024-009",
+  "source_card_markdown": "# Ronin 桥升级漏初始化导致提款门槛归零\n\n> 事件编号：EV2024-009｜账本类别：confirmed（已确认主事件，含漏洞披露／运行异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2024-08-06（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Sky Mavis／Ronin |\n| 跨链桥或产品 | Ronin Bridge |\n| 底层协议／依赖 | 桥操作员签名权重与可升级代理 |\n| 涉及链／路线 | Ronin → Ethereum 提款端 |\n| 事件性质 | 白帽／险情，提款与净损需区分 |\n| 损失与口径 | 约1,200万美元被提出；账本记本金返还及约50万美元赏金，最终账未重核 |\n\n## 2. 原因与经过\n\n从版本2升级至版本4时遗漏版本3的初始化逻辑，使总操作员权重保持默认零值。提款所需票权阈值随之归零，调用者不提交正常有效签名也能满足检查条件。\n\n异常调用据此提出资产并触发白帽处置。根因是升级状态迁移不完整，和2022年 Ronin 验证者私钥被盗是两次独立事件；“提出约1,200万美元”也不能直接等同永久盗损。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：桥已暂停并追回资金，修复部署锚点待核。**\n\n账本记录暂停桥、本金返还、约50万美元白帽赏金及升级流程整改。本轮核读直接技术分析确认零权重原因，但官方事故页未能读取；技术分析对追回的描述停留在不同历史阶段，不能独立证明最终全部返还或部署已完成。\n\n## 4. 依据与待确认\n\n下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [OpenZeppelin 年度技术复盘（Faulty Upgrades）](https://www.openzeppelin.com/news/web3-security-auditors-2024-rewind)：2026-09-12本轮网页核读；支持漏调版本3初始化导致提款阈值归零。\n- [Olympix 对 Ronin 的直接代码分析](https://olympix.security/blog/how-olympix-could-have-prevented-the-12m-ronin-network-exploit)：2026-09-12本轮网页核读；支持未初始化总权重和约1,200万美元提款；其追回描述为历史阶段，不能作最终余额。\n- [项目公告／既有来源](https://roninchain.com/blog/posts/ronin-bridge-incident-report)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [SlowMist 事件索引](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本及此前核验；仅支持既有发现、日期与报道量级，不独立证明根因或修复。\n\n待确认及口径说明：“本金已返还”与“无经济成本”不同，赏金须另计。最终返还交易、修复初始化的生产升级及重启证据，本轮未重新验证；不把旧官方链接读取失败写成未修复。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->\n## 2026-09-12 CVV审计证据与机制补充\n\n以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [升级迁移未初始化签名权重](../../CVV补全/审计卡片/CVVR-bea3e3f847a7.md#f-001) | 同一事故根因补证 | 补充事故根因、恢复调用与脚本验证；生产部署生效仍需交易证据。 原报告核验：primary_report_read。 |\n| [批量存款重复使用同一笔msg.value](../../CVV补全/审计卡片/CVVR-f06697495466.md#f-001) | 事后审计的不同发现 | 同一桥的事后审计另行发现；未证实发生攻击；修复状态冲突单列。 原报告核验：primary_report_read_with_status_conflict。 |\n| [迁移到SuperRoots可能意外解除暂停](../../CVV补全/审计卡片/CVVR-c21fea167780.md#f-002) | 机制类比（非本事故证据） | 升级前后安全状态应保持；仅机制相似，且与Upgrade16报告存在重复观察。 原报告核验：not_read。 |\n\n本轮核读Beosin原报告§2.2–2.4：升级流程设置代币映射并调用initializeV4，却没有设置_operatorWeight与_totalOperatorWeight。报告用恢复提案调用onBridgeOperatorsAdded，并测试更新权重后伪造凭证提款失败。该测试支持恢复方案；本轮未核生产部署交易。\n\nVerichains 2024-08-21原报告§2.1还列出事故修复PR65与提款加固PR58。§2.2.1的批量存款msg.value问题是不同发现；摘要称已解决，发现表仍Open，正文称旧问题重新引入。应保留修复状态冲突，不将其归入8月6日根因或新增盗损。\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->\n",
+  "review_status": "pending"
+}

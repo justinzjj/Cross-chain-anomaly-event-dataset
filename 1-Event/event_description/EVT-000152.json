@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000152",
+  "event_name": "Nomic nBTC 自定义转发重复花费（Nomic nBTC custom-forwarding double-spend）",
+  "summary": "Nomic的custom forwarding路径允许同一nBTC价值重复使用，形成无真实BTC支撑的凭据，并通过IBC进入Osmosis的Alloyed BTC组合。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "独立追踪称约40.65 nBTC异常产生；披露背书缺口39.83966422 BTC，紧急冻结约22.65 BTC等值资产，约18 BTC曾被换走。三者对象口径不同，不能直接相减当最终净损。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://x.com/osmosis/status/2097623097696251926"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://x.com/Rarma_/status/2097456879266037797"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "账本链上/代码入口",
+      "url": "https://github.com/nomic-io/nomic"
+    }
+  ],
+  "uncertainties": [
+    "待确认：官方与研究者X本轮均返回403，正文沿用账本。需Nomic正式RCA、修复提交、治理结果与最终净损；披露日账本9月8日与部分9月9日转载口径仍待原帖核对。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-25（UTC账本事件日）；攻击起点据独立追踪，9月为发现/披露阶段 |\n| 披露/报告时间 | 2026-09-08 |\n| 团队/项目 | Nomic DAO Foundation；Osmosis处置下游影响 |\n| 跨链桥或产品 | Nomic nBTC Bridge |\n| 底层协议 | Nomic custom forwarding；IBC传输；Osmosis Alloyed BTC |\n| 涉及链 | Nomic → Osmosis（经IBC） |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 独立追踪称约40.65 nBTC异常产生；披露背书缺口39.83966422 BTC，紧急冻结约22.65 BTC等值资产，约18 BTC曾被换走。三者对象口径不同，不能直接相减当最终净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Nomic的custom forwarding路径允许同一nBTC价值重复使用，形成无真实BTC支撑的凭据，并通过IBC进入Osmosis的Alloyed BTC组合。精确漏洞函数和源交易尚未公开闭合。\n\n独立追踪把攻击起点放在6月25日，9月才出现发现和公开处置。现有说明区分Nomic业务逻辑与IBC传输：Osmosis合约及IBC本身并未被证明遭攻破。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：据既有公告已冻结等值资产，Nomic补丁待证。**\n\n按既有公告记录，Osmosis暂停Nomic和Alloyed BTC相关进出，完成紧急验证者升级，冻结约22.65 BTC等值资产。这里指Osmosis上的对应资产，不是直接冻结Bitcoin主链原生币。没收冻结资产、社区池覆盖与恢复1:1背书属治理计划，不是已经返还或已完成Nomic漏洞修复；原表截断fix字段不能作为补丁证据。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://x.com/osmosis/status/2097623097696251926)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本技术或发现来源](https://x.com/Rarma_/status/2097456879266037797)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本链上/代码入口](https://github.com/nomic-io/nomic)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：官方与研究者X本轮均返回403，正文沿用账本。需Nomic正式RCA、修复提交、治理结果与最终净损；披露日账本9月8日与部分9月9日转载口径仍待原帖核对。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-048",
+  "source_card_markdown": "# Nomic nBTC 自定义转发重复花费（Nomic nBTC custom-forwarding double-spend）\n\n> 事件编号：EV2026-048｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-25（UTC账本事件日）；攻击起点据独立追踪，9月为发现/披露阶段 |\n| 披露/报告时间 | 2026-09-08 |\n| 团队/项目 | Nomic DAO Foundation；Osmosis处置下游影响 |\n| 跨链桥或产品 | Nomic nBTC Bridge |\n| 底层协议 | Nomic custom forwarding；IBC传输；Osmosis Alloyed BTC |\n| 涉及链 | Nomic → Osmosis（经IBC） |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 独立追踪称约40.65 nBTC异常产生；披露背书缺口39.83966422 BTC，紧急冻结约22.65 BTC等值资产，约18 BTC曾被换走。三者对象口径不同，不能直接相减当最终净损。 |\n\n## 2. 原因与经过\n\nNomic的custom forwarding路径允许同一nBTC价值重复使用，形成无真实BTC支撑的凭据，并通过IBC进入Osmosis的Alloyed BTC组合。精确漏洞函数和源交易尚未公开闭合。\n\n独立追踪把攻击起点放在6月25日，9月才出现发现和公开处置。现有说明区分Nomic业务逻辑与IBC传输：Osmosis合约及IBC本身并未被证明遭攻破。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：据既有公告已冻结等值资产，Nomic补丁待证。**\n\n按既有公告记录，Osmosis暂停Nomic和Alloyed BTC相关进出，完成紧急验证者升级，冻结约22.65 BTC等值资产。这里指Osmosis上的对应资产，不是直接冻结Bitcoin主链原生币。没收冻结资产、社区池覆盖与恢复1:1背书属治理计划，不是已经返还或已完成Nomic漏洞修复；原表截断fix字段不能作为补丁证据。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://x.com/osmosis/status/2097623097696251926)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本技术或发现来源](https://x.com/Rarma_/status/2097456879266037797)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本链上/代码入口](https://github.com/nomic-io/nomic)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n\n待确认：官方与研究者X本轮均返回403，正文沿用账本。需Nomic正式RCA、修复提交、治理结果与最终净损；披露日账本9月8日与部分9月9日转载口径仍待原帖核对。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

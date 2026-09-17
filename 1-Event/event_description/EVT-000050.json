@@ -1,0 +1,53 @@
+{
+  "event_id": "EVT-000050",
+  "event_name": "BSC Token Hub 接受伪造证明并放出 200 万 BNB",
+  "summary": "攻击者构造能够通过 IAVL／Merkle 证明验证器的伪造跨链包，使 BSC 侧系统接受不存在的有效转移并释放 BNB。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "200万BNB未经授权生成／释放，原表估值约5.66亿—5.70亿美元；Coinbase约5.86亿美元为另一时点。其估计约1.1亿美元离开BSC，其余受限；均不是已对账净损。",
+  "transaction_ids": [
+    "TXN-000026",
+    "TXN-000028",
+    "TXN-000029",
+    "TXN-000054",
+    "TXN-000079",
+    "TXN-000084"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "BNB Chain官方生态更新",
+      "url": "https://www.bnbchain.org/en/blog/bnb-chain-ecosystem-update"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "Coinbase直接调查分析",
+      "url": "https://www.coinbase.com/en-ca/blog/bsc-token-hub-compromise-investigation-and-analysis-8"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需把200万BNB、跨出资产、冻结额和最终经济损失分开；公告与研究报告估价不同不代表两次事故，也不与IBC Dragonberry未利用漏洞合并。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 攻击2022-10-06；官方初步公告2022-10-07；所核Coinbase分析发表于10-31。 |\n| 团队／项目 | BNB Chain |\n| 跨链桥或产品 | BSC Token Hub 原生跨链桥（原记录：BSC Token Hub） |\n| 底层协议 | BNB Beacon Chain↔BSC跨链系统／IAVL证明验证 |\n| 涉及链／范围 | BNB Beacon Chain → BSC |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 200万BNB未经授权生成／释放，原表估值约5.66亿—5.70亿美元；Coinbase约5.86亿美元为另一时点。其估计约1.1亿美元离开BSC，其余受限；均不是已对账净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者构造能够通过 IAVL／Merkle 证明验证器的伪造跨链包，使 BSC 侧系统接受不存在的有效转移并释放 BNB。问题位于节点原生实现中的证明校验，而非仅一个可见的代币合约。\n\n攻击者将部分BNB用于借贷或兑换，再跨桥转移到其他链；暂停和冻结把很大部分资产留在BSC。因此200万BNB名义规模不能等同于已逃离的可兑现资产。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：链暂停后发布升级修补，流出限制有效，净损待核。**\n\n官方确认协调验证者暂停BSC，直接分析记录约八小时停链并发布必须升级的修补版本／硬分叉。资产发行方配合冻结与限制流转属于另一个应急层。\n\n后续销毁、追回、奖励等在初期公告中属于治理拟议事项，不能直接写成全部执行或偿付完毕；本轮未固定全部节点版本和治理结果。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [BNB Chain官方生态更新](https://www.bnbchain.org/en/blog/bnb-chain-ecosystem-update)：本轮网页核读；支持200万BNB、协调停链及未定治理事项。\n- [Coinbase直接调查分析](https://www.coinbase.com/en-ca/blog/bsc-token-hub-compromise-investigation-and-analysis-8)：本轮网页核读；支持IAVL实现根因、约八小时停链、升级修补及约1.1亿美元跨出估计。\n\n待确认：需把200万BNB、跨出资产、冻结额和最终经济损失分开；公告与研究报告估价不同不代表两次事故，也不与IBC Dragonberry未利用漏洞合并。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-019",
+  "source_card_markdown": "# BSC Token Hub 接受伪造证明并放出 200 万 BNB\n\n> 事件编号：EV2022-019｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 攻击2022-10-06；官方初步公告2022-10-07；所核Coinbase分析发表于10-31。 |\n| 团队／项目 | BNB Chain |\n| 跨链桥或产品 | BSC Token Hub 原生跨链桥（原记录：BSC Token Hub） |\n| 底层协议 | BNB Beacon Chain↔BSC跨链系统／IAVL证明验证 |\n| 涉及链／范围 | BNB Beacon Chain → BSC |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 200万BNB未经授权生成／释放，原表估值约5.66亿—5.70亿美元；Coinbase约5.86亿美元为另一时点。其估计约1.1亿美元离开BSC，其余受限；均不是已对账净损。 |\n\n## 2. 原因与经过\n\n攻击者构造能够通过 IAVL／Merkle 证明验证器的伪造跨链包，使 BSC 侧系统接受不存在的有效转移并释放 BNB。问题位于节点原生实现中的证明校验，而非仅一个可见的代币合约。\n\n攻击者将部分BNB用于借贷或兑换，再跨桥转移到其他链；暂停和冻结把很大部分资产留在BSC。因此200万BNB名义规模不能等同于已逃离的可兑现资产。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：链暂停后发布升级修补，流出限制有效，净损待核。**\n\n官方确认协调验证者暂停BSC，直接分析记录约八小时停链并发布必须升级的修补版本／硬分叉。资产发行方配合冻结与限制流转属于另一个应急层。\n\n后续销毁、追回、奖励等在初期公告中属于治理拟议事项，不能直接写成全部执行或偿付完毕；本轮未固定全部节点版本和治理结果。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [BNB Chain官方生态更新](https://www.bnbchain.org/en/blog/bnb-chain-ecosystem-update)：本轮网页核读；支持200万BNB、协调停链及未定治理事项。\n- [Coinbase直接调查分析](https://www.coinbase.com/en-ca/blog/bsc-token-hub-compromise-investigation-and-analysis-8)：本轮网页核读；支持IAVL实现根因、约八小时停链、升级修补及约1.1亿美元跨出估计。\n\n待确认：需把200万BNB、跨出资产、冻结额和最终经济损失分开；公告与研究报告估价不同不代表两次事故，也不与IBC Dragonberry未利用漏洞合并。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

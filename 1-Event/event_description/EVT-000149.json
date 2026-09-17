@@ -1,0 +1,48 @@
+{
+  "event_id": "EVT-000149",
+  "event_name": "Aztec 旧隐私桥逃生证明未绑定收款人（Aztec Private Rollup Bridge）",
+  "summary": "已弃用隐私 rollup 的逃生证明没有把 outputOwner/recipient 与合法 note 所有人充分绑定，使提款证明能够指定不应取得资产的接收者。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "据报约216万美元，含1,158 ETH、15万 DAI及0.47 renBTC；币价按披露期估算，最终净损待核。",
+  "transaction_ids": [
+    "TXN-000474"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://aztec-labs.com/updates"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：官方入口仍为更新聚合页，需原始永久复盘、证明根交易、资产总账及追回结果。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-17（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Aztec Labs（旧Private Rollup） |\n| 跨链桥或产品 | Aztec Private Rollup Bridge |\n| 底层协议 | 已弃用 Aztec Private Rollup；escape-hatch 证明 |\n| 涉及链 | 旧Aztec Private Rollup → Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 据报约216万美元，含1,158 ETH、15万 DAI及0.47 renBTC；币价按披露期估算，最终净损待核。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "已弃用隐私 rollup 的逃生证明没有把 outputOwner/recipient 与合法 note 所有人充分绑定，使提款证明能够指定不应取得资产的接收者。\n\n有效证明的验证范围小于应用赋予它的提款权限。此处是旧 Private Rollup Bridge，应与6月14日 Aztec Connect 的证明副作用约束缺陷分别记录。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：不可升级旧合约仅见告警监控。**\n\n既有说明称合约不可变且已放弃管理权，不能原位补丁；团队进行告警和监控，并说明当前 Aztec 网络不受此旧部署事件影响。未找到已完成的资金补救闭环。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://aztec-labs.com/updates)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：官方入口仍为更新聚合页，需原始永久复盘、证明根交易、资产总账及追回结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-025",
+  "source_card_markdown": "# Aztec 旧隐私桥逃生证明未绑定收款人（Aztec Private Rollup Bridge）\n\n> 事件编号：EV2026-025｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-06-17（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Aztec Labs（旧Private Rollup） |\n| 跨链桥或产品 | Aztec Private Rollup Bridge |\n| 底层协议 | 已弃用 Aztec Private Rollup；escape-hatch 证明 |\n| 涉及链 | 旧Aztec Private Rollup → Ethereum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 据报约216万美元，含1,158 ETH、15万 DAI及0.47 renBTC；币价按披露期估算，最终净损待核。 |\n\n## 2. 原因与经过\n\n已弃用隐私 rollup 的逃生证明没有把 outputOwner/recipient 与合法 note 所有人充分绑定，使提款证明能够指定不应取得资产的接收者。\n\n有效证明的验证范围小于应用赋予它的提款权限。此处是旧 Private Rollup Bridge，应与6月14日 Aztec Connect 的证明副作用约束缺陷分别记录。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：不可升级旧合约仅见告警监控。**\n\n既有说明称合约不可变且已放弃管理权，不能原位补丁；团队进行告警和监控，并说明当前 Aztec 网络不受此旧部署事件影响。未找到已完成的资金补救闭环。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://aztec-labs.com/updates)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：官方入口仍为更新聚合页，需原始永久复盘、证明根交易、资产总账及追回结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

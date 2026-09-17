@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000037",
+  "event_name": "Aurora ft_on_transfer 未获授权扣取接收方 ETH 费用",
+  "summary": "攻击者通过输入桥接费用字段，让任意收款方的 Aurora ETH 被扣走；代币到账不等于同意支付另一资产。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "无许可 NEP-141 桥接允许指定 ETH 费用，但接收方没有授权该扣款。",
+  "impact": "官方称未发生已知利用损失；100 万美元为奖励，不是损失。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://immunefi.com/blog/bug-fix-reviews/aurora-improper-input-sanitization-bugfix-review/"
+    }
+  ],
+  "uncertainties": [
+    "待补：尚缺逐部署修复 commit/交易对账；最大影响额未建立独立快照。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2022-06-10。2022-06-10 为原始报告日；官方 2022-08-29 披露，Immunefi 后续再复盘。\n- 对象：Aurora NEP-141 to ERC-20 bridge fee handler；底层协议：Aurora / Rainbow Bridge。\n- 路线：NEAR → Aurora。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：桥接任意代币时，收款与费用扣减须获得各自资产所有者授权。\n\n异常流程：攻击者通过输入桥接费用字段，让任意收款方的 Aurora ETH 被扣走；代币到账不等于同意支付另一资产。\n\n直接原因：无许可 NEP-141 桥接允许指定 ETH 费用，但接收方没有授权该扣款。\n\n资金影响：官方称未发生已知利用损失；100 万美元为奖励，不是损失。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方删除设置非零费用的逻辑，该路径此前未被正常桥前端使用。\n\n移除非零费用设置逻辑。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "nnez 晚四天提交的同类报告是重复披露，不另计事件。 日期口径：2022-06-10 为原始报告日；官方 2022-08-29 披露，Immunefi 后续再复盘。\n\n待补：尚缺逐部署修复 commit/交易对账；最大影响额未建立独立快照。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities)\n- [来源 2](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 3](https://immunefi.com/blog/bug-fix-reviews/aurora-improper-input-sanitization-bugfix-review/)"
+    }
+  ],
+  "source_event_id": "EV2022-031",
+  "source_card_markdown": "# EV2022-031 · Aurora ft_on_transfer 未获授权扣取接收方 ETH 费用\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2022-06-10。2022-06-10 为原始报告日；官方 2022-08-29 披露，Immunefi 后续再复盘。\n- 对象：Aurora NEP-141 to ERC-20 bridge fee handler；底层协议：Aurora / Rainbow Bridge。\n- 路线：NEAR → Aurora。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 B（E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：桥接任意代币时，收款与费用扣减须获得各自资产所有者授权。\n\n异常流程：攻击者通过输入桥接费用字段，让任意收款方的 Aurora ETH 被扣走；代币到账不等于同意支付另一资产。\n\n直接原因：无许可 NEP-141 桥接允许指定 ETH 费用，但接收方没有授权该扣款。\n\n资金影响：官方称未发生已知利用损失；100 万美元为奖励，不是损失。\n\n## 3. 是否解决、如何解决\n\n官方删除设置非零费用的逻辑，该路径此前未被正常桥前端使用。\n\n移除非零费用设置逻辑。\n\n## 4. 证据与边界\n\nnnez 晚四天提交的同类报告是重复披露，不另计事件。 日期口径：2022-06-10 为原始报告日；官方 2022-08-29 披露，Immunefi 后续再复盘。\n\n待补：尚缺逐部署修复 commit/交易对账；最大影响额未建立独立快照。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-two-vulnerabilities)\n- [来源 2](https://forum.aurora.dev/t/bug-bounty-program-reports-and-rewards/1257)\n- [来源 3](https://immunefi.com/blog/bug-fix-reviews/aurora-improper-input-sanitization-bugfix-review/)\n",
+  "review_status": "pending"
+}

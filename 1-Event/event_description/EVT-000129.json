@@ -1,0 +1,41 @@
+{
+  "event_id": "EVT-000129",
+  "event_name": "Crypto.com DeFi Bridge 260万CRO滞留投诉（待确认）（Crypto.com DeFi Bridge 2.6m CRO stuck report）",
+  "summary": "Reddit发帖者称源侧销毁已成功，目标侧未铸币，随后进入支持和退款反复处理流程。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "用户声称260万 CRO被卡数周；未验证实际被盗或永久净损。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://www.reddit.com/r/Crypto_com/comments/1tzj235/cryptocom_defi_bridge_failed_26_million_cro_stuck/"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需源交易、真实桥产品/路线、目标未铸币证据、官方回复与退款结论。事件日沿用账本，投诉持续时间未独立确认。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-09（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Crypto.com（事件尚待官方确认） |\n| 跨链桥或产品 | Crypto.com DeFi Bridge 2.6m CRO stuck report |\n| 底层协议 | Crypto.com DeFi Bridge；实际路由及组件待确认 |\n| 涉及链 | 声称Ethereum → Cronos POS，路线待核 |\n| 事件性质 | 尚未确认的异常线索 |\n| 损失与回收 | 用户声称260万 CRO被卡数周；未验证实际被盗或永久净损。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "Reddit发帖者称源侧销毁已成功，目标侧未铸币，随后进入支持和退款反复处理流程。当前没有根交易和消息ID来验证这条转移链路。\n\n这是单个用户公开投诉，不能凭支持工单未解决推断桥资产被盗，也不能把帖子放在official_sources字段就称为官方事故承认。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：退款及服务处置均待官方证据。**\n\n现有材料没有可核验的Crypto.com技术修复、退款到账或最终支持结果。继续保留候选项；公开证据不足不等于判断运营方未处理。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.reddit.com/r/Crypto_com/comments/1tzj235/cryptocom_defi_bridge_failed_26_million_cro_stuck/)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [深审表中本事件的历史证据](../../08-跨链异常事件深审总表.csv)：按事件编号回查金额、处置与证据缺口；沿用账本。\n\n待确认：需源交易、真实桥产品/路线、目标未铸币证据、官方回复与退款结论。事件日沿用账本，投诉持续时间未独立确认。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-049",
+  "source_card_markdown": "# Crypto.com DeFi Bridge 260万CRO滞留投诉（待确认）（Crypto.com DeFi Bridge 2.6m CRO stuck report）\n\n> 事件编号：EV2026-049｜账本类别：candidate（待确认候选）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-09（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Crypto.com（事件尚待官方确认） |\n| 跨链桥或产品 | Crypto.com DeFi Bridge 2.6m CRO stuck report |\n| 底层协议 | Crypto.com DeFi Bridge；实际路由及组件待确认 |\n| 涉及链 | 声称Ethereum → Cronos POS，路线待核 |\n| 事件性质 | 尚未确认的异常线索 |\n| 损失与回收 | 用户声称260万 CRO被卡数周；未验证实际被盗或永久净损。 |\n\n## 2. 原因与经过\n\nReddit发帖者称源侧销毁已成功，目标侧未铸币，随后进入支持和退款反复处理流程。当前没有根交易和消息ID来验证这条转移链路。\n\n这是单个用户公开投诉，不能凭支持工单未解决推断桥资产被盗，也不能把帖子放在official_sources字段就称为官方事故承认。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：退款及服务处置均待官方证据。**\n\n现有材料没有可核验的Crypto.com技术修复、退款到账或最终支持结果。继续保留候选项；公开证据不足不等于判断运营方未处理。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.reddit.com/r/Crypto_com/comments/1tzj235/cryptocom_defi_bridge_failed_26_million_cro_stuck/)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [深审表中本事件的历史证据](../../08-跨链异常事件深审总表.csv)：按事件编号回查金额、处置与证据缺口；沿用账本。\n\n待确认：需源交易、真实桥产品/路线、目标未铸币证据、官方回复与退款结论。事件日沿用账本，投诉持续时间未独立确认。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

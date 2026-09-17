@@ -1,0 +1,63 @@
+{
+  "event_id": "EVT-000024",
+  "event_name": "Meter Passport 包装原生币假存款",
+  "summary": "攻击利用原生 ETH／BNB 与其包装币的特殊分支。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约420万—430万美元历史流出估值；跨市场连带损害及最后补偿需另行对账。",
+  "transaction_ids": [
+    "TXN-000048",
+    "TXN-000050",
+    "TXN-000071",
+    "TXN-000082",
+    "TXN-000198",
+    "TXN-000565",
+    "TXN-000574",
+    "TXN-000600",
+    "TXN-000668",
+    "TXN-000669",
+    "TXN-000670"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Meter 官方复盘",
+      "url": "https://medium.com/meter-io/post-mortem-report-meter-passport-12af6b50393d"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "CertiK 技术分析",
+      "url": "https://www.certik.com/blog/cross-chain-bridge-attacks-explained"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "SlowMist 事件目录",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=4"
+    }
+  ],
+  "uncertainties": [
+    "待确认：事件按账本为2022-02-05，部分材料使用02-06；应以UTC交易最终校准。币种分项、连带损害和净损仍待核。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-02-05；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Meter |\n| 跨链桥或产品 | Meter Passport 资产处理合约（原记录：Meter Passport） |\n| 底层协议 | Meter Passport（具体部署版本待核） |\n| 涉及链／范围 | BSC/Ethereum → 多个目的域，完整范围待核 |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约420万—430万美元历史流出估值；跨市场连带损害及最后补偿需另行对账。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击利用原生 ETH／BNB 与其包装币的特殊分支。普通 deposit 路径接受包装原生币参数时，没有完成应有的转入、锁定或余额检查，却仍产生与真实存款相同的事件。\n\n桥将“发出了事件”当作“已经存入相应资产”，在目的侧兑现虚假额度。这与 Qubit 同属无真实资产的存款记录问题，但具体分支和资产处理实现不同，不能当作同一事故。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已报告暂停并修正处理器，补偿与全量部署待核。**\n\n账本所引官方复盘记载暂停桥、修复 handler 并开展流动性和用户处置。本轮核读的 CertiK 技术分析进一步支持包装币分支跳过锁定／销毁的机制。\n\n恢复余额或补偿用户不直接证明所有目的域均已更新；本轮没有固定处理器修复提交及每条路线恢复时间。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Meter 官方复盘](https://medium.com/meter-io/post-mortem-report-meter-passport-12af6b50393d)：沿用账本，非本轮网页核读；支持历史暂停、处理器修正与响应。\n- [CertiK 技术分析](https://www.certik.com/blog/cross-chain-bridge-attacks-explained)：本轮网页核读；支持 Meter 包装原生币假存款机制，通用建议不是实际措施。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本；用于日期及金额口径追溯。\n\n待确认：事件按账本为2022-02-05，部分材料使用02-06；应以UTC交易最终校准。币种分项、连带损害和净损仍待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-004",
+  "source_card_markdown": "# Meter Passport 包装原生币假存款\n\n> 事件编号：EV2022-004｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 事件日沿用账本 2022-02-05；独立披露日未单列确认，不应默认同日。 |\n| 团队／项目 | Meter |\n| 跨链桥或产品 | Meter Passport 资产处理合约（原记录：Meter Passport） |\n| 底层协议 | Meter Passport（具体部署版本待核） |\n| 涉及链／范围 | BSC/Ethereum → 多个目的域，完整范围待核 |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约420万—430万美元历史流出估值；跨市场连带损害及最后补偿需另行对账。 |\n\n## 2. 原因与经过\n\n攻击利用原生 ETH／BNB 与其包装币的特殊分支。普通 deposit 路径接受包装原生币参数时，没有完成应有的转入、锁定或余额检查，却仍产生与真实存款相同的事件。\n\n桥将“发出了事件”当作“已经存入相应资产”，在目的侧兑现虚假额度。这与 Qubit 同属无真实资产的存款记录问题，但具体分支和资产处理实现不同，不能当作同一事故。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已报告暂停并修正处理器，补偿与全量部署待核。**\n\n账本所引官方复盘记载暂停桥、修复 handler 并开展流动性和用户处置。本轮核读的 CertiK 技术分析进一步支持包装币分支跳过锁定／销毁的机制。\n\n恢复余额或补偿用户不直接证明所有目的域均已更新；本轮没有固定处理器修复提交及每条路线恢复时间。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Meter 官方复盘](https://medium.com/meter-io/post-mortem-report-meter-passport-12af6b50393d)：沿用账本，非本轮网页核读；支持历史暂停、处理器修正与响应。\n- [CertiK 技术分析](https://www.certik.com/blog/cross-chain-bridge-attacks-explained)：本轮网页核读；支持 Meter 包装原生币假存款机制，通用建议不是实际措施。\n- [SlowMist 事件目录](https://hacked.slowmist.io/?c=Bridge&page=4)：沿用账本；用于日期及金额口径追溯。\n\n待确认：事件按账本为2022-02-05，部分材料使用02-06；应以UTC交易最终校准。币种分项、连带损害和净损仍待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,49 @@
+{
+  "event_id": "EVT-000159",
+  "event_name": "Garden 独立 Solver 数据库伪造结算记录（Garden independent solver database）",
+  "summary": "独立solver的数据库被修改，插入伪造HTLC结算记录，导致该solver按虚假业务状态释放自己的资金。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约45万美元为独立solver损失；现有说明称合约及用户资金未受影响。",
+  "transaction_ids": [
+    "TXN-000130",
+    "TXN-000255"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://garden.finance/faq"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：FAQ是产品入口，仍需稳定事件原文、被篡改记录与放款交易对照、修复和损失承担结果。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-26（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Garden；受损者为独立solver |\n| 跨链桥或产品 | Garden independent solver database |\n| 底层协议 | Garden HTLC交换；独立solver链下数据库 |\n| 涉及链 | Ethereum、Base、Arbitrum、BNB Chain等solver结算环境 |\n| 事件性质 | 跨链相邻事件，保留边界分类 |\n| 损失与回收 | 约45万美元为独立solver损失；现有说明称合约及用户资金未受影响。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "独立solver的数据库被修改，插入伪造HTLC结算记录，导致该solver按虚假业务状态释放自己的资金。\n\n问题处在solver的链下数据与放款决策，现有证据没有显示Garden链上HTLC验证被绕过。应保留boundary类别，避免把产品附近的运营失陷升格为桥合约攻击。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：应用与solver已隔离，数据库修复待核。**\n\n账本所引说明记录暂停应用、隔离solver，并调查数据库和凭证。尚未取得已完成凭证轮换、数据库加固或solver重启的技术证据；用户未损失也不等于solver财务损失已补齐。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://garden.finance/faq)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：FAQ是产品入口，仍需稳定事件原文、被篡改记录与放款交易对照、修复和损失承担结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-033",
+  "source_card_markdown": "# Garden 独立 Solver 数据库伪造结算记录（Garden independent solver database）\n\n> 事件编号：EV2026-033｜账本类别：boundary（跨链相邻边界事件）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-26（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Garden；受损者为独立solver |\n| 跨链桥或产品 | Garden independent solver database |\n| 底层协议 | Garden HTLC交换；独立solver链下数据库 |\n| 涉及链 | Ethereum、Base、Arbitrum、BNB Chain等solver结算环境 |\n| 事件性质 | 跨链相邻事件，保留边界分类 |\n| 损失与回收 | 约45万美元为独立solver损失；现有说明称合约及用户资金未受影响。 |\n\n## 2. 原因与经过\n\n独立solver的数据库被修改，插入伪造HTLC结算记录，导致该solver按虚假业务状态释放自己的资金。\n\n问题处在solver的链下数据与放款决策，现有证据没有显示Garden链上HTLC验证被绕过。应保留boundary类别，避免把产品附近的运营失陷升格为桥合约攻击。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：应用与solver已隔离，数据库修复待核。**\n\n账本所引说明记录暂停应用、隔离solver，并调查数据库和凭证。尚未取得已完成凭证轮换、数据库加固或solver重启的技术证据；用户未损失也不等于solver财务损失已补齐。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://garden.finance/faq)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：FAQ是产品入口，仍需稳定事件原文、被篡改记录与放款交易对照、修复和损失承担结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

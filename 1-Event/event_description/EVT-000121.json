@@ -1,0 +1,53 @@
+{
+  "event_id": "EVT-000121",
+  "event_name": "CrossCurve 接收器快速执行绕过验证（CrossCurve EYWA ReceiverAxelar）",
+  "summary": "CrossCurve/EYWA 的 ReceiverAxelar 在 expressExecute 快速路径中绕过应由网关完成的来源验证，伪造消息因此进入应用执行逻辑。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "披露损失约300万美元；币种分项、毛流出与最终净损尚未统一。",
+  "transaction_ids": [
+    "TXN-000221",
+    "TXN-000450"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://www.theblock.co/news/ecosystems/2026-02-01-crosscurve-bridge-exploited-for-approximately-3-million-across-multiple-chains-via-spoofed-messages-387939"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=2"
+    }
+  ],
+  "uncertainties": [
+    "待确认：主源为媒体报道；仍需项目原始复盘、根交易、修复部署及最终资金账。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-02-01（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | CrossCurve / EYWA |\n| 跨链桥或产品 | CrossCurve EYWA ReceiverAxelar |\n| 底层协议 | Axelar；CrossCurve 自有接收器与 PortalV2 |\n| 涉及链 | Axelar 连接的多条 EVM 链；完整路线待核 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 披露损失约300万美元；币种分项、毛流出与最终净损尚未统一。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "CrossCurve/EYWA 的 ReceiverAxelar 在 expressExecute 快速路径中绕过应由网关完成的来源验证，伪造消息因此进入应用执行逻辑。\n\n消息被 PortalV2 当作可结算指令并释放资产。问题位于接收器集成及权限判断；现有材料不足以推成 Axelar 整个消息网络被攻破。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：账本记载已补验证，部署闭环待核实。**\n\n既有材料记录暂停受影响快速路径并补充来源或网关验证。本卡沿用该处置描述，但未重新找到可逐一对应的修复提交及部署记录；服务全面恢复、追回和补偿结果仍待确认。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.theblock.co/news/ecosystems/2026-02-01-crosscurve-bridge-exploited-for-approximately-3-million-across-multiple-chains-via-spoofed-messages-387939)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：主源为媒体报道；仍需项目原始复盘、根交易、修复部署及最终资金账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->"
+    },
+    {
+      "title": "2026-09-12 CVV审计证据与机制补充",
+      "content": "以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [L1到L2调用人地址别名的授权语义](../../CVV补全/审计卡片/CVVR-ea731ff4b2f0.md#f-002) | 机制类比（非本事故证据） | 地址字面相同不等于跨域主体相同；与ReceiverAxelar仅作机制对照。 原报告核验：not_read。 |\n| [composeFrom不一定是原始发送人](../../CVV补全/审计卡片/CVVR-56ff481ef471.md#f-001) | 机制类比（非本事故证据） | 执行上下文与业务发起人区分；这里是Nexus应用组件而非Endpoint统一缺陷。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->"
+    }
+  ],
+  "source_event_id": "EV2026-002",
+  "source_card_markdown": "# CrossCurve 接收器快速执行绕过验证（CrossCurve EYWA ReceiverAxelar）\n\n> 事件编号：EV2026-002｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-02-01（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | CrossCurve / EYWA |\n| 跨链桥或产品 | CrossCurve EYWA ReceiverAxelar |\n| 底层协议 | Axelar；CrossCurve 自有接收器与 PortalV2 |\n| 涉及链 | Axelar 连接的多条 EVM 链；完整路线待核 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 披露损失约300万美元；币种分项、毛流出与最终净损尚未统一。 |\n\n## 2. 原因与经过\n\nCrossCurve/EYWA 的 ReceiverAxelar 在 expressExecute 快速路径中绕过应由网关完成的来源验证，伪造消息因此进入应用执行逻辑。\n\n消息被 PortalV2 当作可结算指令并释放资产。问题位于接收器集成及权限判断；现有材料不足以推成 Axelar 整个消息网络被攻破。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：账本记载已补验证，部署闭环待核实。**\n\n既有材料记录暂停受影响快速路径并补充来源或网关验证。本卡沿用该处置描述，但未重新找到可逐一对应的修复提交及部署记录；服务全面恢复、追回和补偿结果仍待确认。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.theblock.co/news/ecosystems/2026-02-01-crosscurve-bridge-exploited-for-approximately-3-million-across-multiple-chains-via-spoofed-messages-387939)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：主源为媒体报道；仍需项目原始复盘、根交易、修复部署及最终资金账。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n\n<!-- CVV-20260912-BEGIN -->\n## 2026-09-12 CVV审计证据与机制补充\n\n以下关系按具体证据区分。审计发现不是额外攻击事件，类比不改变本卡的原因、日期、损失或处置裁决。\n\n| 补充发现 | 关系 | 复核及使用边界 |\n|---|---|---|\n| [L1到L2调用人地址别名的授权语义](../../CVV补全/审计卡片/CVVR-ea731ff4b2f0.md#f-002) | 机制类比（非本事故证据） | 地址字面相同不等于跨域主体相同；与ReceiverAxelar仅作机制对照。 原报告核验：not_read。 |\n| [composeFrom不一定是原始发送人](../../CVV补全/审计卡片/CVVR-56ff481ef471.md#f-001) | 机制类比（非本事故证据） | 执行上下文与业务发起人区分；这里是Nexus应用组件而非Endpoint统一缺陷。 原报告核验：not_read。 |\n\n完整对账见[CVV补全说明](../../CVV补全/README.md)和[事件关联表](../../CVV补全/08-既有事件关联.csv)。\n<!-- CVV-20260912-END -->\n",
+  "review_status": "pending"
+}

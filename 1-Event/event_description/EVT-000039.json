@@ -1,0 +1,58 @@
+{
+  "event_id": "EVT-000039",
+  "event_name": "Harmony Horizon 多签密钥失守",
+  "summary": "官方复盘称攻击者至少控制四把验证者私钥中的两把，于2022-06-23 11:06:46 UTC开始转走桥资产。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约1亿美元，含ETH、稳定币等14类桥接资产；Harmony上的映射资产失去部分背书。追回／冻结不等于全额可分配补偿，净损未闭合。",
+  "transaction_ids": [
+    "TXN-000183",
+    "TXN-000242",
+    "TXN-000243",
+    "TXN-000260",
+    "TXN-000269",
+    "TXN-000331",
+    "TXN-000354",
+    "TXN-000361",
+    "TXN-000411",
+    "TXN-000504",
+    "TXN-000526"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Harmony 官方事故总结",
+      "url": "https://talk.harmony.one/t/summary-of-the-horizon-bridge-incident/20990"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "FBI Horizon 归因声明",
+      "url": "https://www.fbi.gov/news/press-releases/fbi-confirms-lazarus-group-cyber-actors-responsible-for-harmonys-horizon-bridge-currency-theft"
+    }
+  ],
+  "uncertainties": [
+    "待确认：原有2/4与2/5口径冲突仍留存；本轮官方正文支持“至少四把中的两把”，最低共识是至少两把失守。Horizon后续重开、赔偿与净追回待核。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 攻击自2022-06-23 11:06:46 UTC起；所核官方总结发表于2022-08-03。 |\n| 团队／项目 | Harmony |\n| 跨链桥或产品 | Horizon Bridge（原记录：Harmony Horizon Bridge） |\n| 底层协议 | Horizon 多签托管机制 |\n| 涉及链／范围 | Harmony → Ethereum/BNB Chain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约1亿美元，含ETH、稳定币等14类桥接资产；Harmony上的映射资产失去部分背书。追回／冻结不等于全额可分配补偿，净损未闭合。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "官方复盘称攻击者至少控制四把验证者私钥中的两把，于2022-06-23 11:06:46 UTC开始转走桥资产。多签门槛仍可被满足，但签名控制已不再独立可信。\n\n项目将入侵链与钓鱼、终端及内部基础设施联系起来；这些是官方调查归因，不能把其中每个推测都当成已独立证明。官方同时称未见桥智能合约或区块链协议被攻破证据。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已停桥并加固运营环境，恢复偿付与最终追赃未闭合。**\n\n官方确认Horizon暂停、隔离云访问、建立安全运营响应并开展追赃。文中另外记载未受此次盗款影响的Bitcoin桥更换密钥、释放资金后离线；这不能移植为Horizon已经重开。\n\n原账本称提高门槛，卡片只保留已核的密钥／基础设施响应，不把提高门槛或执法追踪写成资产背书已经恢复。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Harmony 官方事故总结](https://talk.harmony.one/t/summary-of-the-horizon-bridge-incident/20990)：本轮网页核读；支持至少两把密钥、攻击时间及Horizon／Bitcoin桥处置之分。\n- [FBI Horizon 归因声明](https://www.fbi.gov/news/press-releases/fbi-confirms-lazarus-group-cyber-actors-responsible-for-harmonys-horizon-bridge-currency-theft)：沿用账本；支持调查进展，不证明全额追偿。\n\n待确认：原有2/4与2/5口径冲突仍留存；本轮官方正文支持“至少四把中的两把”，最低共识是至少两把失守。Horizon后续重开、赔偿与净追回待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2022-013",
+  "source_card_markdown": "# Harmony Horizon 多签密钥失守\n\n> 事件编号：EV2022-013｜账本类别：confirmed（已确认记录，含攻击、故障、披露漏洞和失败尝试）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件与披露时间 | 攻击自2022-06-23 11:06:46 UTC起；所核官方总结发表于2022-08-03。 |\n| 团队／项目 | Harmony |\n| 跨链桥或产品 | Horizon Bridge（原记录：Harmony Horizon Bridge） |\n| 底层协议 | Horizon 多签托管机制 |\n| 涉及链／范围 | Harmony → Ethereum/BNB Chain |\n| 事件性质 | 已确认攻击／资产异常流出 |\n| 损失与口径 | 约1亿美元，含ETH、稳定币等14类桥接资产；Harmony上的映射资产失去部分背书。追回／冻结不等于全额可分配补偿，净损未闭合。 |\n\n## 2. 原因与经过\n\n官方复盘称攻击者至少控制四把验证者私钥中的两把，于2022-06-23 11:06:46 UTC开始转走桥资产。多签门槛仍可被满足，但签名控制已不再独立可信。\n\n项目将入侵链与钓鱼、终端及内部基础设施联系起来；这些是官方调查归因，不能把其中每个推测都当成已独立证明。官方同时称未见桥智能合约或区块链协议被攻破证据。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已停桥并加固运营环境，恢复偿付与最终追赃未闭合。**\n\n官方确认Horizon暂停、隔离云访问、建立安全运营响应并开展追赃。文中另外记载未受此次盗款影响的Bitcoin桥更换密钥、释放资金后离线；这不能移植为Horizon已经重开。\n\n原账本称提高门槛，卡片只保留已核的密钥／基础设施响应，不把提高门槛或执法追踪写成资产背书已经恢复。\n\n## 4. 依据与待确认\n\n本卡保留冻结于2026-09-10的事件范围；以下注明“本轮网页核读”的历史材料于2026-09-12读取，未据此推定项目当前所有版本均安全。\n\n- [Harmony 官方事故总结](https://talk.harmony.one/t/summary-of-the-horizon-bridge-incident/20990)：本轮网页核读；支持至少两把密钥、攻击时间及Horizon／Bitcoin桥处置之分。\n- [FBI Horizon 归因声明](https://www.fbi.gov/news/press-releases/fbi-confirms-lazarus-group-cyber-actors-responsible-for-harmonys-horizon-bridge-currency-theft)：沿用账本；支持调查进展，不证明全额追偿。\n\n待确认：原有2/4与2/5口径冲突仍留存；本轮官方正文支持“至少四把中的两把”，最低共识是至少两把失守。Horizon后续重开、赔偿与净追回待核。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

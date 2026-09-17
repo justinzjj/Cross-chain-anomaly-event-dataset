@@ -1,0 +1,54 @@
+{
+  "event_id": "EVT-000113",
+  "event_name": "Snowbridge 两个 Hub 升级不同步导致单向停机",
+  "summary": "1.7.1 升级改变 Asset Hub 发往 Bridge Hub 的消息为免付费执行。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "单向停机3小时35分06秒，6笔转账失败；官方称无永久资金损失",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Snowbridge 团队在 Polkadot 论坛的复盘",
+      "url": "https://forum.polkadot.network/t/snowbridge-incident-report-polkadot-runtime-upgrade-1-7-1/15144"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "代码仓库／补丁或安全公告",
+      "url": "https://github.com/paritytech/polkadot-sdk/pull/8599"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "治理重放提案",
+      "url": "https://polkadot.subsquare.io/referenda/1765"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "链上交易／合约锚点",
+      "url": "https://bridgehub-polkadot.subscan.io/xcm_message/polkadot-8435ced06684d769562d3bcdc538c6174bc8803c"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2025-09-30 15:06:12—18:41:18 UTC；团队复盘发表于2025-10-01 |\n| 团队／项目 | Snowbridge 团队／Polkadot 生态 |\n| 跨链桥或产品 | Snowbridge Polkadot→Ethereum 路线 |\n| 底层协议／依赖 | Polkadot Asset Hub、Bridge Hub 与 XCM runtime 1.7.1 |\n| 涉及链／路线 | Hydration → Asset Hub → Bridge Hub → Ethereum |\n| 事件性质 | 运行与可用性故障 |\n| 损失与口径 | 单向停机3小时35分06秒，6笔转账失败；官方称无永久资金损失 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "1.7.1 升级改变 Asset Hub 发往 Bridge Hub 的消息为免付费执行。治理授权虽在两链通过，Wasm 仅及时上传 Asset Hub，仍运行旧版的 Bridge Hub 继续要求付费消息，因而拒绝处理。\n\n2025年9月30日15:06:12 UTC起，Polkadot→Ethereum 方向不可用，6笔 Hydration 转账受影响。此处拒绝不兼容消息保住了安全边界，造成的是活性故障，而非未经授权资产释放。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已补上传 Wasm 恢复服务，6笔重放完成待核。**\n\n团队17:40:30上传缺失的 Bridge Hub Wasm，18:41:18升级生效并恢复服务，同时提议通过治理1765重放失败交易。报告中的版本差异监控、升级协同与自动重放属于后续改进承诺，不能直接写作已经实现。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [Snowbridge 团队在 Polkadot 论坛的复盘](https://forum.polkadot.network/t/snowbridge-incident-report-polkadot-runtime-upgrade-1-7-1/15144)：2026-09-12本轮网页核读；支持版本错配、精确停机窗口、6笔失败及重放提案；不证明重放已执行。\n- [代码仓库／补丁或安全公告](https://github.com/paritytech/polkadot-sdk/pull/8599)：沿用账本及此前核验；提供对应实现或修复线索；本轮未重跑代码或核生产部署。\n- [治理重放提案](https://polkadot.subsquare.io/referenda/1765)：沿用账本及此前核验；提供重放计划及调用检查入口，不自动证明已执行。\n- [链上交易／合约锚点](https://bridgehub-polkadot.subscan.io/xcm_message/polkadot-8435ced06684d769562d3bcdc538c6174bc8803c)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n\n待确认及口径说明：本轮核读团队复盘，已确认恢复时间与6笔清单；未核治理1765最终执行和每笔目的链到账。系统服务恢复与历史失败交易全部补齐是两个结论，永久损失零为官方报告口径。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2025-015",
+  "source_card_markdown": "# Snowbridge 两个 Hub 升级不同步导致单向停机\n\n> 事件编号：EV2025-015｜账本类别：confirmed（已确认主事件，含漏洞披露／运行异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2025-09-30 15:06:12—18:41:18 UTC；团队复盘发表于2025-10-01 |\n| 团队／项目 | Snowbridge 团队／Polkadot 生态 |\n| 跨链桥或产品 | Snowbridge Polkadot→Ethereum 路线 |\n| 底层协议／依赖 | Polkadot Asset Hub、Bridge Hub 与 XCM runtime 1.7.1 |\n| 涉及链／路线 | Hydration → Asset Hub → Bridge Hub → Ethereum |\n| 事件性质 | 运行与可用性故障 |\n| 损失与口径 | 单向停机3小时35分06秒，6笔转账失败；官方称无永久资金损失 |\n\n## 2. 原因与经过\n\n1.7.1 升级改变 Asset Hub 发往 Bridge Hub 的消息为免付费执行。治理授权虽在两链通过，Wasm 仅及时上传 Asset Hub，仍运行旧版的 Bridge Hub 继续要求付费消息，因而拒绝处理。\n\n2025年9月30日15:06:12 UTC起，Polkadot→Ethereum 方向不可用，6笔 Hydration 转账受影响。此处拒绝不兼容消息保住了安全边界，造成的是活性故障，而非未经授权资产释放。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已补上传 Wasm 恢复服务，6笔重放完成待核。**\n\n团队17:40:30上传缺失的 Bridge Hub Wasm，18:41:18升级生效并恢复服务，同时提议通过治理1765重放失败交易。报告中的版本差异监控、升级协同与自动重放属于后续改进承诺，不能直接写作已经实现。\n\n## 4. 依据与待确认\n\n下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [Snowbridge 团队在 Polkadot 论坛的复盘](https://forum.polkadot.network/t/snowbridge-incident-report-polkadot-runtime-upgrade-1-7-1/15144)：2026-09-12本轮网页核读；支持版本错配、精确停机窗口、6笔失败及重放提案；不证明重放已执行。\n- [代码仓库／补丁或安全公告](https://github.com/paritytech/polkadot-sdk/pull/8599)：沿用账本及此前核验；提供对应实现或修复线索；本轮未重跑代码或核生产部署。\n- [治理重放提案](https://polkadot.subsquare.io/referenda/1765)：沿用账本及此前核验；提供重放计划及调用检查入口，不自动证明已执行。\n- [链上交易／合约锚点](https://bridgehub-polkadot.subscan.io/xcm_message/polkadot-8435ced06684d769562d3bcdc538c6174bc8803c)：沿用账本及此前核验；可追溯对应执行或合约；本轮未重新复算链上状态。\n\n待确认及口径说明：本轮核读团队复盘，已确认恢复时间与6笔清单；未核治理1765最终执行和每笔目的链到账。系统服务恢复与历史失败交易全部补齐是两个结论，永久损失零为官方报告口径。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

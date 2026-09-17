@@ -1,0 +1,60 @@
+{
+  "event_id": "EVT-000067",
+  "event_name": "Poly Network 中继共识密钥泄露与异常增发",
+  "summary": "既有核验材料将根因定位为中继共识私钥被攻破；紧凑表进一步记录构建环境中的木马可能导致密钥泄露。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "名义理论增发估值约420亿美元；实际兑现约1,020万美元；净损未知",
+  "transaction_ids": [
+    "TXN-000141",
+    "TXN-000150",
+    "TXN-000187",
+    "TXN-000540",
+    "TXN-000610"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "项目公告／既有来源",
+      "url": "https://polynetwork.medium.com/poly-network-exploit-damage-control-measures-0673721c63e4"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "CertiK 技术分析",
+      "url": "https://www.certik.com/blog/7iLk3m8aamq1fe8rWxdrT3-poly-network-incident-analysis"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "安全研究者／分析机构原文",
+      "url": "https://dedaub.com/blog/poly-network-hack/"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "DefiLlama 事件数据入口",
+      "url": "https://api.llama.fi/hacks"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2023-07-01（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Poly Network |\n| 跨链桥或产品 | Poly 跨链中继与目的链铸币 |\n| 底层协议／依赖 | Poly Network |\n| 涉及链／路线 | Poly Relay Chain → 约11条目的链 |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 名义理论增发估值约420亿美元；实际兑现约1,020万美元；净损未知 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "既有核验材料将根因定位为中继共识私钥被攻破；紧凑表进一步记录构建环境中的木马可能导致密钥泄露。攻击者以真实共识凭据签署虚假区块头和跨链交易，使恶意铸币获得授权。\n\n目的链依据被冒用的中继权威执行增发。巨额代币的账面市值受供应量、价格和流动性限制，无法全部卖出；约420亿美元只代表名义增发估值，不能当作已流失现金或可兑现资产。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：已记载停桥及更换共识密钥，最终追回未知。**\n\n账本记录暂停服务、更换受影响共识密钥，并协调相关项目冻结和快照。密钥轮换针对已泄露控制权；是否彻底清除构建环境的入侵、各链何时恢复以及追回后的净损，仍缺完整公开闭环。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [项目公告／既有来源](https://polynetwork.medium.com/poly-network-exploit-damage-control-measures-0673721c63e4)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [CertiK 技术分析](https://www.certik.com/blog/7iLk3m8aamq1fe8rWxdrT3-poly-network-incident-analysis)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [安全研究者／分析机构原文](https://dedaub.com/blog/poly-network-hack/)：沿用账本及此前核验；支持既有机制、资金流或修复记录；具体范围见正文。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：不能把本次当作2021年 Poly 消息解析漏洞的复发。木马初始入侵细节、全链交易清单与恢复资金核算仍需进一步核实；本轮未重新读取网页。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2023-007",
+  "source_card_markdown": "# Poly Network 中继共识密钥泄露与异常增发\n\n> 事件编号：EV2023-007｜账本类别：confirmed（已确认主事件，含漏洞披露／运行异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 2023-07-01（账本事件日）；首次披露日未单列，不能据此认定同日披露 |\n| 团队／项目 | Poly Network |\n| 跨链桥或产品 | Poly 跨链中继与目的链铸币 |\n| 底层协议／依赖 | Poly Network |\n| 涉及链／路线 | Poly Relay Chain → 约11条目的链 |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 名义理论增发估值约420亿美元；实际兑现约1,020万美元；净损未知 |\n\n## 2. 原因与经过\n\n既有核验材料将根因定位为中继共识私钥被攻破；紧凑表进一步记录构建环境中的木马可能导致密钥泄露。攻击者以真实共识凭据签署虚假区块头和跨链交易，使恶意铸币获得授权。\n\n目的链依据被冒用的中继权威执行增发。巨额代币的账面市值受供应量、价格和流动性限制，无法全部卖出；约420亿美元只代表名义增发估值，不能当作已流失现金或可兑现资产。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：已记载停桥及更换共识密钥，最终追回未知。**\n\n账本记录暂停服务、更换受影响共识密钥，并协调相关项目冻结和快照。密钥轮换针对已泄露控制权；是否彻底清除构建环境的入侵、各链何时恢复以及追回后的净损，仍缺完整公开闭环。\n\n## 4. 依据与待确认\n\n本卡沿用截至2026-09-11的账本及既有证据；2026-09-12仅整理成卡，未重新核实当前状态。 事件全集冻结于2026-09-10。\n\n- [项目公告／既有来源](https://polynetwork.medium.com/poly-network-exploit-damage-control-measures-0673721c63e4)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [CertiK 技术分析](https://www.certik.com/blog/7iLk3m8aamq1fe8rWxdrT3-poly-network-incident-analysis)：沿用账本及此前核验；支持既有技术根因与攻击路径记录；具体缺口见正文。\n- [安全研究者／分析机构原文](https://dedaub.com/blog/poly-network-hack/)：沿用账本及此前核验；支持既有机制、资金流或修复记录；具体范围见正文。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：不能把本次当作2021年 Poly 消息解析漏洞的复发。木马初始入侵细节、全链交易清单与恢复资金核算仍需进一步核实；本轮未重新读取网页。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

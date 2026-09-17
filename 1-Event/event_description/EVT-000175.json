@@ -1,0 +1,62 @@
+{
+  "event_id": "EVT-000175",
+  "event_name": "Symbiosis BTC Bridge syBTC 异常铸造与兑现",
+  "summary": "监测到异常巨量 syBTC 铸造及相关受益人在 Ethereum 池卖出 WBTC；尚未完成跨链全量资金闭环。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "官方确认 BTC 桥遭利用；监测显示带签名 BridgeV2 receive 接受异常 syBTC 铸造，签名/业务校验的具体失效入口尚未披露。",
+  "impact": "Blockaid 阶段观察：约 2^62 raw syBTC（8 位小数，约 461 亿 syBTC）；约 4.39 WBTC / 33.6 万美元兑现。理论增发不是美元损失，最终净损未知。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://x.com/symbiosis_fi/status/2098442463358718264"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://x.com/symbiosis_fi/status/2098384161673285716"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://x.com/blockaid_/status/2098275381417513149"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "来源 4",
+      "url": "https://x.com/blockaid_/status/2098275453035315642"
+    },
+    {
+      "reference_id": "ref-5",
+      "title": "来源 5",
+      "url": "https://api.llama.fi/hacks"
+    }
+  ],
+  "uncertainties": [
+    "待补：完整官方 RCA、根交易/receipt 与 trace、签名或额度校验失效原因、修复部署、追回和最终净损。",
+    "冲突：官方日期 9 月 11 日；聚合器记 9 月 10 日。官方长帖 oEmbed 截断，仅引用可见部分；不推定完整后文。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2026-09-11。官方明确 2026-09-11 约 04:28 UTC；聚合器 2026-09-10 与官方不一致，采用官方日。\n- 对象：Symbiosis Bitcoin Bridge / BridgeV2；底层协议：Symbiosis。\n- 路线：Bitcoin route; BNB Chain mint observed → Ethereum liquidity venue。\n- 裁决：`confirmed` / `confirmed_exploit`；证据等级 B（E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：BTC 跨链凭证应与真实存入资产及合法额度对应，兑现不能产生无支持的新增供应。\n\n异常流程：监测到异常巨量 syBTC 铸造及相关受益人在 Ethereum 池卖出 WBTC；尚未完成跨链全量资金闭环。\n\n直接原因：官方确认 BTC 桥遭利用；监测显示带签名 BridgeV2 receive 接受异常 syBTC 铸造，签名/业务校验的具体失效入口尚未披露。\n\n资金影响：Blockaid 阶段观察：约 2^62 raw syBTC（8 位小数，约 461 亿 syBTC）；约 4.39 WBTC / 33.6 万美元兑现。理论增发不是美元损失，最终净损未知。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方暂停原生 BTC 桥，其他路线继续；通过 Chainflip/THORChain 恢复的 BTC swap 入口不等于原桥漏洞已修复。\n\n尚未取得可核实的修复部署证据。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "两条 Blockaid 帖为同一机构；两条官方帖为同一机构。oEmbed 已核作者、正文与日期，尚未独立核验链上流出。 日期口径：官方明确 2026-09-11 约 04:28 UTC；聚合器 2026-09-10 与官方不一致，采用官方日。\n\n待补：完整官方 RCA、根交易/receipt 与 trace、签名或额度校验失效原因、修复部署、追回和最终净损。\n\n冲突：官方日期 9 月 11 日；聚合器记 9 月 10 日。官方长帖 oEmbed 截断，仅引用可见部分；不推定完整后文。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://x.com/symbiosis_fi/status/2098442463358718264)\n- [来源 2](https://x.com/symbiosis_fi/status/2098384161673285716)\n- [来源 3](https://x.com/blockaid_/status/2098275381417513149)\n- [来源 4](https://x.com/blockaid_/status/2098275453035315642)\n- [来源 5](https://api.llama.fi/hacks)"
+    }
+  ],
+  "source_event_id": "EV2026-051",
+  "source_card_markdown": "# EV2026-051 · Symbiosis BTC Bridge syBTC 异常铸造与兑现\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2026-09-11。官方明确 2026-09-11 约 04:28 UTC；聚合器 2026-09-10 与官方不一致，采用官方日。\n- 对象：Symbiosis Bitcoin Bridge / BridgeV2；底层协议：Symbiosis。\n- 路线：Bitcoin route; BNB Chain mint observed → Ethereum liquidity venue。\n- 裁决：`confirmed` / `confirmed_exploit`；证据等级 B（E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：BTC 跨链凭证应与真实存入资产及合法额度对应，兑现不能产生无支持的新增供应。\n\n异常流程：监测到异常巨量 syBTC 铸造及相关受益人在 Ethereum 池卖出 WBTC；尚未完成跨链全量资金闭环。\n\n直接原因：官方确认 BTC 桥遭利用；监测显示带签名 BridgeV2 receive 接受异常 syBTC 铸造，签名/业务校验的具体失效入口尚未披露。\n\n资金影响：Blockaid 阶段观察：约 2^62 raw syBTC（8 位小数，约 461 亿 syBTC）；约 4.39 WBTC / 33.6 万美元兑现。理论增发不是美元损失，最终净损未知。\n\n## 3. 是否解决、如何解决\n\n官方暂停原生 BTC 桥，其他路线继续；通过 Chainflip/THORChain 恢复的 BTC swap 入口不等于原桥漏洞已修复。\n\n尚未取得可核实的修复部署证据。\n\n## 4. 证据与边界\n\n两条 Blockaid 帖为同一机构；两条官方帖为同一机构。oEmbed 已核作者、正文与日期，尚未独立核验链上流出。 日期口径：官方明确 2026-09-11 约 04:28 UTC；聚合器 2026-09-10 与官方不一致，采用官方日。\n\n待补：完整官方 RCA、根交易/receipt 与 trace、签名或额度校验失效原因、修复部署、追回和最终净损。\n\n冲突：官方日期 9 月 11 日；聚合器记 9 月 10 日。官方长帖 oEmbed 截断，仅引用可见部分；不推定完整后文。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://x.com/symbiosis_fi/status/2098442463358718264)\n- [来源 2](https://x.com/symbiosis_fi/status/2098384161673285716)\n- [来源 3](https://x.com/blockaid_/status/2098275381417513149)\n- [来源 4](https://x.com/blockaid_/status/2098275453035315642)\n- [来源 5](https://api.llama.fi/hacks)\n",
+  "review_status": "pending"
+}

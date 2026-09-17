@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000160",
+  "event_name": "ChainConnect EVM 集成侧未授权访问（ChainConnect Bridge）",
+  "summary": "ChainConnect的EVM集成部分出现未经授权的访问，随后发生异常资产流出；最终的技术入口没有公开，不能替它补成密钥泄漏或消息验证绕过。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "据报约65万美元、涉及23笔交易；追回与最终净损未确定。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://communityone.io/en/servers/988830809056239616/venom-foundation-500k-grant-program-live/news/chainconnect-bridge-incident-update-venom-2026-07-28/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：公告当前经社区新闻转载入口保留；需运营方永久复盘、根交易、受影响部署与最终资金结果。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-26（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | ChainConnect |\n| 跨链桥或产品 | ChainConnect Bridge |\n| 底层协议 | ChainConnect自有EVM↔Venom集成；具体桥组件待核 |\n| 涉及链 | Ethereum/BNB Chain/Avalanche/Polygon ↔ Venom |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 据报约65万美元、涉及23笔交易；追回与最终净损未确定。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "ChainConnect的EVM集成部分出现未经授权的访问，随后发生异常资产流出；最终的技术入口没有公开，不能替它补成密钥泄漏或消息验证绕过。\n\n受影响对象是连接Venom的桥集成。既有公告说明Venom L1未受影响，但这项范围说明不能代替桥自身的取证及资产对账。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：所有桥接已暂停，修复与重开待确认。**\n\n既有公告记载暂停全部桥接并由Venom协助调查。公开信息尚未形成可核实的技术补丁、重新部署、复桥或补偿闭环。此处未知不等于断言没有实施修复。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://communityone.io/en/servers/988830809056239616/venom-foundation-500k-grant-program-live/news/chainconnect-bridge-incident-update-venom-2026-07-28/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：公告当前经社区新闻转载入口保留；需运营方永久复盘、根交易、受影响部署与最终资金结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-034",
+  "source_card_markdown": "# ChainConnect EVM 集成侧未授权访问（ChainConnect Bridge）\n\n> 2026-09-12 v0.5 接续：本条已在 CSV 同步部分事实/来源或别名；具体修改见[字段修订](../../29-既有事件字段修订.csv)。下文提及“原账本”的差异以修改前基线理解，未涉及的处置限定仍保留。\n\n> 事件编号：EV2026-034｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-26（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | ChainConnect |\n| 跨链桥或产品 | ChainConnect Bridge |\n| 底层协议 | ChainConnect自有EVM↔Venom集成；具体桥组件待核 |\n| 涉及链 | Ethereum/BNB Chain/Avalanche/Polygon ↔ Venom |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 据报约65万美元、涉及23笔交易；追回与最终净损未确定。 |\n\n## 2. 原因与经过\n\nChainConnect的EVM集成部分出现未经授权的访问，随后发生异常资产流出；最终的技术入口没有公开，不能替它补成密钥泄漏或消息验证绕过。\n\n受影响对象是连接Venom的桥集成。既有公告说明Venom L1未受影响，但这项范围说明不能代替桥自身的取证及资产对账。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：所有桥接已暂停，修复与重开待确认。**\n\n既有公告记载暂停全部桥接并由Venom协助调查。公开信息尚未形成可核实的技术补丁、重新部署、复桥或补偿闭环。此处未知不等于断言没有实施修复。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://communityone.io/en/servers/988830809056239616/venom-foundation-500k-grant-program-live/news/chainconnect-bridge-incident-update-venom-2026-07-28/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：公告当前经社区新闻转载入口保留；需运营方永久复盘、根交易、受影响部署与最终资金结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

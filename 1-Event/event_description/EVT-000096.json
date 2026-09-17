@@ -1,0 +1,54 @@
+{
+  "event_id": "EVT-000096",
+  "event_name": "Poly CMCC 桥热钱包失窃与 Flamingo 资产支持",
+  "summary": "已知异常提款触及 Poly 的 CMCC 跨链合约／热钱包权限，但公开材料没有闭合其具体合约缺陷或授权失守方式。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "约400万—500万美元、约20%—25%相关资产；最终净损未知",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Flamingo 官方迁移与资产支持后续",
+      "url": "https://medium.com/flamingo-finance/flamingo-announces-wave-3-of-liquidity-pool-changes-f-and-p-asset-migration-new-collateral-c7b4ed972d04"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "项目公告／既有来源",
+      "url": "https://medium.com/flamingo-finance/poly-network-bridge-exploit-and-the-asset-support-initiative-c80c636255bb"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "同期报道／案例发现来源",
+      "url": "https://neonewstoday.com/defi/flamingo-finance-announces-asset-support-initiative-in-wake-of-third-poly-network-hack/"
+    },
+    {
+      "reference_id": "ref-4",
+      "title": "DefiLlama 事件数据入口",
+      "url": "https://api.llama.fi/hacks"
+    }
+  ],
+  "uncertainties": [],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 攻击2024-08-12；账本官方事故说明为8月；本轮核读后续迁移说明发表于2024-09-23 |\n| 团队／项目 | Poly Network；Flamingo／NGD 参与响应 |\n| 跨链桥或产品 | Poly CMCC 与 Neo N3 跨链热钱包 |\n| 底层协议／依赖 | Poly Network；Flamingo 为受影响应用 |\n| 涉及链／路线 | Neo N3 及 Poly CMCC 路线 |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 约400万—500万美元、约20%—25%相关资产；最终净损未知 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "已知异常提款触及 Poly 的 CMCC 跨链合约／热钱包权限，但公开材料没有闭合其具体合约缺陷或授权失守方式。不能仅凭事故名称写成重入、证明伪造或 Flamingo 合约漏洞。\n\n热钱包资产被提走后，Neo N3 上相应 f-／p-资产的抵押与市场价格受影响。Flamingo 因依赖这些桥资产而组织支持计划，不等于其自身合约构成本次直接根因。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：桥已停用并启动资产迁移，Poly 技术修复未知。**\n\n本轮核读 Flamingo 2024-09-23官方后续：旧 f-／p-资产通过 Action Center 迁至有足额支持的新资产及相应数量，并安排 FLOCKS 分期支持。新资产足额抵押不等于旧持有人原值全额获赔；官方安排的代币价值会变动，也不证明 Poly 根因已修复。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [Flamingo 官方迁移与资产支持后续](https://medium.com/flamingo-finance/flamingo-announces-wave-3-of-liquidity-pool-changes-f-and-p-asset-migration-new-collateral-c7b4ed972d04)：2026-09-12本轮网页核读；支持2024-09-23资产迁移入口及 FLOCKS 计划；不提供 Poly 根因或全额赔偿证明。\n- [项目公告／既有来源](https://medium.com/flamingo-finance/poly-network-bridge-exploit-and-the-asset-support-initiative-c80c636255bb)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [同期报道／案例发现来源](https://neonewstoday.com/defi/flamingo-finance-announces-asset-support-initiative-in-wake-of-third-poly-network-hack/)：沿用账本及此前核验；仅用于补充报道范围和金额；不提升技术细节的确定性。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：原事故公告本轮未成功读取，根因与约400万—500万美元沿用账本；本轮只新增核读迁移／支持材料。缺 Poly 官方 RCA、攻击交易、迁移实际完成比例及最终净损。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2024-016",
+  "source_card_markdown": "# Poly CMCC 桥热钱包失窃与 Flamingo 资产支持\n\n> 事件编号：EV2024-016｜账本类别：confirmed（已确认主事件，含漏洞披露／运行异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间与披露 | 攻击2024-08-12；账本官方事故说明为8月；本轮核读后续迁移说明发表于2024-09-23 |\n| 团队／项目 | Poly Network；Flamingo／NGD 参与响应 |\n| 跨链桥或产品 | Poly CMCC 与 Neo N3 跨链热钱包 |\n| 底层协议／依赖 | Poly Network；Flamingo 为受影响应用 |\n| 涉及链／路线 | Neo N3 及 Poly CMCC 路线 |\n| 事件性质 | 已确认利用／资产异常转移 |\n| 损失与口径 | 约400万—500万美元、约20%—25%相关资产；最终净损未知 |\n\n## 2. 原因与经过\n\n已知异常提款触及 Poly 的 CMCC 跨链合约／热钱包权限，但公开材料没有闭合其具体合约缺陷或授权失守方式。不能仅凭事故名称写成重入、证明伪造或 Flamingo 合约漏洞。\n\n热钱包资产被提走后，Neo N3 上相应 f-／p-资产的抵押与市场价格受影响。Flamingo 因依赖这些桥资产而组织支持计划，不等于其自身合约构成本次直接根因。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：桥已停用并启动资产迁移，Poly 技术修复未知。**\n\n本轮核读 Flamingo 2024-09-23官方后续：旧 f-／p-资产通过 Action Center 迁至有足额支持的新资产及相应数量，并安排 FLOCKS 分期支持。新资产足额抵押不等于旧持有人原值全额获赔；官方安排的代币价值会变动，也不证明 Poly 根因已修复。\n\n## 4. 依据与待确认\n\n下列标为“本轮网页核读”的材料于2026-09-12读取，其余沿用截至2026-09-11的账本证据。 事件全集冻结于2026-09-10。\n\n- [Flamingo 官方迁移与资产支持后续](https://medium.com/flamingo-finance/flamingo-announces-wave-3-of-liquidity-pool-changes-f-and-p-asset-migration-new-collateral-c7b4ed972d04)：2026-09-12本轮网页核读；支持2024-09-23资产迁移入口及 FLOCKS 计划；不提供 Poly 根因或全额赔偿证明。\n- [项目公告／既有来源](https://medium.com/flamingo-finance/poly-network-bridge-exploit-and-the-asset-support-initiative-c80c636255bb)：沿用账本及此前核验；支持既有时间线、响应或项目说明；文章级与入口级局限见正文。\n- [同期报道／案例发现来源](https://neonewstoday.com/defi/flamingo-finance-announces-asset-support-initiative-in-wake-of-third-poly-network-hack/)：沿用账本及此前核验；仅用于补充报道范围和金额；不提升技术细节的确定性。\n- [DefiLlama 事件数据入口](https://api.llama.fi/hacks)：沿用账本及此前核验；用于金额与日期对账，不作独立技术根因证明。\n\n待确认及口径说明：原事故公告本轮未成功读取，根因与约400万—500万美元沿用账本；本轮只新增核读迁移／支持材料。缺 Poly 官方 RCA、攻击交易、迁移实际完成比例及最终净损。\n\n回链：[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [事件卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

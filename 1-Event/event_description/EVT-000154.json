@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000154",
+  "event_name": "Across Solana 中继器误认伪造存款日志（Across Solana relayer）",
+  "summary": "链下 SVM 事件读取器漏查 Anchor 的8字节事件 discriminator，把攻击者提供的 CPI/日志字节解析成真实存款，即使源链没有资金到账也触发 Risk Labs 中继器垫款。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "伪造1,627项请求约4,170万美元；581项被填单、毛支付约450万美元；另有335万—360万美元损失口径及331.8 ETH返还，净额未统一。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "Across SDK v4.4.13 发布记录",
+      "url": "https://github.com/across-protocol/sdk/releases/tag/v4.4.13"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "OAK 跨链日志解析分析",
+      "url": "https://onchainattack.org/document/examples/2026-07-across-solana-relayer-anchor-event-discriminator-forgery/"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "账本主来源",
+      "url": "https://x.com/AcrossProtocol/article/2080722320814121237"
+    }
+  ],
+  "uncertainties": [
+    "待确认：官方X长文本轮无法读取。OAK将450万美元称损失，深审另存较低估算及返还金额；需按币种、交易和统计时点统一最终净损。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-17（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Across；受损中继器由Risk Labs运营 |\n| 跨链桥或产品 | Across Solana relayer |\n| 底层协议 | Across意图桥；Risk Labs relayer；Solana Anchor事件解析 |\n| 涉及链 | Solana → 多条目标EVM链 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 伪造1,627项请求约4,170万美元；581项被填单、毛支付约450万美元；另有335万—360万美元损失口径及331.8 ETH返还，净额未统一。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "链下 SVM 事件读取器漏查 Anchor 的8字节事件 discriminator，把攻击者提供的 CPI/日志字节解析成真实存款，即使源链没有资金到账也触发 Risk Labs 中继器垫款。\n\n1,627项假请求只有581项被执行，不能把全部请求面值算成损失。受损资金来自该中继器；现有说明称用户资金未受损，途中订单完成或退款。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：SDK已发布解析补丁，服务与净损分开核对。**\n\n本轮核读 v4.4.13 发布记录明确修复缺失 discriminator 的伪造 CPI 事件，并增加阻止向封禁地址付款的逻辑。历史复盘记录约5小时修复、约12小时经备用CCTP路线恢复；恢复服务不表示原Solana路径所有组件同时重开。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [Across SDK v4.4.13 发布记录](https://github.com/across-protocol/sdk/releases/tag/v4.4.13)：本轮网页核读；用于固定修复版本入口。\n- [OAK 跨链日志解析分析](https://onchainattack.org/document/examples/2026-07-across-solana-relayer-anchor-event-discriminator-forgery/)：本轮网页核读；支持8字节事件标识遗漏、请求和填单数量；金额口径与其他来源不同。\n- [账本主来源](https://x.com/AcrossProtocol/article/2080722320814121237)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n\n待确认：官方X长文本轮无法读取。OAK将450万美元称损失，深审另存较低估算及返还金额；需按币种、交易和统计时点统一最终净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-028",
+  "source_card_markdown": "# Across Solana 中继器误认伪造存款日志（Across Solana relayer）\n\n> 事件编号：EV2026-028｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-07-17（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Across；受损中继器由Risk Labs运营 |\n| 跨链桥或产品 | Across Solana relayer |\n| 底层协议 | Across意图桥；Risk Labs relayer；Solana Anchor事件解析 |\n| 涉及链 | Solana → 多条目标EVM链 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 伪造1,627项请求约4,170万美元；581项被填单、毛支付约450万美元；另有335万—360万美元损失口径及331.8 ETH返还，净额未统一。 |\n\n## 2. 原因与经过\n\n链下 SVM 事件读取器漏查 Anchor 的8字节事件 discriminator，把攻击者提供的 CPI/日志字节解析成真实存款，即使源链没有资金到账也触发 Risk Labs 中继器垫款。\n\n1,627项假请求只有581项被执行，不能把全部请求面值算成损失。受损资金来自该中继器；现有说明称用户资金未受损，途中订单完成或退款。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：SDK已发布解析补丁，服务与净损分开核对。**\n\n本轮核读 v4.4.13 发布记录明确修复缺失 discriminator 的伪造 CPI 事件，并增加阻止向封禁地址付款的逻辑。历史复盘记录约5小时修复、约12小时经备用CCTP路线恢复；恢复服务不表示原Solana路径所有组件同时重开。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [Across SDK v4.4.13 发布记录](https://github.com/across-protocol/sdk/releases/tag/v4.4.13)：本轮网页核读；用于固定修复版本入口。\n- [OAK 跨链日志解析分析](https://onchainattack.org/document/examples/2026-07-across-solana-relayer-anchor-event-discriminator-forgery/)：本轮网页核读；支持8字节事件标识遗漏、请求和填单数量；金额口径与其他来源不同。\n- [账本主来源](https://x.com/AcrossProtocol/article/2080722320814121237)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n\n待确认：官方X长文本轮无法读取。OAK将450万美元称损失，深审另存较低估算及返还金额；需按币种、交易和统计时点统一最终净损。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

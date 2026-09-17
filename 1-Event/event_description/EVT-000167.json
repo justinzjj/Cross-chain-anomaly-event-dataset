@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000167",
+  "event_name": "The Sandbox SAND OFT 验证配置被改写（The Sandbox LayerZero OFT bridge）",
+  "summary": "SAND的LayerZero集成配置权限存在问题，攻击者可将自身设成入站消息的唯一验证者，进而在Base和BNB Chain发行无背书SAND。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "Ethereum背书库流出14,742,341.84 SAND，约67.5万—69.7万美元；最高约149亿SAND为理论无背书增发，非可兑现损失。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://www.sandbox.game/en/blog/?category=2"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本补充来源",
+      "url": "https://x.com/TheSandboxGame/status/2091978565256417332"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=1"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需官方复盘/赔付的稳定深链接、受影响合约和交易、修复部署以及赔偿完成金额。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-21（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | The Sandbox |\n| 跨链桥或产品 | The Sandbox LayerZero OFT bridge |\n| 底层协议 | LayerZero OFT；SAND应用的delegate/验证者配置 |\n| 涉及链 | Ethereum背书库及Base/BNB Chain OFT部署 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Ethereum背书库流出14,742,341.84 SAND，约67.5万—69.7万美元；最高约149亿SAND为理论无背书增发，非可兑现损失。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "SAND的LayerZero集成配置权限存在问题，攻击者可将自身设成入站消息的唯一验证者，进而在Base和BNB Chain发行无背书SAND。\n\n攻击者把这些代币沿桥赎回Ethereum真实储备。其他链的巨额名义增发不可能全部兑换，不能以发行量乘事故前价格当作桥实际损失。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：据报已移除委托并修正配置，赔付待完结。**\n\n账本记录停桥、移除delegate和修正配置。9月8日开放1:1补偿申请流程，但没有证据表明全部索赔已支付；服务恢复也需另有公告。现有材料不支持将LayerZero传输层整体判为被攻破。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.sandbox.game/en/blog/?category=2)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本补充来源](https://x.com/TheSandboxGame/status/2091978565256417332)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需官方复盘/赔付的稳定深链接、受影响合约和交易、修复部署以及赔偿完成金额。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-040",
+  "source_card_markdown": "# The Sandbox SAND OFT 验证配置被改写（The Sandbox LayerZero OFT bridge）\n\n> 事件编号：EV2026-040｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-08-21（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | The Sandbox |\n| 跨链桥或产品 | The Sandbox LayerZero OFT bridge |\n| 底层协议 | LayerZero OFT；SAND应用的delegate/验证者配置 |\n| 涉及链 | Ethereum背书库及Base/BNB Chain OFT部署 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | Ethereum背书库流出14,742,341.84 SAND，约67.5万—69.7万美元；最高约149亿SAND为理论无背书增发，非可兑现损失。 |\n\n## 2. 原因与经过\n\nSAND的LayerZero集成配置权限存在问题，攻击者可将自身设成入站消息的唯一验证者，进而在Base和BNB Chain发行无背书SAND。\n\n攻击者把这些代币沿桥赎回Ethereum真实储备。其他链的巨额名义增发不可能全部兑换，不能以发行量乘事故前价格当作桥实际损失。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：据报已移除委托并修正配置，赔付待完结。**\n\n账本记录停桥、移除delegate和修正配置。9月8日开放1:1补偿申请流程，但没有证据表明全部索赔已支付；服务恢复也需另有公告。现有材料不支持将LayerZero传输层整体判为被攻破。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://www.sandbox.game/en/blog/?category=2)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本补充来源](https://x.com/TheSandboxGame/status/2091978565256417332)：沿用账本的公告或转述线索；本轮未成功核读事件原文，不据此新增完成结论。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=1)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需官方复盘/赔付的稳定深链接、受影响合约和交易、修复部署以及赔偿完成金额。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

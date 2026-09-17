@@ -1,0 +1,41 @@
+{
+  "event_id": "EVT-000110",
+  "event_name": "Relay Solana Ed25519 偏移未绑定漏洞披露（待交叉核验）",
+  "summary": "原生验签成功不保证所验证的公钥和消息就是桥随后读取的 allocator/请求。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "研究者报告：桥固定读取的 signer/request 字节与原生 Ed25519 程序按偏移实际验证的字节未绑定。",
+  "impact": "原始研究称及时修复且无资金损失；目前仅一方技术披露，暂不计入 confirmed。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://blog.asymmetric.re/wrong-offset-bypassing-signature-verification-in-relay/"
+    }
+  ],
+  "uncertainties": [
+    "待补：缺 Relay 官方确认、独立源码/部署锚点或第二条独立可靠技术证据；文章内代码和 PoC 未在本轮运行。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2025-09-22。2025-09-22 是公开文章日期；私下报告与修复日未知。\n- 对象：Relay Solana depository allocator verification；底层协议：Relay Protocol。\n- 路线：Relay-supported chains → Solana。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 B（E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：释放存款须验证 allocator 对同一 TransferRequest 的签名。\n\n异常流程：原生验签成功不保证所验证的公钥和消息就是桥随后读取的 allocator/请求。\n\n直接原因：研究者报告：桥固定读取的 signer/request 字节与原生 Ed25519 程序按偏移实际验证的字节未绑定。\n\n资金影响：原始研究称及时修复且无资金损失；目前仅一方技术披露，暂不计入 confirmed。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "研究者称已快速修复；尚缺项目公告、公开补丁或历史部署的独立核验。\n\n尚未取得可核实的修复部署证据。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "技术机制有详细原始分析，候选状态仅指项目既定交叉证据闸门尚未闭合；不意味着披露不可信。 日期口径：2025-09-22 是公开文章日期；私下报告与修复日未知。\n\n待补：缺 Relay 官方确认、独立源码/部署锚点或第二条独立可靠技术证据；文章内代码和 PoC 未在本轮运行。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://blog.asymmetric.re/wrong-offset-bypassing-signature-verification-in-relay/)"
+    }
+  ],
+  "source_event_id": "EV2025-018",
+  "source_card_markdown": "# EV2025-018 · Relay Solana Ed25519 偏移未绑定漏洞披露（待交叉核验）\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2025-09-22。2025-09-22 是公开文章日期；私下报告与修复日未知。\n- 对象：Relay Solana depository allocator verification；底层协议：Relay Protocol。\n- 路线：Relay-supported chains → Solana。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 B（E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：释放存款须验证 allocator 对同一 TransferRequest 的签名。\n\n异常流程：原生验签成功不保证所验证的公钥和消息就是桥随后读取的 allocator/请求。\n\n直接原因：研究者报告：桥固定读取的 signer/request 字节与原生 Ed25519 程序按偏移实际验证的字节未绑定。\n\n资金影响：原始研究称及时修复且无资金损失；目前仅一方技术披露，暂不计入 confirmed。\n\n## 3. 是否解决、如何解决\n\n研究者称已快速修复；尚缺项目公告、公开补丁或历史部署的独立核验。\n\n尚未取得可核实的修复部署证据。\n\n## 4. 证据与边界\n\n技术机制有详细原始分析，候选状态仅指项目既定交叉证据闸门尚未闭合；不意味着披露不可信。 日期口径：2025-09-22 是公开文章日期；私下报告与修复日未知。\n\n待补：缺 Relay 官方确认、独立源码/部署锚点或第二条独立可靠技术证据；文章内代码和 PoC 未在本轮运行。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://blog.asymmetric.re/wrong-offset-bypassing-signature-verification-in-relay/)\n",
+  "review_status": "pending"
+}

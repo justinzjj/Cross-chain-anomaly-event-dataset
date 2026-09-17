@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000130",
+  "event_name": "Hyperbridge MMR 证明验证漏洞（Hyperbridge Token Gateway）",
+  "summary": "MMR 验证器在边界或叶子证明处理上存在缺陷，使构造的跨链消息被当作有效证明。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "理论增发约10亿 DOT；最初变现约23.7万美元，后续影响估计约250万美元。三个口径不能相加。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "账本主来源",
+      "url": "https://blog.hyperbridge.network/april-13-post-mortem/"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "账本技术或发现来源",
+      "url": "https://hacked.slowmist.io/?c=Bridge&page=2"
+    }
+  ],
+  "uncertainties": [
+    "待确认：需将初期变现和后续损失范围对应到资产、交易和统计日期。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-13（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Hyperbridge |\n| 跨链桥或产品 | Hyperbridge Token Gateway |\n| 底层协议 | Hyperbridge Token Gateway；MMR 跨链证明 |\n| 涉及链 | Polkadot及 Ethereum、Base、BNB Chain、Arbitrum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论增发约10亿 DOT；最初变现约23.7万美元，后续影响估计约250万美元。三个口径不能相加。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "MMR 验证器在边界或叶子证明处理上存在缺陷，使构造的跨链消息被当作有效证明。该消息进一步取得代币管理或铸币能力。\n\n攻击者铸出无背书资产并利用可用市场流动性兑现。巨额增发描述的是合约能力和代币数量，市场可兑现损失受到流动性限制。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：官方复盘记载验证器修复，净损待核。**\n\n账本所引官方复盘记录协议暂停、修复验证器并重新审计。本轮沿用这些历史处置，不把修复报告等同于所有路线均已恢复；追回、补偿及后续250万美元口径仍需对账。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://blog.hyperbridge.network/april-13-post-mortem/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需将初期变现和后续损失范围对应到资产、交易和统计日期。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-008",
+  "source_card_markdown": "# Hyperbridge MMR 证明验证漏洞（Hyperbridge Token Gateway）\n\n> 事件编号：EV2026-008｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-13（UTC账本事件日） |\n| 披露/报告时间 | 账本未单列；事件日不等于首次公开日 |\n| 团队/项目 | Hyperbridge |\n| 跨链桥或产品 | Hyperbridge Token Gateway |\n| 底层协议 | Hyperbridge Token Gateway；MMR 跨链证明 |\n| 涉及链 | Polkadot及 Ethereum、Base、BNB Chain、Arbitrum |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 理论增发约10亿 DOT；最初变现约23.7万美元，后续影响估计约250万美元。三个口径不能相加。 |\n\n## 2. 原因与经过\n\nMMR 验证器在边界或叶子证明处理上存在缺陷，使构造的跨链消息被当作有效证明。该消息进一步取得代币管理或铸币能力。\n\n攻击者铸出无背书资产并利用可用市场流动性兑现。巨额增发描述的是合约能力和代币数量，市场可兑现损失受到流动性限制。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：官方复盘记载验证器修复，净损待核。**\n\n账本所引官方复盘记录协议暂停、修复验证器并重新审计。本轮沿用这些历史处置，不把修复报告等同于所有路线均已恢复；追回、补偿及后续250万美元口径仍需对账。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮以既有证据整理，未于2026-09-12重新核实当前运行状态。\n\n- [账本主来源](https://blog.hyperbridge.network/april-13-post-mortem/)：沿用截至2026-09-11的账本核验，支持上文历史事件或处置线索；本轮未重新核读该网页。\n- [账本技术或发现来源](https://hacked.slowmist.io/?c=Bridge&page=2)：沿用账本，作为事件收录/发现线索；聚合分类不能独立证明具体根因。\n\n待确认：需将初期变现和后续损失范围对应到资产、交易和统计日期。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000032",
+  "event_name": "Aurora 退出预编译 delegatecall 导致资产通胀漏洞",
+  "summary": "攻击者控制的调用上下文能触发对外转移而不对应减少其 Aurora ETH，形成可重复的通胀/支出。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "退出预编译可在 delegatecall 的异常上下文执行，真实外部退出与 Aurora 余额扣减未绑定。",
+  "impact": "官方称未发生利用损失；当时约 70,000 ETH / 2.04 亿美元为风险敞口，600 万美元为奖励。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://aurora.dev/blog/aurora-mitigates-its-inflation-vulnerability"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://immunefi.com/blog/bug-fix-reviews/aurora-inflation-spend-bugfix-review-6m-payout/"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://github.com/aurora-is-near/aurora-engine/releases/tag/2.5.3"
+    }
+  ],
+  "uncertainties": [
+    "待补：本轮核读发布记录，未重新执行部署交易或复现漏洞。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2022-04-26。2022-04-26 为报告日；2022-06-07 为公开披露日。\n- 对象：Aurora Engine ExitToNear / ExitToEthereum；底层协议：Aurora / Rainbow Bridge。\n- 路线：Aurora → NEAR;Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E1+E2+E4）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：退出先扣减 Aurora 持仓，再向 NEAR/Ethereum 释放对应资产。\n\n异常流程：攻击者控制的调用上下文能触发对外转移而不对应减少其 Aurora ETH，形成可重复的通胀/支出。\n\n直接原因：退出预编译可在 delegatecall 的异常上下文执行，真实外部退出与 Aurora 余额扣减未绑定。\n\n资金影响：官方称未发生利用损失；当时约 70,000 ETH / 2.04 亿美元为风险敞口，600 万美元为奖励。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方确认补丁部署到主网和测试网；2.5.3 发布记录列出主网区块与部署交易。\n\n限制退出预编译的调用上下文，拒绝不相符的 delegatecall；发行记录主网区块 64363520。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "与 Rainbow Bridge 两次失败证明攻击不同；奖励和最大可损失资产不计为实际盗损。 日期口径：2022-04-26 为报告日；2022-06-07 为公开披露日。\n\n待补：本轮核读发布记录，未重新执行部署交易或复现漏洞。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-its-inflation-vulnerability)\n- [来源 2](https://immunefi.com/blog/bug-fix-reviews/aurora-inflation-spend-bugfix-review-6m-payout/)\n- [来源 3](https://github.com/aurora-is-near/aurora-engine/releases/tag/2.5.3)"
+    }
+  ],
+  "source_event_id": "EV2022-030",
+  "source_card_markdown": "# EV2022-030 · Aurora 退出预编译 delegatecall 导致资产通胀漏洞\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2022-04-26。2022-04-26 为报告日；2022-06-07 为公开披露日。\n- 对象：Aurora Engine ExitToNear / ExitToEthereum；底层协议：Aurora / Rainbow Bridge。\n- 路线：Aurora → NEAR;Ethereum。\n- 裁决：`confirmed` / `disclosed_unexploited`；证据等级 A（E1+E2+E4）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：退出先扣减 Aurora 持仓，再向 NEAR/Ethereum 释放对应资产。\n\n异常流程：攻击者控制的调用上下文能触发对外转移而不对应减少其 Aurora ETH，形成可重复的通胀/支出。\n\n直接原因：退出预编译可在 delegatecall 的异常上下文执行，真实外部退出与 Aurora 余额扣减未绑定。\n\n资金影响：官方称未发生利用损失；当时约 70,000 ETH / 2.04 亿美元为风险敞口，600 万美元为奖励。\n\n## 3. 是否解决、如何解决\n\n官方确认补丁部署到主网和测试网；2.5.3 发布记录列出主网区块与部署交易。\n\n限制退出预编译的调用上下文，拒绝不相符的 delegatecall；发行记录主网区块 64363520。\n\n## 4. 证据与边界\n\n与 Rainbow Bridge 两次失败证明攻击不同；奖励和最大可损失资产不计为实际盗损。 日期口径：2022-04-26 为报告日；2022-06-07 为公开披露日。\n\n待补：本轮核读发布记录，未重新执行部署交易或复现漏洞。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://aurora.dev/blog/aurora-mitigates-its-inflation-vulnerability)\n- [来源 2](https://immunefi.com/blog/bug-fix-reviews/aurora-inflation-spend-bugfix-review-6m-payout/)\n- [来源 3](https://github.com/aurora-is-near/aurora-engine/releases/tag/2.5.3)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,46 @@
+{
+  "event_id": "EVT-000131",
+  "event_name": "KelpDAO rsETH 单一 DVN 信任路径受攻（KelpDAO rsETH LayerZero route）",
+  "summary": "攻击者先通过社会工程取得会话凭证，进入 LayerZero Labs 的 RPC 云环境，篡改内部节点向 DVN 返回的链状态，同时对外部 RPC 发起拒绝服务。",
+  "background": null,
+  "timeline": [],
+  "root_cause": null,
+  "impact": "释放116,500 rsETH，当时估值约2.92亿—2.93亿美元；最终追回与净损仍未闭合。",
+  "transaction_ids": [
+    "TXN-000149",
+    "TXN-000267",
+    "TXN-000531",
+    "TXN-000609"
+  ],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "LayerZero Labs 官方事故报告",
+      "url": "https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report"
+    }
+  ],
+  "uncertainties": [
+    "待确认：攻击始于3月6日凭证入侵，资产事故为4月18日；不要混同日期。仍缺完整追缴、赔付及净损结果。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-18（UTC账本事件日） |\n| 披露/报告时间 | 2026-05-20（本轮核读的官方综合报告） |\n| 团队/项目 | KelpDAO；DVN运营方为LayerZero Labs |\n| 跨链桥或产品 | KelpDAO rsETH LayerZero route |\n| 底层协议 | LayerZero；KelpDAO rsETH OFT；LayerZero Labs DVN |\n| 涉及链 | rsETH 的 LayerZero 路线；Ethereum 托管释放 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 释放116,500 rsETH，当时估值约2.92亿—2.93亿美元；最终追回与净损仍未闭合。 |"
+    },
+    {
+      "title": "2. 原因与经过",
+      "content": "攻击者先通过社会工程取得会话凭证，进入 LayerZero Labs 的 RPC 云环境，篡改内部节点向 DVN 返回的链状态，同时对外部 RPC 发起拒绝服务。\n\nDVN 因而基于受污染数据签出虚假跨链消息。KelpDAO 路线仅要求该单一 DVN，目标应用按配置接受其有效证明并放出 rsETH；链上协议并未自动要求第二个独立验证者。"
+    },
+    {
+      "title": "3. 是否解决及如何解决",
+      "content": "**漏洞/故障处置结论：官方确认重建基础设施并限制单一验证配置。**\n\n5月20日报告明确：受侵云环境已整体替换，旧凭证和配置未沿用，并收紧临时权限及多人审批；LayerZero Labs DVN 已拒绝作为唯一必需证明者。链上协议仍按应用配置执行。资产追踪和追缴开展中，未见最终偿付账。"
+    },
+    {
+      "title": "4. 依据与待确认",
+      "content": "事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [LayerZero Labs 官方事故报告](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report)：本轮网页核读；支持RPC入侵、单一DVN及已执行加固。\n- [深审表中本事件的历史证据](../../08-跨链异常事件深审总表.csv)：按事件编号回查金额、处置与证据缺口；沿用账本。\n\n待确认：攻击始于3月6日凭证入侵，资产事故为4月18日；不要混同日期。仍缺完整追缴、赔付及净损结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)"
+    }
+  ],
+  "source_event_id": "EV2026-009",
+  "source_card_markdown": "# KelpDAO rsETH 单一 DVN 信任路径受攻（KelpDAO rsETH LayerZero route）\n\n> 事件编号：EV2026-009｜账本类别：confirmed（已确认攻击或异常）｜整理日期：2026-09-12\n\n## 1. 基本信息\n\n| 项目 | 内容 |\n|---|---|\n| 事件时间 | 2026-04-18（UTC账本事件日） |\n| 披露/报告时间 | 2026-05-20（本轮核读的官方综合报告） |\n| 团队/项目 | KelpDAO；DVN运营方为LayerZero Labs |\n| 跨链桥或产品 | KelpDAO rsETH LayerZero route |\n| 底层协议 | LayerZero；KelpDAO rsETH OFT；LayerZero Labs DVN |\n| 涉及链 | rsETH 的 LayerZero 路线；Ethereum 托管释放 |\n| 事件性质 | 确认安全攻击 |\n| 损失与回收 | 释放116,500 rsETH，当时估值约2.92亿—2.93亿美元；最终追回与净损仍未闭合。 |\n\n## 2. 原因与经过\n\n攻击者先通过社会工程取得会话凭证，进入 LayerZero Labs 的 RPC 云环境，篡改内部节点向 DVN 返回的链状态，同时对外部 RPC 发起拒绝服务。\n\nDVN 因而基于受污染数据签出虚假跨链消息。KelpDAO 路线仅要求该单一 DVN，目标应用按配置接受其有效证明并放出 rsETH；链上协议并未自动要求第二个独立验证者。\n\n## 3. 是否解决及如何解决\n\n**漏洞/故障处置结论：官方确认重建基础设施并限制单一验证配置。**\n\n5月20日报告明确：受侵云环境已整体替换，旧凭证和配置未沿用，并收紧临时权限及多人审批；LayerZero Labs DVN 已拒绝作为唯一必需证明者。链上协议仍按应用配置执行。资产追踪和追缴开展中，未见最终偿付账。\n\n## 4. 依据与待确认\n\n事件全集冻结于2026-09-10，既有证据最近更新2026-09-11；本卡于2026-09-12整理。本轮核读仅限下列明确标注的网页，其余状态为历史证据。\n\n- [LayerZero Labs 官方事故报告](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report)：本轮网页核读；支持RPC入侵、单一DVN及已执行加固。\n- [深审表中本事件的历史证据](../../08-跨链异常事件深审总表.csv)：按事件编号回查金额、处置与证据缺口；沿用账本。\n\n待确认：攻击始于3月6日凭证入侵，资产事故为4月18日；不要混同日期。仍缺完整追缴、赔付及净损结果。\n\n[事件总表](../../01-跨链攻击与异常事件总表.csv) · [深审总表](../../08-跨链异常事件深审总表.csv) · [卡片索引](../README.md)\n",
+  "review_status": "pending"
+}

@@ -1,0 +1,51 @@
+{
+  "event_id": "EVT-000150",
+  "event_name": "Namada MASP / IBC 转账资金异常线索（待核实）",
+  "summary": "存在资金流出线索，但漏洞步骤、交易归属和实际损失尚不能确认。",
+  "background": null,
+  "timeline": [],
+  "root_cause": "聚合材料声称 MASP 与 IBC transfer 逻辑遭利用；未取得足以定位接口失效的原始证据。",
+  "impact": "二级材料称约 60 万美元；本轮未独立核验，不填已确认损失。",
+  "transaction_ids": [],
+  "references": [
+    {
+      "reference_id": "ref-1",
+      "title": "来源 1",
+      "url": "https://defillama.com/protocol/namada-shielded-pools"
+    },
+    {
+      "reference_id": "ref-2",
+      "title": "来源 2",
+      "url": "https://api.llama.fi/hacks"
+    },
+    {
+      "reference_id": "ref-3",
+      "title": "来源 3",
+      "url": "https://blog.autosec.dev/security-events/namada-masp-ibc-transfer-logic-600k-drain/"
+    }
+  ],
+  "uncertainties": [
+    "待补：Namada 官方确认、MASP/IBC 受影响代码、准确事件日、原始交易/资产计量及最终净损。"
+  ],
+  "sections": [
+    {
+      "title": "1. 基本信息",
+      "content": "- 日期：2026-06-19。2026-06-19 为聚合器条目日期；材料另涉及 6 月 18 日转账，实际 episode 开始时间待核。\n- 对象：Namada shielded pools MASP / IBC；底层协议：Namada / IBC integration。\n- 路线：Namada → IBC-connected chains。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 C（E5）。"
+    },
+    {
+      "title": "2. 原因、经过与资金影响",
+      "content": "正常流程：隐私池资产转出与 IBC 转账应受同一资产授权和会计约束。\n\n异常流程：存在资金流出线索，但漏洞步骤、交易归属和实际损失尚不能确认。\n\n直接原因：聚合材料声称 MASP 与 IBC transfer 逻辑遭利用；未取得足以定位接口失效的原始证据。\n\n资金影响：二级材料称约 60 万美元；本轮未独立核验，不填已确认损失。"
+    },
+    {
+      "title": "3. 是否解决、如何解决",
+      "content": "官方 RCA、补丁和恢复情况未取得。\n\n尚未取得可核实的修复部署证据。"
+    },
+    {
+      "title": "4. 证据与边界",
+      "content": "bridgeHack 标签只用于召回，不证明 IBC 协议本体存在漏洞；不同转载可能同源。 日期口径：2026-06-19 为聚合器条目日期；材料另涉及 6 月 18 日转账，实际 episode 开始时间待核。\n\n待补：Namada 官方确认、MASP/IBC 受影响代码、准确事件日、原始交易/资产计量及最终净损。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://defillama.com/protocol/namada-shielded-pools)\n- [来源 2](https://api.llama.fi/hacks)\n- [来源 3](https://blog.autosec.dev/security-events/namada-masp-ibc-transfer-logic-600k-drain/)"
+    }
+  ],
+  "source_event_id": "EV2026-052",
+  "source_card_markdown": "# EV2026-052 · Namada MASP / IBC 转账资金异常线索（待核实）\n\n> v0.5 新增；来源核读至 2026-09-12。\n\n## 1. 基本信息\n\n- 日期：2026-06-19。2026-06-19 为聚合器条目日期；材料另涉及 6 月 18 日转账，实际 episode 开始时间待核。\n- 对象：Namada shielded pools MASP / IBC；底层协议：Namada / IBC integration。\n- 路线：Namada → IBC-connected chains。\n- 裁决：`candidate` / `unconfirmed_candidate`；证据等级 C（E5）。\n\n## 2. 原因、经过与资金影响\n\n正常流程：隐私池资产转出与 IBC 转账应受同一资产授权和会计约束。\n\n异常流程：存在资金流出线索，但漏洞步骤、交易归属和实际损失尚不能确认。\n\n直接原因：聚合材料声称 MASP 与 IBC transfer 逻辑遭利用；未取得足以定位接口失效的原始证据。\n\n资金影响：二级材料称约 60 万美元；本轮未独立核验，不填已确认损失。\n\n## 3. 是否解决、如何解决\n\n官方 RCA、补丁和恢复情况未取得。\n\n尚未取得可核实的修复部署证据。\n\n## 4. 证据与边界\n\nbridgeHack 标签只用于召回，不证明 IBC 协议本体存在漏洞；不同转载可能同源。 日期口径：2026-06-19 为聚合器条目日期；材料另涉及 6 月 18 日转账，实际 episode 开始时间待核。\n\n待补：Namada 官方确认、MASP/IBC 受影响代码、准确事件日、原始交易/资产计量及最终净损。\n\n本轮核读公开资料，没有运行漏洞利用代码；来源内交易引用不等于本轮 receipt/trace 已复核。\n\n- [来源 1](https://defillama.com/protocol/namada-shielded-pools)\n- [来源 2](https://api.llama.fi/hacks)\n- [来源 3](https://blog.autosec.dev/security-events/namada-masp-ibc-transfer-logic-600k-drain/)\n",
+  "review_status": "pending"
+}
