@@ -4,7 +4,7 @@
   "summary": "受污染的第三方 Docker 镜像在部署环境中窃取三个验证者私钥，使攻击者达到桥的签名授权条件。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Force Bridge 的第三方 Docker 镜像窃取三把验证者私钥。",
   "impact": "约370万美元报道流出；赔偿计划不等于最终净损结算",
   "transaction_ids": [
     "TXN-000062"

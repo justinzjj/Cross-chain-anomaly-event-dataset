@@ -4,7 +4,7 @@
   "summary": "一份2022年已弃用的路由合约仍可调用，而且保留了用户授权额度。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Transit 旧 TRON router 仍可调用且持有用户 allowance，旧逻辑允许转走资产。",
   "impact": "据报约188万 DAI 及少量 ETH；币种和受影响链需进一步核对，最终净损未知。",
   "transaction_ids": [],
   "references": [

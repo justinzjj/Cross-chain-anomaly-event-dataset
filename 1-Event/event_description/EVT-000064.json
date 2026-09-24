@@ -4,7 +4,7 @@
   "summary": "旧 CELL 与新 CELL 的迁移逻辑未充分处理两池间的流动性和价格差。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "CELL 新旧迁移池价差与闪电流动性被利用。",
   "impact": "约245 BNB，事发估值约7.4万—7.6万美元；净损未知",
   "transaction_ids": [],
   "references": [

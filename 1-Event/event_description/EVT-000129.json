@@ -4,7 +4,7 @@
   "summary": "Reddit发帖者称源侧销毁已成功，目标侧未铸币，随后进入支持和退款反复处理流程。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Crypto.com 用户称源 burn 后目标 mint 未完成，并出现退款/支持循环。",
   "impact": "用户声称260万 CRO被卡数周；未验证实际被盗或永久净损。",
   "transaction_ids": [],
   "references": [

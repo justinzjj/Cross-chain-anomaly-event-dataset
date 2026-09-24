@@ -4,7 +4,7 @@
   "summary": "既有索引将事件描述为项目控制的资金被移走，疑似退出骗局。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "OrdiZK 疑似项目方移走受控资金的退出事件。",
   "impact": "约140万美元为报道转走金额；最终回收未知",
   "transaction_ids": [],
   "references": [

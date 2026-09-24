@@ -4,7 +4,7 @@
   "summary": "攻击者构造能够通过 IAVL／Merkle 证明验证器的伪造跨链包，使 BSC 侧系统接受不存在的有效转移并释放 BNB。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "BSC Token Hub 的 IAVL/Merkle verifier 接受伪造证明并触发 mint。",
   "impact": "200万BNB未经授权生成／释放，原表估值约5.66亿—5.70亿美元；Coinbase约5.86亿美元为另一时点。其估计约1.1亿美元离开BSC，其余受限；均不是已对账净损。",
   "transaction_ids": [
     "TXN-000026",

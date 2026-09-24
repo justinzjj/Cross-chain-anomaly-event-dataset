@@ -4,7 +4,7 @@
   "summary": "公开材料把该事件描述为 Timelock、MasterChef 控制、代币增发与管理权限滥用。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "本地治理或管理员权限被用于增发和资产抽取。",
   "impact": "约150万美元报道值；未作为跨链损失纳入，净损和责任归属未独立核实。",
   "transaction_ids": [
     "TXN-000025",

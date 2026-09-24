@@ -4,7 +4,7 @@
   "summary": "USDC代币地址被错误加入路由目标白名单，routerCallNative又未充分绑定目标的合法业务语义。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "USDC 被错误加入 Rubic router 白名单，目标调用可执行用户 transferFrom。",
   "impact": "约140万美元历史流出估值；已授权用户钱包为直接受害范围，最终追回和净损未核。",
   "transaction_ids": [],
   "references": [

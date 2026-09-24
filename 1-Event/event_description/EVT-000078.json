@@ -4,7 +4,7 @@
   "summary": "既有独立技术分析支持 Hypr 的 OP Stack 桥实现或验证路径允许未经授权提款，但账本保留的根因描述仍较宽。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Hypr 采用未就绪的 OP Stack 代码，clearLegacySlot 重置初始化标志，攻击者重设 messenger 后提款。",
   "impact": "约22万美元报道流出；追回与净损未知",
   "transaction_ids": [
     "TXN-000165",

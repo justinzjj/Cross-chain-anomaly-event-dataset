@@ -4,7 +4,7 @@
   "summary": "现有论文和交易线索将异常归于本地 withdrawal／ownership 校验不足，使调用者有可能提取不属于自己的资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "PolkaBridge 本地 withdrawal/ownership 检查不足，可提取非调用者资产。",
   "impact": "约63.2万美元论文报告值；受害范围、币种及最终净损未完整确认。",
   "transaction_ids": [],
   "references": [

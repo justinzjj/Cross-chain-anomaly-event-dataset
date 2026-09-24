@@ -4,7 +4,7 @@
   "summary": "本次是后台节点或路线不可用导致的转账积压。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Multichain 的关键人员/控制权依赖导致路由不能完成和恢复。",
   "impact": "广泛转账延迟／资金待处理；无单独确认盗窃额",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "OmniServiceProxy 的 retry 消息将多个动态字节字段直接紧密拼接，未保留边界；不同输入因此可能得到同一哈希，原有认证被重新解释。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "MAP/Butter retry message 对多个动态字段 packed 拼接，哈希绑定存在字段边界歧义。",
   "impact": "理论可增发约10¹⁵ MAPO，约10亿枚被卖出，已变现约52.21 ETH；理论数量不作损失美元估值。",
   "transaction_ids": [
     "TXN-000170",

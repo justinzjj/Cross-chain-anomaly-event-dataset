@@ -4,7 +4,7 @@
   "summary": "事件目录与研究资料称，攻击者利用桥相关合约或权限缺陷提取代币并卖出。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Marvin Inu 被报道存在桥合约或权限缺陷，具体函数未闭合。",
   "impact": "报道约110 ETH或35万美元；这两种表达是同一事件的币量／估值，不能相加；最终损失未核。",
   "transaction_ids": [],
   "references": [

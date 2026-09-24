@@ -4,7 +4,7 @@
   "summary": "攻击者部署外观类似合法 Jetton 钱包的 TON 合约。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "TAC sequencer 未核 TON jetton-wallet code hash 与 canonical master/minter，将假资产当存款。",
   "impact": "毛损2,854,486.22美元；报告净追回2,290,687.90美元，约80.2%。约253万美元是早期外部控制余额，不是最终净损。",
   "transaction_ids": [],
   "references": [

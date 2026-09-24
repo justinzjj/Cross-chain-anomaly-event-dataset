@@ -4,7 +4,7 @@
   "summary": "SPV 验证器对 coinbase 交易证明及 Merkle 树同层约束检查不足。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Threshold tBTC SPV 未充分验证 coinbase proof 和相同 Merkle level。",
   "impact": "无已实现损失；理论风险资产规模未建立可靠快照",
   "transaction_ids": [],
   "references": [

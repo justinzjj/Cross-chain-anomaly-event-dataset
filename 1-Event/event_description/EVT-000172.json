@@ -4,7 +4,7 @@
   "summary": "CCTP的链下attestation处理短时落后，源交易之后未能按正常时延取得证明，目标链铸币步骤因而需要继续等待。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Circle CCTP attestation 服务短暂延迟处理。",
   "impact": "证明处理据报延迟约3分钟；未报资产损失，受影响转移延后。",
   "transaction_ids": [],
   "references": [

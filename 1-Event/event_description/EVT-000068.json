@@ -4,7 +4,7 @@
   "summary": "公开材料支持托管或 MPC 资产控制权被用于预期桥业务之外的提款。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Multichain 托管权限被用于异常转移，具体行为人与各阶段关系仍有争议。",
   "impact": "7月6日约1.26亿美元异常毛流出；后续转移可能重叠，净损未知",
   "transaction_ids": [
     "TXN-000113",

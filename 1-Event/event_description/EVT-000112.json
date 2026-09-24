@@ -4,7 +4,7 @@
   "summary": "既有记录称攻击者把伪造的 LayerZero 远端 peer 登记为可信对端，随后利用这一信任关系铸币，再跨链转移并出售。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Griffin 出现恶意 peer 与假 GAIN mint，但 peer 登记为何获授权尚未确定。",
   "impact": "约50亿枚代币为理论／异常增发；约300万美元为报道兑现额；净损未知",
   "transaction_ids": [
     "TXN-000475"

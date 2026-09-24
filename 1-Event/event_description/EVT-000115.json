@@ -4,7 +4,7 @@
   "summary": "账本记录团队钱包密钥暴露，同时出现针对部分用户授权的恶意支出。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "402Bridge 团队钱包密钥暴露，结合恶意授权消费影响用户。",
   "impact": "约17,693 USDC为报道用户影响；团队测试钱包损失需另列，净损未知",
   "transaction_ids": [],
   "references": [

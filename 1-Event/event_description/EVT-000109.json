@@ -4,7 +4,7 @@
   "summary": "账本将直接问题归为桥消息或交易校验不足，允许在没有有效抵押资产支持时铸造 YU。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Yala 无背书 YU mint 已被报道，但消息、资产检查或特权调用根因未闭合。",
   "impact": "约760万美元为脱锚／流动性影响报道量级；不等于已核净盗损",
   "transaction_ids": [],
   "references": [

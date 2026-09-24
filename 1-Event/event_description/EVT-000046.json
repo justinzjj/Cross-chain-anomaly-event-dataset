@@ -4,7 +4,7 @@
   "summary": "攻击者先完成涉及 Gnosis／Ethereum 的200 WETH消息，再把同一 calldata 提交到 EthereumPoW 上的合约副本，额外领取200 ETHW。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Omni 消息在 EthereumPoW 分叉复制合约中可被重放，消息身份未充分隔离执行域。",
   "impact": "BlockSec典型交易显示额外取得200 ETHW；这是分叉币而非ETH，亦非总损。原表约420万美元缺少一手支撑，本卡不采作已核损失；总流出和净损未知。",
   "transaction_ids": [],
   "references": [

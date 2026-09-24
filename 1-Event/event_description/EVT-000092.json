@@ -4,7 +4,7 @@
   "summary": "既有账本将原因限定为操作员凭据失守或被保留的特权遭滥用。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Holograph 的 operator 凭据或受控 operator 合约授权异常跨链 mint，起始入口仍不清楚。",
   "impact": "增发10亿 HLG；报道兑现约120万—130万美元；名义估值不作净损",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "事件涉及 ATH 跨链适配器的所有权转移或访问控制路径。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Aethir adapter 所有权转移或访问控制路径被利用，完整根因未公开。",
   "impact": "用户影响据报低于9万美元；早期约40万美元为潜在影响估计，二者口径不同。",
   "transaction_ids": [],
   "references": [

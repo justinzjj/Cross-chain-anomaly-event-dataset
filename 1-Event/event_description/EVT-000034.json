@@ -4,7 +4,7 @@
   "summary": "二手研究材料和目录把事件描述为伪造事件或链下事件解析错误：桥可能把不真实的资产记录当成可兑现事实。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "CENNZnet 疑似未将 Deposit 日志绑定到受信 emitter 与真实锁仓。",
   "impact": "约40万美元报道值；币种、发生链、追回和净损均待闭合。",
   "transaction_ids": [],
   "references": [

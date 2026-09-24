@@ -4,7 +4,7 @@
   "summary": "用户与恶意空投 UniH 代币交互，攻击路径利用非标准 tx.origin 相关权限行为，转走其钱包中的 RUNE。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "恶意空投 token 与 tx.origin 行为诱骗用户授权并盗取 RUNE。",
   "impact": "约7.6万美元历史报告值；受害者范围、追回与最终净损未核。",
   "transaction_ids": [],
   "references": [

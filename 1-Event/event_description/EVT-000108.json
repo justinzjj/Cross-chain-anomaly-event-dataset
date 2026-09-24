@@ -4,7 +4,7 @@
   "summary": "既有账本称攻击者结合已失守的控制权与临时取得的质押票权，达到能够授权提款的验证者权重。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Shibarium 攻击者通过受控权限及临时质押取得足够投票权。",
   "impact": "约240万美元报道损失；冻结、追回与最终净损未知",
   "transaction_ids": [
     "TXN-000622"

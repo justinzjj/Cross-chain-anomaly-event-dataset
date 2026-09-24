@@ -4,7 +4,7 @@
   "summary": "域名控制权失守使访问者被导向恶意网站。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "LayerSwap 域名被劫持并导向恶意授权网站。",
   "impact": "约50名用户受影响、约10万美元；账本记赔偿另加10%，最终核账未复做",
   "transaction_ids": [],
   "references": [

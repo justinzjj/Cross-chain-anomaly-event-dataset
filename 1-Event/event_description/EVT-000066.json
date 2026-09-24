@@ -4,7 +4,7 @@
   "summary": "废弃路由的某调用入口缺少访问控制，使任意调用者可使用用户残留授权触发 transferFrom。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Hashflow 旧 router 缺访问控制，任意调用者可用受害者 allowance 转账。",
   "impact": "约60.5万—64万美元受影响；约10万美元归于黑帽盗取；最终协议净成本未知",
   "transaction_ids": [
     "TXN-000119",

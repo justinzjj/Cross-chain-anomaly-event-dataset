@@ -4,7 +4,7 @@
   "summary": "现有直接技术分析指出，导入证明验证了付款列表自身完整性，却没有保证同等价值已在源链锁定或销毁，从而让无足额背书的提款通过。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Verus 第二次事件证明只约束 payout list，未证明源端等额 lock/burn。",
   "impact": "据报流出约754万美元；已追回和最终净损尚未闭合。",
   "transaction_ids": [
     "TXN-000274",

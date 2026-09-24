@@ -4,7 +4,7 @@
   "summary": "故障紧急runtime升级使Avail主网失去正常出块和最终性，依赖该链确认结果的服务无法按原时序推进。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Avail 错误紧急 runtime 升级造成停块和 finality 延迟。",
   "impact": "约4小时停止出块、约12小时最终性延迟；未发现已知盗币，依赖的跨链转移出现延迟。",
   "transaction_ids": [],
   "references": [

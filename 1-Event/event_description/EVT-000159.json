@@ -4,7 +4,7 @@
   "summary": "独立solver的数据库被修改，插入伪造HTLC结算记录，导致该solver按虚假业务状态释放自己的资金。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Garden 独立 solver 数据库被插入假 HTLC 结算记录，solver 释放自身资金。",
   "impact": "约45万美元为独立solver损失；现有说明称合约及用户资金未受影响。",
   "transaction_ids": [
     "TXN-000130",

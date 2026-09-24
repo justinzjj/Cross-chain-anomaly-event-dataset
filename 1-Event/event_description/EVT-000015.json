@@ -4,7 +4,7 @@
   "summary": "白帽发现 Plasma 退出验证存在弱点，可使同一底层资产对应的提款被重复接受，从而形成双重或重复退出。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Plasma exit 身份或证明规范化不足，使同一退出可被重复消费。",
   "impact": "潜在风险约8.5亿美元；未发生已知黑帽盗款。200万美元为白帽赏金，不是受害损失。",
   "transaction_ids": [],
   "references": [

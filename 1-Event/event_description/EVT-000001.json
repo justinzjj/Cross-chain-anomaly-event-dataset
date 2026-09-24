@@ -4,7 +4,7 @@
   "summary": "2020-05-18 02:29 UTC，一笔已向赎回人支付 BTC 的操作无法在 Ethereum 完成证明。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "tBTC rc.0 在 Bitcoin payout 后错误重构合法 legacy script 而拒绝 Ethereum 赎回证明，并缺少可支付脚本检查。",
   "impact": "官方称无用户资金损失；签名人的 ETH 保证金处于被罚没风险。99.83% 是被回收的 TBTC 供应比例，不是追回被盗款比例。",
   "transaction_ids": [],
   "references": [

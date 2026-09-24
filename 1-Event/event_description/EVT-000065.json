@@ -4,7 +4,7 @@
   "summary": "既有技术描述称攻击者提交假 USDC，再利用任意调用／授权接口，从已授权的钱包或对应路径转走真实 USDC。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Hector Lending 据报可用 fake USDC 和任意调用/approval 路径转走真实 USDC。",
   "impact": "约652,600美元毛流出与实际盗取；最终净损未知",
   "transaction_ids": [],
   "references": [

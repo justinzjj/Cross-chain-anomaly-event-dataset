@@ -4,7 +4,7 @@
   "summary": "旧 Aztec Connect 的证明未充分约束其副作用与结算系统实际处理的存入、提出效果一致。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Aztec Connect 证明的副作用未约束为结算系统实际处理的 deposit/withdraw 效果。",
   "impact": "首次约219万美元，另一次相关攻击约8.8万美元；是否合并和最终净损需逐笔核对。",
   "transaction_ids": [],
   "references": [

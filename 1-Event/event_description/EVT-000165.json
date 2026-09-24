@@ -4,7 +4,7 @@
   "summary": "攻击者7月26日经无许可sendMessage提交通用消息，Circle对该真实消息签发attestation；这里没有伪造Circle签名，也没有相应USDC销毁和铸币。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Allbridge 将真实 CCTP 通用消息 attestation/回调成功当作 USDC burn、mint 和 Router 到账。",
   "impact": "Base Router原有191,156 USDC流动性被耗尽；主攻击者利润189,751.554381 USDC，另有1,000 USDC费用由模仿者取得；利润不等于协议最终净损。",
   "transaction_ids": [
     "TXN-000087",

@@ -4,7 +4,7 @@
   "summary": "攻击合约包在 Router 外层，将收到的 ETH 退给攻击者，再以零 value 调用存款入口。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Bifrost 读取外层交易 value，未按实际 Router deposit 事件确定入账，wrapper 可制造零到账存款。",
   "impact": "官方复盘约4,200 ETH、约800万美元；原账本保留490万—760万美元区间，估价与事件范围不同。追回、补足及最终净损未完成独立对账。",
   "transaction_ids": [
     "TXN-000108",

@@ -4,7 +4,7 @@
   "summary": "现有账本与受影响项目的复盘将本次事件归于桥的签名／授权处理，攻击者获得了本不应允许的代币转移或增发能力。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "首次 ChainSwap 事件存在未授权转出，但旧表引用的 Razor 复盘实际属于第二次事件。",
   "impact": "约80万美元历史报告值；部分资产被收回，追回金额及最终净损未闭合。",
   "transaction_ids": [
     "TXN-000118",

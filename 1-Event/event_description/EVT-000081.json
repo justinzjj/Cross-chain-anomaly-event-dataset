@@ -4,7 +4,7 @@
   "summary": "特权角色遭攻破或被滥用后，攻击者把其控制的钱包加入可领取名单，再调用 mintWithdraw 或 transferRedemption 提取清算资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Hector Network 被攻陷/滥用的特权角色登记攻击者钱包并调用清算提现。",
   "impact": "约270万美元毛流出；文献2,700万美元为既有账本指出的十倍误差；净损未知",
   "transaction_ids": [],
   "references": [

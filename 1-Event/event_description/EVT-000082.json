@@ -4,7 +4,7 @@
   "summary": "新加入的路由未充分校验用户传入的调用数据，使攻击者能把本应执行兑换的调用改为代币 transferFrom。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Socket 新增 route 接受攻击者控制的 calldata，转走无限授权用户资产。",
   "impact": "约330万美元毛流出；账本记载赔付，最终协议净成本未知",
   "transaction_ids": [
     "TXN-000156",

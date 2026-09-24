@@ -4,7 +4,7 @@
   "summary": "XRPL的rippling使第三方付款也出现在桥发行账户的历史里。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Coreum relayer 将带 memo 的 XRPL 账户历史付款当存款，未证明 Destination 是桥储备账户。",
   "impact": "直接链上分析汇总94笔储备付款共199,916.3 XRP（约20万美元）；官方较低198,715.88 XRP口径尚差1,200.42 XRP。另有约435.68万wrapped TX异常发出，不能按面值计已变现损失。",
   "transaction_ids": [
     "TXN-000703",

@@ -4,7 +4,7 @@
   "summary": "FEG 处理跨链消息时，允许 payload 内声明 user=admin 的内容改变来源地址白名单，却未把该身份与可信远端发送者绑定。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "FEG 将 payload 的 user=admin 用于授权加白，并允许伪造源地址及余额提款。",
   "impact": "约100万—130万美元实际毛流出；价格／时点口径不同；净损未知",
   "transaction_ids": [
     "TXN-000038",

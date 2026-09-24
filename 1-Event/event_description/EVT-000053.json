@@ -4,7 +4,7 @@
   "summary": "cosmos.Uint转换为字符串时出现不一致结果，使不同节点对相同交易memo产生不同解释，无法继续取得一致状态，区块生产及正常跨链处理停止。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "cosmos.Uint 到字符串的非一致表现导致节点 memo 不一致并停共识。",
   "impact": "账本记载无资金损失；存取款与队列处理暂时中断，属于可用性影响，不是毛流出。",
   "transaction_ids": [],
   "references": [

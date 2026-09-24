@@ -4,7 +4,7 @@
   "summary": "新增 facet 上线时遗漏了其他路径所用的目标地址和函数白名单校验。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "LI.FI 新 facet 缺少调用目标校验，消费用户无限授权。",
   "impact": "官方毛流出约1,160万美元、153个钱包；最终用户／协议净损未确认",
   "transaction_ids": [
     "TXN-000580"

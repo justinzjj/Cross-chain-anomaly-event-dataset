@@ -4,7 +4,7 @@
   "summary": "攻击者先通过社会工程取得会话凭证，进入 LayerZero Labs 的 RPC 云环境，篡改内部节点向 DVN 返回的链状态，同时对外部 RPC 发起拒绝服务。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "KelpDAO 的唯一 DVN 受受污染 RPC 与外部 RPC DoS 影响，对虚假 burn 产生真实 attestation。",
   "impact": "释放116,500 rsETH，当时估值约2.92亿—2.93亿美元；最终追回与净损仍未闭合。",
   "transaction_ids": [
     "TXN-000149",

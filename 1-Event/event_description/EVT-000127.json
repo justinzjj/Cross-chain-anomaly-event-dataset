@@ -4,7 +4,7 @@
   "summary": "用户向可被任意人调用的 multicall 辅助合约授予无限代币额度，该合约又允许调用者指定目标和 calldata。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "用户对 permissionless SquidMulticall 无限授权，任意 target/calldata 可消费余额。",
   "impact": "公开数字约11.97万—51.7万美元，是否合并多个受害者未闭合；不能任选其一当净损。",
   "transaction_ids": [],
   "references": [

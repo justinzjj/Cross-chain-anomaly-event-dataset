@@ -4,7 +4,7 @@
   "summary": "旧 Zap 即使前端不再使用，仍保留用户的无限代币授权。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Zapper 旧 Bridge Zap 未约束外部调用，持续无限授权需要白帽救援。",
   "impact": "约250万美元被迁入救援分发合约；抢跑部分据报返还，账本记录用户最终损失为零。救援转移不能全部计作盗款。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "用户过去授予 Router 的代币额度仍然有效，攻击者通过可操控的参数和 permit 相关路径触发转账，把这些授权变成从用户钱包取款的能力。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Multichain Router 的 permit/underlying 路径可滥用用户 allowance。",
   "impact": "约143万—300万美元历史报告值；时点与覆盖范围不同，追回及最终净损待对账。",
   "transaction_ids": [],
   "references": [

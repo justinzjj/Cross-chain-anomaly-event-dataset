@@ -4,7 +4,7 @@
   "summary": "攻击者利用大额闪电贷在Solana的USDC/USDT池内快速换币，操纵内部资产比例，再按被扭曲的条件取走池中流动性。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Allbridge Solana 池的储备比例被大额闪电贷操纵而损失流动性。",
   "impact": "据报约165万美元桥流动性流出；追回和最终净损未公开闭合。",
   "transaction_ids": [
     "TXN-000690"

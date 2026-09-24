@@ -4,7 +4,7 @@
   "summary": "攻击者向 Ethereum 侧提交伪造 NEAR 区块或相关证明，试图让桥接受错误的源链状态。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Rainbow watchdog 成功挑战伪造 NEAR 区块/证明。",
   "impact": "无用户损失；攻击者损失2.5 ETH保证金。保证金罚没不是桥用户被盗金额。",
   "transaction_ids": [
     "TXN-000517"

@@ -4,7 +4,7 @@
   "summary": "攻击利用 fork 自 Saddle 的元池定价与 LP 记账逻辑，通过闪电贷放大池内状态变动，再以不一致的估值进行套利或退出，抽走池中真实价值。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Nerve 的 metapool 定价逻辑被闪电贷或套利路径利用。",
   "impact": "约900 BNB 流出／获利报告值；最终净损与补偿未确认。",
   "transaction_ids": [],
   "references": [

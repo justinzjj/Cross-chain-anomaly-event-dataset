@@ -4,7 +4,7 @@
   "summary": "事件直接失效在求解器运行环境及资产控制，而非已证实的桥协议合约。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Garden solver 运营环境被攻陷，协议合约及用户资金据报未受影响。",
   "impact": "约1,080万—1,140万美元为求解器资金；账本称用户资金未受影响；最终净损未知",
   "transaction_ids": [],
   "references": [

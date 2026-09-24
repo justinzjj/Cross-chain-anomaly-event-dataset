@@ -4,7 +4,7 @@
   "summary": "claimTokens未把外部调用目标与合法业务语义充分绑定，攻击者可以让路由执行非预期调用。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Transit Swap claimTokens 未约束合法调用目标与语义，滥用用户无限授权。",
   "impact": "初始毛流出约2100万—2890万美元，统计范围不同；多数资金已返还或追回的历史报告不能代替最终净损，后者未闭合。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "Chialisp的burner puzzle让无价值CAT代币看似完成wUSDC销毁，验证者对错误的资产语义签名，使目标端以为有应予兑付的美元稳定币。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "warp.green 将无价值 CAT 的 burner 输出当作支持的 wUSDC burn，验证者签署错误资产语义。",
   "impact": "Base流出约8.5万 USDC，Ethereum约0.8万 USDC，合计约9.3万；净损待确认。",
   "transaction_ids": [],
   "references": [

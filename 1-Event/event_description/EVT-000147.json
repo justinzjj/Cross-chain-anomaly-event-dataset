@@ -4,7 +4,7 @@
   "summary": "Secret 侧 ics20-for-axelar 从托管模型改为铸销模型时移除了隐含来源认证，却只补了币种白名单。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Secret 修改的 CW20-ICS20 实现漏掉 source-channel 检查，攻击者自有链的 packet 被接受。",
   "impact": "约467万美元无背书 saToken 被用于赎回真实储备；6月19日官方称约77万美元仍在攻击者 Axelar 钱包，未称已冻结。",
   "transaction_ids": [
     "TXN-000002",

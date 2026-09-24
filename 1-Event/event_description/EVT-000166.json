@@ -4,7 +4,7 @@
   "summary": "共享Cosmos EVM代码的vesting账户下溢和受害余额上溢使宿主链真实余额被重新分配，而非在宿主链增加总供应。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Cosmos EVM vesting 算术下溢/余额溢出重分配源链余额，Hyperlane 转运取得的资产。",
   "impact": "宿主链净供应变化为零；257,703,733.288579599652028616 NES转至Ethereum，事故前名义估值不等于损失。变现约95.97 ETH（约23.7万美元），另有后续估计31.5万美元销售/约6万美元利润。",
   "transaction_ids": [],
   "references": [

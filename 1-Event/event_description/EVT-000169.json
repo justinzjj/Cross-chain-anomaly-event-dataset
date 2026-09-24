@@ -4,7 +4,7 @@
   "summary": "运行验证者节点的基础设施服务商被攻破，攻击者经SKALE的IMA桥转走受影响ERC-20资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "SKALE IMA 节点基础设施提供者被攻陷，但 key、host、节点软件或其他具体入口未披露。",
   "impact": "官方确认ERC-20桥资产流出，但金额、冻结追回及最终净损均待完整报告。",
   "transaction_ids": [],
   "references": [

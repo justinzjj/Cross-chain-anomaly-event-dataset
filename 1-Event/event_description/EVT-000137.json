@@ -4,7 +4,7 @@
   "summary": "恶意节点诱发864次 GG20 MTA 签名失败，借失败过程中泄露的信息收集足够份额，最终重建金库私钥。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "THORChain GG20 部署分支的密钥材料、range-proof 绑定与随机掩码缺陷组合泄露 vault key。",
   "impact": "损失据报约1,070万美元；资金覆盖与追回应分开统计，最终净经济成本待核。",
   "transaction_ids": [],
   "references": [

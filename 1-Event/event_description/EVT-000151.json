@@ -4,7 +4,7 @@
   "summary": "签名密钥暴露，加上证明认证未拒绝 debug prover，使攻击者能够提供不应被生产环境认可的 L2 最终性证明。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Taiko 暴露 enclave 签名密钥且未拒绝 debug 模式，SGX fallback 与受证明内时间戳支配的白名单例外进一步放行假状态。",
   "impact": "实际支付约175万美元；另有999 ETH和1.105亿 TAIKO提款请求未获支付，不计为已实现损失。",
   "transaction_ids": [
     "TXN-000106",

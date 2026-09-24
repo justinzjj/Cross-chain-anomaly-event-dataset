@@ -4,7 +4,7 @@
   "summary": "账本记载桥或开发者密钥被用于未经授权的提款和抛售。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "QANX 首次事件由桥或开发者密钥控制权限实施未授权转出。",
   "impact": "100,450,000 QANX，据报卖得约325 ETH；代币数量与出售所得分别是资产量和实现收入，不宜混算。追回及净损未核。",
   "transaction_ids": [],
   "references": [

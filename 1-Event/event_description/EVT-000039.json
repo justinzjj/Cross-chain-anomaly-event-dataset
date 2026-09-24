@@ -4,7 +4,7 @@
   "summary": "官方复盘称攻击者至少控制四把验证者私钥中的两把，于2022-06-23 11:06:46 UTC开始转走桥资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Harmony 至少两把 signer key 失守，达到较低提款门槛。",
   "impact": "约1亿美元，含ETH、稳定币等14类桥接资产；Harmony上的映射资产失去部分背书。追回／冻结不等于全额可分配补偿，净损未闭合。",
   "transaction_ids": [
     "TXN-000183",

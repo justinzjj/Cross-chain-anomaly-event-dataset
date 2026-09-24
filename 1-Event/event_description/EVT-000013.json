@@ -4,7 +4,7 @@
   "summary": "攻击者利用跨链管理合约可被消息触达的敏感调用路径，改写 keeper／公钥，再让伪造授权指令释放 Ethereum、BSC 和 Polygon 上的资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "跨链消息可调用敏感目标与方法，改变 keeper 后获得资产释放权限。",
   "impact": "约6.10亿—6.13亿美元毛流出。官方称截至2021-08-26受影响资产恢复，滑点和费用由团队承担；不能把毛流出直接当最终净损。",
   "transaction_ids": [
     "TXN-000368",

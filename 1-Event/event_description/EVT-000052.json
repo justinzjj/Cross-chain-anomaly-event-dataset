@@ -4,7 +4,7 @@
   "summary": "公开技术归因指向 Profanity 靓号地址生成的密钥弱点，使攻击者能够获得桥钱包控制权，随后转走并抛售QANX等资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "QAN 的 Profanity 地址/密钥生成弱点暴露桥钱包私钥。",
   "impact": "约100万—200万美元历史报告值；币种、估值时点与连带卖压不同，最终净损及补偿待核。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "既有资料将故障归于上线流量激增及基础设施容量问题。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Shibarium 上线负载与基础设施故障造成停块及桥接资产暂时不可用。",
   "impact": "约180万美元被报道暂时滞留；未确认盗窃，不作永久损失",
   "transaction_ids": [],
   "references": [

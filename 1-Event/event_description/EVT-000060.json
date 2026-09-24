@@ -4,7 +4,7 @@
   "summary": "官方复盘指出，旧池在存取款时按同量增减虚拟 vUSD；极端失衡时，取走的流动性可超过销毁 LP 份额对应的流动性。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Allbridge Core BNB 池的 LP/交易组合可操纵储备比与价格。",
   "impact": "官方约65万美元毛流出；账本记约1,500 BNB返还；净损未统一结算",
   "transaction_ids": [],
   "references": [

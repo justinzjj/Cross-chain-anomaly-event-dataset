@@ -4,7 +4,7 @@
   "summary": "攻击者使用社会工程和恶意附件，尝试诱导团队成员在工作终端执行文件，从而进入开发或运营环境。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "deBridge 团队收到旨在入侵工作环境的恶意文件，攻击被识别。",
   "impact": "已报告零资金损失；没有可以作为被盗金额的风险敞口统计。",
   "transaction_ids": [],
   "references": [

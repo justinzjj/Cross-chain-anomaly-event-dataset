@@ -4,7 +4,7 @@
   "summary": "既有账本记录第三方发帖 API 被攻破后，官方 X 账号发布了钓鱼链接。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Meson 第三方发帖 API 被攻陷并发布钓鱼链接。",
   "impact": "未确认桥核心损失；用户损失范围未知",
   "transaction_ids": [],
   "references": [

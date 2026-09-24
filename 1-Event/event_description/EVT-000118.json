@@ -4,7 +4,7 @@
   "summary": "账本将根因描述为特权密钥或桥控制账户失守后产生未授权代币移动。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Port3 特权密钥或桥控制账号被用于未授权转移。",
   "impact": "公开金额未闭合；毛流出、追回与最终净损均未知",
   "transaction_ids": [],
   "references": [

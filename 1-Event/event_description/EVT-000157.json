@@ -4,7 +4,7 @@
   "summary": "开发环境或供应链入侵暴露足够的热验证者私钥，使攻击者达到约三分之二签名门槛。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "AFX 开发者或供应链入侵暴露足够 hot-validator keys，达到授权 quorum。",
   "impact": "流出2,415万 USDC，随后约换为12,467 ETH；兑换前后是同一资金，不重复计损。",
   "transaction_ids": [
     "TXN-000196"

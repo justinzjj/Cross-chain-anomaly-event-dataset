@@ -4,7 +4,7 @@
   "summary": "攻击者利用元池虚拟价格及记账缺陷提取超出其应得的 LP 价值，随后试图通过桥在目的链获得对应资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "nUSD Metapool 的价格/记账可被操纵，但验证者拒绝恶意桥 mint。",
   "impact": "约820万美元处于风险；目的链恶意铸币未执行，账本记载资金返还受影响 LP。风险金额不等于最终盗款。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "现有材料称 GovernanceRouter 进入恢复模式后，治理多签权限在有争议的运营背景下发生变化。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Optics recovery mode 下多签控制权变化存在争议。",
   "impact": "没有已确认资金损失；治理控制异常不能换算为被盗金额。",
   "transaction_ids": [],
   "references": [

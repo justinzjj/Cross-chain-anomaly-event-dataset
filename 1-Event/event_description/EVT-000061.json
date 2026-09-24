@@ -4,7 +4,7 @@
   "summary": "既有账本记录官方 Discord 账号或频道被用于传播钓鱼链接。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "zkLink Discord 发布钓鱼链接。",
   "impact": "未确认协议资金损失；用户损失总额未知",
   "transaction_ids": [],
   "references": [

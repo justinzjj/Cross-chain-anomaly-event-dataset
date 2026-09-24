@@ -4,7 +4,7 @@
   "summary": "恶意 Snapshot 提案或其中链接引导用户访问钓鱼页面并提交代币授权。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Stargate 恶意 Snapshot 提案或链接诱导授权。",
   "impact": "约4.3万美元为报道用户影响额；最终净损未知",
   "transaction_ids": [],
   "references": [

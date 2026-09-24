@@ -4,7 +4,7 @@
   "summary": "攻击者取得足够验证者签名能力，达到当时九个验证者中五个签名的提款门槛，使未获合法资产支持的提款在 Ethereum 侧被执行。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Ronin 5/9 验证者密钥被控制后，攻击者可产生达到门槛的提款授权。",
   "impact": "毛流出173,600 ETH＋2,550万USDC，约6.25亿美元历史估值。用户资金后来补足；DAO金库56,000 ETH在2022-06-28公告时仍未足额背书。",
   "transaction_ids": [
     "TXN-000240",

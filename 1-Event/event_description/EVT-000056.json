@@ -4,7 +4,7 @@
   "summary": "部署者密钥失守后，攻击者通过代理升级路径改写aBNBc逻辑，铸造没有真实BNB担保的代币并在市场出售。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Ankr deployer key 失守，恶意升级后无背书 mint。",
   "impact": "直接变现与市场传染合计的历史报告约500万—2400万美元，覆盖范围不同；理论增发量、直接流出及连带损害不能混算。",
   "transaction_ids": [
     "TXN-000032",

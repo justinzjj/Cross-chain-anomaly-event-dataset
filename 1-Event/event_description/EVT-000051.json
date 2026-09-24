@@ -4,7 +4,7 @@
   "summary": "ICS-23对IAVL证明结构校验不足，可使伪造的“不存在证明”被接受。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Dragonberry 对 ICS-23/IAVL absence proof 结构检查不足，可接受伪造不存在证明。",
   "impact": "官方明确无资金损失；ICS-20托管账户是潜在敞口，不能填为实际盗款或理论已增发。",
   "transaction_ids": [],
   "references": [

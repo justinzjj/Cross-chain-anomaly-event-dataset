@@ -4,7 +4,7 @@
   "summary": "既有账本将问题归于紧急提款验证器未强制执行预期密码学有效性检查，使本不应成立的证明路径仍被接受。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ZKSwap 紧急退出 proof 路径未执行预期密码有效性约束。",
   "impact": "约500万美元报道流出；追回及最终净损未知",
   "transaction_ids": [],
   "references": [

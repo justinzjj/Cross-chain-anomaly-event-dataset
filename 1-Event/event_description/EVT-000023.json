@@ -4,7 +4,7 @@
   "summary": "Solana 端验证签名时没有确认传入的 sysvar 账户身份，攻击者可提供伪造的指令上下文，使桥把未得到真实 Guardian 签名的消息当成已验证消息。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Solana 验签入口的账户/系统指令验证可被绕过，使伪造 VAA 获得有效消息效果。",
   "impact": "无抵押铸造120,000 wETH，账本估值约3.20亿—3.26亿美元；这是增发规模，不能自动视作同额ETH全从Ethereum流出。后续补足不等于攻击款全数追回。",
   "transaction_ids": [
     "TXN-000176",

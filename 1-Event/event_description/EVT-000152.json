@@ -4,7 +4,7 @@
   "summary": "Nomic的custom forwarding路径允许同一nBTC价值重复使用，形成无真实BTC支撑的凭据，并通过IBC进入Osmosis的Alloyed BTC组合。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Nomic custom forwarding 允许同一 nBTC 价值被复用生成假 voucher。",
   "impact": "独立追踪称约40.65 nBTC异常产生；披露背书缺口39.83966422 BTC，紧急冻结约22.65 BTC等值资产，约18 BTC曾被换走。三者对象口径不同，不能直接相减当最终净损。",
   "transaction_ids": [],
   "references": [

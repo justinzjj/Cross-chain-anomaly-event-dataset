@@ -4,7 +4,7 @@
   "summary": "从版本2升级至版本4时遗漏版本3的初始化逻辑，使总操作员权重保持默认零值。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Ronin 升级迁移未正确初始化提款权重/门槛，允许越权大额提款。",
   "impact": "约1,200万美元被提出；账本记本金返还及约50万美元赏金，最终账未重核",
   "transaction_ids": [],
   "references": [

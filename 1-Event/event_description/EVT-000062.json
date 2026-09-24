@@ -4,7 +4,7 @@
   "summary": "漏洞位于 SGN 的 EndBlocker 更新处理：同一验证者可对同一次更新重复投票，系统未把“同一身份的一票”与“独立验证者的投票权重”可靠绑定。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Celer SGN 未去除同一验证者重复投票，伪造多数后让节点签署假事件。",
   "impact": "未观察到利用或用户损失；约3,000万美元为理论暴露",
   "transaction_ids": [],
   "references": [

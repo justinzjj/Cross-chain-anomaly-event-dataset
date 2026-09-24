@@ -4,7 +4,7 @@
   "summary": "已确认异常提款经过 Orbit 的验证者／桥控制路径。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Orbit 存在未经授权的 validator/bridge 路径提款，初始入侵向量未披露。",
   "impact": "约8,150万—8,170万美元毛流出；最终追回和净损未知",
   "transaction_ids": [
     "TXN-000145",

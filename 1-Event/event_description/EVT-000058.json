@@ -4,7 +4,7 @@
   "summary": "既有账本将本次问题归于 WETH 的 fallback 行为与路由 permit 处理组合：路由没有可靠区分签名授权是否真实完成，交易竞争者可利用用户既存额度移动资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "AnyswapV4Router 的 WETH fallback/permit 处理与交易竞争导致 allowance 被盗用。",
   "impact": "约13万美元受影响；追回额与最终净损未确认",
   "transaction_ids": [],
   "references": [

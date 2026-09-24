@@ -2,7 +2,7 @@
 
 我们收集并整理了一套面向跨链安全研究的异常事件与交易数据集，包含跨链桥、跨链消息系统及相关生态中的攻击事件、漏洞披露和运行异常。数据集中已知事件日期从 **2020 年 5 月 18 日至 2026 年 9 月 11 日**，交易记录覆盖 Ethereum、BNB Chain、Bitcoin、Solana、XRP Ledger 等 **17 条已知区块链**。
 
-当前数据集共包含 **203 条事件记录、803 条交易记录、805 条事件—交易关联，以及 161 份事件详细描述**。我们将事件背景、相关协议与链、交易信息和参考来源整理为 CSV 与 JSON 文件，作为公开数据集供研究者和开发者查询、下载与分析。
+当前数据集共包含 **203 条事件记录、803 条交易记录、805 条事件—交易关联，以及 161 份事件详细描述**。另收录 9 张尚未并入事件索引的[主表外补充卡](1-Event/supplementary_cards/README.md)，不计入上述事件记录和详细描述数量。我们将事件背景、相关协议与链、交易信息和参考来源整理为 CSV 与 JSON 文件，作为公开数据集供研究者和开发者查询、下载与分析。
 
 本数据集已收录 **[XChainWatcher](https://github.com/AndreAugusto11/XChainWatcher) 和 [Xscope](https://github.com/Xscope-Tool/Results)** 两项代表性跨链安全研究中报告的异常案例，包括 XChainWatcher 分析的 Ronin、Nomad 攻击，以及 Xscope 报告的 THORChain 攻击案例。我们将这些案例与其他公开异常事件统一组织，提供事件描述、相关交易及证据来源，便于查询与交叉分析。这里的覆盖指异常案例的收录，不表示完整复刻两项工作的全部交易数据或标签。
 
@@ -24,6 +24,7 @@
 - [事件索引：events.csv](1-Event/events.csv) — 查询事件名称、日期、项目、协议及涉及的链。
 - [交易索引：transactions.csv](2-Transaction/transactions.csv) — 查询交易哈希、所在链、关联事件、交易角色及参考来源。
 - [事件详细描述：event_description/](1-Event/event_description) — 按事件编号查阅事件经过、原因、影响与证据材料。
+- [主表外补充卡：supplementary_cards/](1-Event/supplementary_cards/README.md) — 查阅待迁入或仍待核实的补充线索，编号独立于 `EVT-*`。
 
 CSV 文件可使用表格软件或 Python 等工具读取；JSON 文件可直接查看或按字段解析。事件与交易通过稳定编号关联，便于检索和联合分析。
 
@@ -32,8 +33,10 @@ CSV 文件可使用表格软件或 Python 等工具读取；JSON 文件可直接
 ```text
 1-Event/
 ├── events.csv
-└── event_description/
-    └── EVT-*.json
+├── event_description/
+│   └── EVT-*.json
+└── supplementary_cards/
+    └── *.md
 2-Transaction/
 └── transactions.csv
 ```
@@ -71,7 +74,7 @@ CSV 文件可使用表格软件或 Python 等工具读取；JSON 文件可直接
 
 ### 事件详细描述
 
-`event_description/<event_id>.json` 以事件编号命名，与事件索引对应。主要字段包括事件摘要（`summary`）、背景（`background`）、时间线（`timeline`）、根因（`root_cause`）、影响（`impact`）、关联交易（`transaction_ids`）、参考来源（`references`）和不确定性（`uncertainties`）。详细章节及来源原文保存在 `sections` 和 `source_card_markdown` 中。
+`event_description/<event_id>.json` 以事件编号命名，与事件索引对应。主要字段包括事件摘要（`summary`）、背景（`background`）、时间线（`timeline`）、根因（`root_cause`）、影响（`impact`）、关联交易（`transaction_ids`）、参考来源（`references`）和不确定性（`uncertainties`）。详细章节及来源原文保存在 `sections` 和 `source_card_markdown` 中。根因字段已结合 ControlScope 截至 2026-09-12 的逐事件分类补齐；它保留原分类的“疑似”“据报”“待确认”等限定，属于研究整理判断，并非逐项链上复现或独立部署核验。背景和时间线仅在有可单独归纳的证据时填写，空值不表示事件没有背景或时间顺序。
 
 CSV 中的多值字段使用 JSON 数组或对象数组字符串，空集合为 `[]`，未知标量留空。事件 JSON 中的缺失标量为 `null`，空列表为 `[]`。资产金额以字符串保存，交易哈希保留原始大小写。
 

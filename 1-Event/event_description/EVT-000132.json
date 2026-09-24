@@ -4,7 +4,7 @@
   "summary": "跨链任意调用的限制不足，攻击者能经 GatewayEVM 调用 transferFrom；历史上对网关授予的无限额度让团队钱包成为可被扣款对象。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ZetaChain 的跨链任意调用策略允许 GatewayEVM 消费历史无限授权。",
   "impact": "三个团队钱包流出333,868美元；报告未见用户损失。不能写成事件完全零损失。",
   "transaction_ids": [],
   "references": [

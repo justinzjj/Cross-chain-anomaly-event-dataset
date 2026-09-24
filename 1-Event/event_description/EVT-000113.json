@@ -4,7 +4,7 @@
   "summary": "1.7.1 升级改变 Asset Hub 发往 Bridge Hub 的消息为免付费执行。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Snowbridge 非原子升级使两端 XCM 付费规则不一致，验证失败关闭而停转。",
   "impact": "单向停机3小时35分06秒，6笔转账失败；官方称无永久资金损失",
   "transaction_ids": [],
   "references": [

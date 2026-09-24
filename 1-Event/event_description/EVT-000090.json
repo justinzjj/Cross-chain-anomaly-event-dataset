@@ -4,7 +4,7 @@
   "summary": "为应对4月26日事件，紧急升级加入暂停功能却破坏了代理与实现的存储布局。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Pike 应急升级造成 storage collision，重置初始化标志并允许恶意升级。",
   "impact": "合计1,684,506.18美元；与4月26日299,107美元分开；最终净损未知",
   "transaction_ids": [],
   "references": [

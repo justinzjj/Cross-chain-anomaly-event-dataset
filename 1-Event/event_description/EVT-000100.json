@@ -4,7 +4,7 @@
   "summary": "新引入的 Token Manager 可在没有对应 Ethereum／BNB 锁定资产时铸造 zETH、zBNB。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Zilliqa 新 token-manager 可在无对应锁仓时 mint zETH/zBNB，官方称修复为更严格余额检查。",
   "impact": "无抵押增发531 zETH、2.2133 zBNB；美元流出存在不同口径，最终净损未知",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "员工遭社会工程攻击导致验证者 owner 密钥泄露，攻击者利用管理权限将验证者合约升级成恶意实现。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ioTube 员工受社会工程攻击泄露 validator-owner key，随后恶意升级。",
   "impact": "异常增发约4.10亿 CIOTX；已变现约440万美元；冻结4,500万 IOTX。币种和口径不同，不能直接相减。",
   "transaction_ids": [
     "TXN-000247",

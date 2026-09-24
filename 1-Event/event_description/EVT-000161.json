@@ -4,7 +4,7 @@
   "summary": "WEMIX Dollar的owner权限被控制，攻击者凭管理能力铸出未获授权的代币，再使用CCIP及PLAY Bridge路线转移和兑换。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "WEMIX dollar owner 权限失守后增发，再用桥转移或转换。",
   "impact": "增发约522.5万 WEMIX Dollar，后换得30,736 WEMIX与724,198 USDCe；增发面额及兑换资产不可重复计损。",
   "transaction_ids": [],
   "references": [

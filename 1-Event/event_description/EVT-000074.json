@@ -4,7 +4,7 @@
   "summary": "账本记录社交账号失守后传播钓鱼内容。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "OmniBTC 社交账号被用于钓鱼。",
   "impact": "未确认桥核心损失；用户受害金额未知",
   "transaction_ids": [],
   "references": [

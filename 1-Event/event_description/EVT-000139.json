@@ -4,7 +4,7 @@
   "summary": "空 export 或补充输出被桥解析成有效跨链转移，价值约束及语义检查不足，允许没有对应资产意义的证明驱动提款。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Verus 首次事件将空 export 或 supplemental output 解释为有值跨链转移。",
   "impact": "毛流出据报约1,158万美元，约850万美元返还；攻击者保留约1,350 ETH。估值与币种不能混合相减。",
   "transaction_ids": [
     "TXN-000332"

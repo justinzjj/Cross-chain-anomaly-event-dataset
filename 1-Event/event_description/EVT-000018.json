@@ -4,7 +4,7 @@
   "summary": "沿用技术分析：攻击者把可公开触发的代币销毁与闪电贷组合，改变桥池代币供给或余额关系，使资金池按异常状态释放价值，最终耗尽部分池资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "公开 burn 与闪电贷组合耗尽 Zenon 相关池资产。",
   "impact": "约100万美元历史报告值；具体链、币种、追回及最终净损未完整核实。",
   "transaction_ids": [
     "TXN-000069"

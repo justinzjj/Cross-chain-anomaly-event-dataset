@@ -4,7 +4,7 @@
   "summary": "MPC 签名流程重复使用 ECDSA 随机数，表现为重复的 R 值，使攻击者能够推导签名私钥并控制桥托管资金。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "MPC 签名复用 ECDSA nonce/R，泄露私钥后产生可通过验证的签名。",
   "impact": "约787万美元历史流出；账本记载补充流动性及 LP 补偿，但资金追回与出资补足应分别统计，最终项目净损未核。",
   "transaction_ids": [
     "TXN-000065",

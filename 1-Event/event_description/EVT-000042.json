@@ -4,7 +4,7 @@
   "summary": "升级初始化使零值根被当作可接受状态。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Nomad 升级将零 root 置为可信，默认未证明消息也可进入 process。",
   "impact": "约1.9亿美元毛流出；已有较多返还和追回，但不同资产回收比例不同，不能当成全部用户损失归零。",
   "transaction_ids": [
     "TXN-000103",

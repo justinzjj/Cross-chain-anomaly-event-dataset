@@ -4,7 +4,7 @@
   "summary": "ChainConnect的EVM集成部分出现未经授权的访问，随后发生异常资产流出；最终的技术入口没有公开，不能替它补成密钥泄漏或消息验证绕过。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ChainConnect EVM 集成存在未授权访问，技术入口尚未公开。",
   "impact": "据报约65万美元、涉及23笔交易；追回与最终净损未确定。",
   "transaction_ids": [],
   "references": [

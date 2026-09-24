@@ -4,7 +4,7 @@
   "summary": "EvoDeFi 发布的说明称，Vercel 的域名转移过程未充分确认合法所有权，使攻击者取得域名／前端控制并替换页面展示的收款地址。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "域名转移缺少合法所有者确认，前端收款地址被替换。",
   "impact": "项目称约40分钟内32万美元转入攻击地址；最终补偿支付及净损未独立对账。",
   "transaction_ids": [],
   "references": [

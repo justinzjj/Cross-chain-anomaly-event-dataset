@@ -4,7 +4,7 @@
   "summary": "链下 SVM 事件读取器漏查 Anchor 的8字节事件 discriminator，把攻击者提供的 CPI/日志字节解析成真实存款，即使源链没有资金到账也触发 Risk Labs 中继器垫款。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Across SVM reader 未要求 Anchor 事件 discriminator，伪 CPI/log 被识别为存款并由 relayer 垫付。",
   "impact": "伪造1,627项请求约4,170万美元；581项被填单、毛支付约450万美元；另有335万—360万美元损失口径及331.8 ETH返还，净额未统一。",
   "transaction_ids": [],
   "references": [

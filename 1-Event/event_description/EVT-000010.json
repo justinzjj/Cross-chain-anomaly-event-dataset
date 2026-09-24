@@ -4,7 +4,7 @@
   "summary": "攻击者把假 Router 置于真实 Router 之后，利用 returnVaultAssets 的转发路径，让假 Asgard 接收少量 ETH 并发出带恶意 memo 的存款事件。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "假 Router/Asgard 路径生成假 deposit 日志，Bifrost 据此执行退款。",
   "impact": "约800万美元，流出含 ALCX、XRUNE、USDC、SUSHI、YFI、USDT；该数与第一次事件分开，最终净损未核。",
   "transaction_ids": [
     "TXN-000305",

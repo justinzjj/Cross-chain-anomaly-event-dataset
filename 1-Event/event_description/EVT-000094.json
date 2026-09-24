@@ -4,7 +4,7 @@
   "summary": "执行器 update_execution_data 对已回滚交易产生的 MessageOut 标识仍进行保存或认可。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Fuel update_execution_data 持久化已回滚交易的 MessageOut ID，使 burn 与提款非原子。",
   "impact": "无已知实际利用和损失；风险 TVL 未建立精确快照",
   "transaction_ids": [],
   "references": [

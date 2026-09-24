@@ -4,7 +4,7 @@
   "summary": "Kraken资金服务出现未披露内部原因的问题，影响多个Cosmos系网络的充值提现网关；当前没有证据表明这些链的桥协议共同遭攻击。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Kraken 多个 Cosmos-family 资金服务延迟，根因未披露。",
   "impact": "未报资产损失；部分充值提现延迟。具体受影响笔数及未恢复链集合待确认。",
   "transaction_ids": [],
   "references": [

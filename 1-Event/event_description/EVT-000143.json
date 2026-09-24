@@ -4,7 +4,7 @@
   "summary": "无需许可的 deployERC20 路径缺少 denom 与地址冲突检查，攻击者污染代币映射，使一个资产标识被解析为错误的代币关系。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Gravity permissionless deployERC20 未验证 denom/地址冲突，可污染资产映射。",
   "impact": "估计损失约540万美元；具体币种分项、追回及最终净损仍待核。",
   "transaction_ids": [
     "TXN-000217",

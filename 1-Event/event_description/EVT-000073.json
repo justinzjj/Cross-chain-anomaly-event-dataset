@@ -4,7 +4,7 @@
   "summary": "既有资料记录第三方云服务数据库遭入侵，影响 Mixin 的托管资产控制流程。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Mixin 第三方云数据库被攻陷，影响托管资产控制流程。",
   "impact": "约2亿美元为报道资产损失量级；追回与最终净损未知",
   "transaction_ids": [],
   "references": [

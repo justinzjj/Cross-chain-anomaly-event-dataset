@@ -4,7 +4,7 @@
   "summary": "CrossCurve/EYWA 的 ReceiverAxelar 在 expressExecute 快速路径中绕过应由网关完成的来源验证，伪造消息因此进入应用执行逻辑。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ReceiverAxelar expressExecute 备用入口未承接 Gateway 认证，伪消息可解锁 PortalV2。",
   "impact": "披露损失约300万美元；币种分项、毛流出与最终净损尚未统一。",
   "transaction_ids": [
     "TXN-000221",

@@ -4,7 +4,7 @@
   "summary": "比特币热钱包出现与密钥失陷相符的异常转出，但没有找到运营方公开根因报告，因此“密钥失陷”仍是线索解释而非已确认结论。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "TeleSwap Bitcoin 热钱包有疑似密钥失守的异常流出。",
   "impact": "公开报告超过73.5万美元；已实现和最终净损未获得事件级核验。",
   "transaction_ids": [
     "TXN-000089",

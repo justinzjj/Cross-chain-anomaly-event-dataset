@@ -4,7 +4,7 @@
   "summary": "账本将事件列为已确认利用，公开材料支持桥资产被未经授权提取，但具体权限检查或资金记账的失效点尚不足以精确定位。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "XBridge 出现资产抽取，但具体 authorization/accounting 函数和检查缺口未确定。",
   "impact": "报道总额约144万美元；82.4万美元可能为子集／阶段值；最终净损未知",
   "transaction_ids": [],
   "references": [

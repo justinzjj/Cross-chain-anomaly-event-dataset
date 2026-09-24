@@ -4,7 +4,7 @@
   "summary": "开发者凭据被攻破后，攻击者能够修改全链代币配置或使用特权铸币能力。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Seedify 开发者凭据被攻陷后改变 OFT 配置或使用特权 mint。",
   "impact": "约170万美元报道流出／影响；最终净损未知",
   "transaction_ids": [],
   "references": [

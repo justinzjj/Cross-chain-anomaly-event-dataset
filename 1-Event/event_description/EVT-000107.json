@@ -4,7 +4,7 @@
   "summary": "既有记录称桥或代币控制私钥的特权被用于未授权代币操作。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Pundi AI 相关桥或代币特权密钥被用于未授权操作。",
   "impact": "公开损失估计未闭合；增发、流出与最终净损均待确认",
   "transaction_ids": [],
   "references": [

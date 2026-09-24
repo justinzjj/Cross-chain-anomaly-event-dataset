@@ -4,7 +4,7 @@
   "summary": "MMR 验证器在边界或叶子证明处理上存在缺陷，使构造的跨链消息被当作有效证明。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Hyperbridge MMR 证明的边界/leaf 检查缺陷让伪消息获得资产管理权限。",
   "impact": "理论增发约10亿 DOT；最初变现约23.7万美元，后续影响估计约250万美元。三个口径不能相加。",
   "transaction_ids": [],
   "references": [

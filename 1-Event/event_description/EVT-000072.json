@@ -4,7 +4,7 @@
   "summary": "领取证明电路存在未约束的残余 witness，加上68位分肢及模数处理问题，使不合法领取金额或重复领取仍可能满足电路约束。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Aztec Connect claim proof 的残余 witness 与 limb/modulus 约束不足，可证明异常金额或重复 claim。",
   "impact": "未发生已知利用损失；约500万美元为报道风险 TVL",
   "transaction_ids": [],
   "references": [

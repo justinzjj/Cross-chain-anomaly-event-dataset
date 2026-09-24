@@ -4,7 +4,7 @@
   "summary": "攻击者的合约生成貌似 peg-out 的日志，节点没有把事件来源合约与字段格式充分绑定到可信 pBTC 入口，于是将伪造记录当作赎回请求，在 Bitcoin 侧释放托管 BTC。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "节点接受外观类似 peg-out 的日志，未绑定受信 emitter/provenance 和预期格式。",
   "impact": "277 BTC 被提走；本轮未取得最终追回、补偿和净损的完整对账。",
   "transaction_ids": [
     "TXN-000030",

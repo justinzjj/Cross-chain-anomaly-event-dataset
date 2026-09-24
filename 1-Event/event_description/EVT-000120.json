@@ -4,7 +4,7 @@
   "summary": "攻击者取得 Dusk→EVM 桥使用的签名钱包权限，可直接在 Dusk 转走资金。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Dusk 单一签名路径或钱包失守，DUSK 被盗并部分跨到 BSC。",
   "impact": "被转走约1,091万 DUSK，其中约192万 DUSK 经桥进入 BNB Chain；跨出数量是被盗数量的子集。追回与最终净损未公开闭合。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "攻击利用原生 ETH／BNB 与其包装币的特殊分支。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "wrapped-native 分支漏掉转账或余额校验，申报存款可无抵押生成。",
   "impact": "约420万—430万美元历史流出估值；跨市场连带损害及最后补偿需另行对账。",
   "transaction_ids": [
     "TXN-000048",

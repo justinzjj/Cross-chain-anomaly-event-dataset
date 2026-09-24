@@ -4,7 +4,7 @@
   "summary": "桥升级私钥遭泄露，攻击者据此提交恶意升级，改变合约行为后进行代币增发和资产转出。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Syndicate bridge upgrade key 失守，恶意升级后 mint 并抽取资产。",
   "impact": "约1,850万 SYND（约33万美元），另有约5万美元用户资产；为初始流出估值，补偿后的净成本未核。",
   "transaction_ids": [],
   "references": [

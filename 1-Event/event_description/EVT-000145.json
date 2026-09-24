@@ -4,7 +4,7 @@
   "summary": "同一交易包含重复的资产承诺，Syscoin Core 和 NEVM 中继对歧义载荷采用不同解析结果，后者将某些内容解释为原生 SYS。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Syscoin 重复 asset commitments 被 Core 与 NEVM relay 不同解析为原生 SYS。",
   "impact": "理论增发约50亿 SYS；据官方复盘全部返还并销毁，报告净损为零。",
   "transaction_ids": [
     "TXN-000691",

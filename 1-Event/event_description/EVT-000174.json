@@ -4,7 +4,7 @@
   "summary": "Elements把范围证明、承诺、资产承诺与scriptPubKey直接拼接生成成功验证缓存键，字段边界可变却无唯一编码。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Elements rangeproof 验证缓存 key 的字段边界歧义让无背书 L-BTC 成为可花余额，正常 peg-out 随后兑换 BTC。",
   "impact": "约4,000 L-BTC无背书产生；SideSwap主订单约3,996 BTC，另有小额试单。账本截至9月10日记3,400 BTC返还、约598.5 BTC仍由行为者持有；美元约3.2亿是峰值流出估值，非净损。",
   "transaction_ids": [],
   "references": [

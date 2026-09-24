@@ -4,7 +4,7 @@
   "summary": "官方承认EVM跨链转账路径可被利用来未经授权铸造ORAI，但未公布具体函数、缺失检查和受影响版本。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Oraichain EVM 跨链路径可未授权 mint ORAI，但官方未公布函数、缺失检查和版本。",
   "impact": "约390万未授权 ORAI流入MEXC/KuCoin后待追索；这是交易所侧异常供应数量，不等于全部增发量或已实现美元损失。",
   "transaction_ids": [],
   "references": [

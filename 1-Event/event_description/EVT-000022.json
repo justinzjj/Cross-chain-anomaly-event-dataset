@@ -4,7 +4,7 @@
   "summary": "攻击者在 Ethereum 侧向零地址代币路径发起存款调用。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "QBridge 特殊或零地址 token 路径未产生真实到账却生成存款凭证。",
   "impact": "约8000万美元被借出／抽走；这是利用虚假 qXETH 抵押提走的真实资产，不是 qXETH 理论增发额。追回与最终净损未核。",
   "transaction_ids": [
     "TXN-000024",

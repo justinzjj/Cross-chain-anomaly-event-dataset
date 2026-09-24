@@ -4,7 +4,7 @@
   "summary": "管理 RBC／BRBC 桥相关资产与奖励的钱包私钥遭到控制，攻击者用其权限转移并出售代币。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Rubic 管理 bridge/reward 的管理员钱包私钥失守。",
   "impact": "约120万美元代币出售历史估值；项目称质押用户资金安全，资产出售收入和全体用户净损不能等同。",
   "transaction_ids": [],
   "references": [

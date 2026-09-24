@@ -4,7 +4,7 @@
   "summary": "SlowMist指出ProxyAdmin owner私钥以明文暴露在GitHub，owner于2022-08-28被替换，旧pGALA升级路径因此失去独占控制。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "pGALA 的 ProxyAdmin owner 私钥以明文暴露在 GitHub。",
   "impact": "原表理论增发估值超10亿美元，不是等额盗款；pNetwork称收集12,977 BNB（当时约459万美元）。原表430万—1080万美元混合卖压/套利范围，最终总净损待对账。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "迁移升级后初始化状态未被正确锁定，公开initialize仍能重新设置受信bridge地址。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Arbitrum Nitro Delayed Inbox 升级后 initialize 可再次调用并重绑定受信 bridge。",
   "impact": "无已知黑帽损失；168,000 ETH是历史最大单笔存款敞口示例，并非已盗款。400 ETH为白帽赏金。",
   "transaction_ids": [],
   "references": [

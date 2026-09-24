@@ -4,7 +4,7 @@
   "summary": "攻击者通过第三方 DNS／BGP 路径把正常访问 cBridge 的用户引向恶意页面。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Celer 前端经 DNS/BGP 路径被重定向到恶意授权页面。",
   "impact": "约128.4 ETH，历史美元估值约20万—24万美元；用户补偿有报告，最终逐笔净损未复算。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "Zilliqa v9.3 升级后，桥所依赖的同步或兼容机制失效，正常转账处理被中断。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Zilliqa 升级引发 ZilBridge 同步/兼容性故障和长时间停机。",
   "impact": "无确认盗窃；用户在停机期无法跨链，滞留额未知",
   "transaction_ids": [],
   "references": [

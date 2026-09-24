@@ -4,7 +4,7 @@
   "summary": "账本记录攻击者进入服务或签名环境后，反复发起未经授权的桥提款。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "WEMIX 服务或签名环境被入侵后反复进行未授权提款。",
   "impact": "约865万 WEMIX，事发估值约600万美元；最终净损未知",
   "transaction_ids": [],
   "references": [

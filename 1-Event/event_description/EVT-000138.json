@@ -4,7 +4,7 @@
   "summary": "已有线索称桥 minter 的 EOA 为不存在的主链交易签发 wrapTo，且没有独立源状态证明把该签名与真实存款绑定。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Adshares minter EOA 据报为不存在的源链交易签署 wrapTo。",
   "impact": "安全告警估计约62.8万美元；没有闭合的净损或追回数。",
   "transaction_ids": [],
   "references": [

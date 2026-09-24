@@ -4,7 +4,7 @@
   "summary": "既有账本描述空投领取合约遭抢跑或类似女巫领取行为利用，使领取结果偏离预期分发规则。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Connext 空投领取遭抢跑或类女巫操作。",
   "impact": "账本报道约3.9万美元；最终净损和赔付未知",
   "transaction_ids": [],
   "references": [

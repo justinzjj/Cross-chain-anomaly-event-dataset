@@ -4,7 +4,7 @@
   "summary": "SAND的LayerZero集成配置权限存在问题，攻击者可将自身设成入站消息的唯一验证者，进而在Base和BNB Chain发行无背书SAND。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Sandbox 的配置路径让攻击者成为唯一 verifier 并无背书 mint，但获得配置权的前置根因未闭合。",
   "impact": "Ethereum背书库流出14,742,341.84 SAND，约67.5万—69.7万美元；最高约149亿SAND为理论无背书增发，非可兑现损失。",
   "transaction_ids": [],
   "references": [

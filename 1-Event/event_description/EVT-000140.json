@@ -4,7 +4,7 @@
   "summary": "安全事件库出现 Echo Bridge 遭攻击的告警，但原始根因分析和精确受影响产品尚未找到。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Echo 仅有桥被攻击告警，产品身份与根因未闭合。",
   "impact": "公共估值未核定；尚无可验证的毛流出或最终净损。",
   "transaction_ids": [],
   "references": [

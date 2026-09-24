@@ -4,7 +4,7 @@
   "summary": "既有核验材料将根因定位为中继共识私钥被攻破；紧凑表进一步记录构建环境中的木马可能导致密钥泄露。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Poly 2023 的 relay consensus 私钥被攻陷并授权恶意跨链消息。",
   "impact": "名义理论增发估值约420亿美元；实际兑现约1,020万美元；净损未知",
   "transaction_ids": [
     "TXN-000141",

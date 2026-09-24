@@ -4,7 +4,7 @@
   "summary": "攻击者通过恶意软件和远程桌面控制一台同时持有三个 Safe 签名者凭证的工作站，因而突破表面的多签分散性。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Humanity 一个工作站持有三个 Safe signer，被恶意软件/RDP 同时控制后升级 Warp route。",
   "impact": "理论增发约2.41亿 H；超过2,100万美元兑换为 ETH/BNB；最终追回和净损仍在对账。",
   "transaction_ids": [],
   "references": [

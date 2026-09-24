@@ -4,7 +4,7 @@
   "summary": "两个端点对整数序列化处理不同，攻击者将两条已签提款消息改造成更大数值并反复重放，共执行约1,492次。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ICON 序列号精度/序列化实现让防重键与签名覆盖位不一致，相同签名载荷在改变未签高位后可重复消费。",
   "impact": "理论影响约1.19866亿 ICX及53.16万 bnUSD；确认资产包括150.2 ETH、31,204 USDC；大量资金据报冻结，最终净损待核。",
   "transaction_ids": [],
   "references": [

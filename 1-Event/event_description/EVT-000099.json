@@ -4,7 +4,7 @@
   "summary": "既有账本记录桥基础设施或热钱包控制权遭攻破，随后多链资产被未经授权提走。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "NoOnes 桥基础设施或热钱包控制权被攻陷，跨多链转出资产。",
   "impact": "报道约790万—800万美元流出；追回及最终净损未知",
   "transaction_ids": [],
   "references": [

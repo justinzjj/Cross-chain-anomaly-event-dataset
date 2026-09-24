@@ -4,7 +4,7 @@
   "summary": "Nexa 生态公告记录，Chainge 金库地址因服务被滥用而遭列入黑名单，桥接服务因此不可用。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Chainge vault 被列入黑名单而使 NEXA 桥服务不可用。",
   "impact": "用户报告 NEXA／wNEXA滞留；总额、持续时间及最终净损未知",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "部署者私钥遭攻破后，攻击者可把桥或应用合约升级为恶意实现。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "ALEX/XLink deployer key 失守，攻击者升级到恶意桥或应用实现。",
   "impact": "XLink／BNB 阶段约430万美元；更广事件约630万美元等口径不直接相加；净损未知",
   "transaction_ids": [],
   "references": [

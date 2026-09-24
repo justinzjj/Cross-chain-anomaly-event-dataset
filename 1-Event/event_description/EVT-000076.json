@@ -4,7 +4,7 @@
   "summary": "既有账本将直接失效定位为运营权限或私钥被攻破／滥用，使桥资产被未经授权释放。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "HECO 的运营权限或私钥被攻陷/滥用后释放资产。",
   "impact": "约8,660万美元桥资产毛流出；同期 HTX 钱包损失另计；净损未知",
   "transaction_ids": [
     "TXN-000115",

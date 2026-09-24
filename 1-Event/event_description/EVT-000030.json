@@ -4,7 +4,7 @@
   "summary": "现有公开线索将事件与桥部署者、owner 或签名权限遭控制联系起来，资产据称随后被转出或变现。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "WonderHero 被报道为部署者、owner 或签名权限失守。",
   "impact": "约30万美元报道值；币种、真实流出、追回及最终净损待确认。",
   "transaction_ids": [],
   "references": [

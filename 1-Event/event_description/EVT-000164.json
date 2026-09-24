@@ -4,7 +4,7 @@
   "summary": "一笔含23条消息的MsgDeposit中，后续消息覆盖共享ObservedTxVoter，出站匹配因此误判真实提款未发生，触发了错误“失窃”惩罚。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Maya 共享/覆盖 ObservedTxVoter 状态引发误罚，叠加无上限 subsidy 与非原子持久化生成异常信用。",
   "impact": "错误记入约4,945万 CACAO，随后约4,887万 CACAO被提出；真实资产提取约165万—170万美元。约1,090万美元池市值下跌不是直接被盗额。",
   "transaction_ids": [],
   "references": [

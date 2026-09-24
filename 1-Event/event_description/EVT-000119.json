@@ -4,7 +4,7 @@
   "summary": "2025年4月 Bridge 抢跑／授权滥用漏洞响应时，团队修复了当前合约，却遗漏仍在链上运行的旧版代理。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "thirdweb 旧 proxy 未退役，抢跑/访问控制缺口可花费用户 ERC20 allowance。",
   "impact": "一个钱包 ERC20 被盗，币种数量未披露；其他网络未发现利用，净损未知",
   "transaction_ids": [],
   "references": [

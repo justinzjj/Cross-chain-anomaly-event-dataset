@@ -4,7 +4,7 @@
   "summary": "签名消息对相邻、可变长的 NIGHT 数量与 ADA 数量直接拼接后哈希，没有固定边界。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Wanchain 相邻变长数字字段未固定分帧，小额提款签名可被重解释为大额。",
   "impact": "涉及约5.152亿 NIGHT；变现估计900万—1,300万美元，部分交易所冻结。冻结金额与最终净损未统一。",
   "transaction_ids": [],
   "references": [

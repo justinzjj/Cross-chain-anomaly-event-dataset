@@ -4,7 +4,7 @@
   "summary": "旧版 DGLD 的 transferFrom 可以返回成功，却未实际转移代币。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "DGLD legacy transferFrom 返回成功但未移动资产，桥只依返回值 mint。",
   "impact": "理论无背书增发约1亿 DGLD；已变现约25万美元。理论代币面值不等于可兑现或实际损失。",
   "transaction_ids": [],
   "references": [

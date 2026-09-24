@@ -4,7 +4,7 @@
   "summary": "攻击者利用跨链前置 swap 中未充分约束的外部调用，令 Router 调用代币转账功能，从已给予无限授权的用户钱包转走资产。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "LI.FI 跨链前 swap 路径允许未约束外部调用，滥用无限授权。",
   "impact": "约60万美元历史报告值；已有赔偿受影响用户的记载，最终逐笔对账未在本轮重算。",
   "transaction_ids": [],
   "references": [

@@ -4,7 +4,7 @@
   "summary": "安全事件库将一组 SolvBTC 相关代币异动归入 Bridge 类，但当前证据未把具体产品、交易和直接根因对应起来。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "SolvBTC 的异常跨链转移告警尚未闭合事件身份及入口。",
   "impact": "公共预估尚未核定；没有可验证的已实现损失或最终净损。",
   "transaction_ids": [],
   "references": [

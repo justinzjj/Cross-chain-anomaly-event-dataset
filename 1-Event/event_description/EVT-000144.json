@@ -4,7 +4,7 @@
   "summary": "观察者使用的全节点遭网络隔离，较弱的重新观察兜底逻辑接受了错误源事件，促使持有有效密钥的 Guardians 对虚假事实签名。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Alephium 节点被 eclipse 后走到较弱 re-observation 路径，真实 Guardians 签署不合法事件。",
   "impact": "无背书增发约1,376万 wALPH；抵押影响约30.5万美元；据报96.4%无背书供应被销毁。",
   "transaction_ids": [
     "TXN-000064",

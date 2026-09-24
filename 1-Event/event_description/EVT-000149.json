@@ -4,7 +4,7 @@
   "summary": "已弃用隐私 rollup 的逃生证明没有把 outputOwner/recipient 与合法 note 所有人充分绑定，使提款证明能够指定不应取得资产的接收者。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Aztec 旧 escape-hatch proof 未把 outputOwner/recipient 绑定到合法 note owner。",
   "impact": "据报约216万美元，含1,158 ETH、15万 DAI及0.47 renBTC；币价按披露期估算，最终净损待核。",
   "transaction_ids": [
     "TXN-000474"

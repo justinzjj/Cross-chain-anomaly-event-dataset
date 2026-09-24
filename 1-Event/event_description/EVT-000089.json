@@ -4,7 +4,7 @@
   "summary": "Pike 把未经充分验证的 CCTP 相关跨链消息当成合法存款或领取依据。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Pike 接受伪造的 CCTP 相关业务消息并释放存款/claim 价值。",
   "impact": "299,107美元毛流出及实际盗取；最终追回与净损未知",
   "transaction_ids": [
     "TXN-000001",

@@ -4,7 +4,7 @@
   "summary": "已知异常提款触及 Poly 的 CMCC 跨链合约／热钱包权限，但公开材料没有闭合其具体合约缺陷或授权失守方式。",
   "background": null,
   "timeline": [],
-  "root_cause": null,
+  "root_cause": "Poly CMCC/Flamingo 热钱包出现未授权提款，智能合约或权限根因未披露。",
   "impact": "约400万—500万美元、约20%—25%相关资产；最终净损未知",
   "transaction_ids": [],
   "references": [
